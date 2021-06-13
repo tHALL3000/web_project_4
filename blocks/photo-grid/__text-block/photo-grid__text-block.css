@@ -1,0 +1,4 @@
+.photo-grid__text-block{
+    display: flex;
+    justify-content: space-around;
+}
