@@ -6,14 +6,12 @@
     margin: 0 auto 92px;
     object-fit: contain;
     align-items: stretch;
-<<<<<<< HEAD
     border-radius: 10px;
     background-color: #000;
     overflow: hidden;
     min-width: 320px;
-=======
->>>>>>> parent of 8c6c2ba... feat: photo-grid styling complete
 }
+
 @media only screen and (max-width: 1184px) {
     .photo-grid {
         margin-left: 24px;
