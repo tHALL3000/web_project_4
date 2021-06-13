@@ -12,9 +12,6 @@
     min-width: 320px;
 }
 
-
-    //width: 282px;
-
 @media only screen and (max-width: 1184px) {
     .photo-grid {
         margin-left: 24px;
