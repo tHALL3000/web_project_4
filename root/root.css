@@ -1,5 +1,5 @@
 .root{
-    max-width: 100%;
+    max-width: 1280px;
     max-height: 100%;
     background: #000;
     font-family: 'Inter', Arial, sans-serif;
@@ -8,8 +8,5 @@
 	-moz-osx-font-smoothing: grayscale;
     display:flex;
     flex-direction: column;
-
-    
-    
-
 }
+    
