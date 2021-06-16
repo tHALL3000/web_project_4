@@ -1,0 +1,6 @@
+.profile__picture_rounded{
+    border-radius: 50%;
+    max-width: 120px;
+    height: 100%;
+    background-color: #000;
+}

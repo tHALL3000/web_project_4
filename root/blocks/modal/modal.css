@@ -1,0 +1,17 @@
+.modal {
+    position: absolute;
+    top: 20%;
+    left: 33%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    transition: all .3s ease;
+    visibility: hidden;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
+    border-radius: 10px;
+    z-index: 3;
+    min-width: 430px;
+    
+
+    }

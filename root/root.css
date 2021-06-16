@@ -4,7 +4,12 @@
     background: #000;
     font-family: 'Inter', Arial, sans-serif;
     color: #fff;
-    -moz-osx-font-smoothing: grayscale;
     -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    display:flex;
+    flex-direction: column;
+
+    
+    
 
 }

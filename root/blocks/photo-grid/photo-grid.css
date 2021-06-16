@@ -1,9 +1,11 @@
 .photo-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    grid-column-gap: 16px;
-    grid-row-gap: 21px;
-    margin: 0 auto 92px;
+    max-width: 100%;
+    margin: 0 auto;
+    grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
+    gap: 20px 17px;
+    /* margin: 0 auto 92px; */
+    padding-bottom: 67px;
     object-fit: contain;
     align-items: stretch;
     border-radius: 10px;
@@ -11,7 +13,6 @@
     overflow: hidden;
     min-width: 320px;
 }
-
 @media only screen and (max-width: 1184px) {
     .photo-grid {
         margin-left: 24px;
