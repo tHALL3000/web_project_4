@@ -21,6 +21,7 @@
 @import url(/root/blocks/modal/__contents/modal__contents.css);
 @import url(/root/blocks/modal/__close-bar/modal__close-bar.css);
 @import url(/root/blocks/photo-grid/__add/photo-grid__add.css);
+@import url(/root/blocks/photo-grid/__add-mobile/photo-grid__add-mobile.css);
 @import url(/root/blocks/element/element.css);
 @import url(/root/blocks/photo-grid/photo-grid.css);
 @import url(/root/blocks/photo-grid/__item/photo-grid__item.css);
