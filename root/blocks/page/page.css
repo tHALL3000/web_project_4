@@ -13,3 +13,9 @@
     display:flex;
     flex-direction: column;
 }
+
+@media only screen and (max-width: 500px) {
+    .page{
+    position: fixed;
+    }
+}

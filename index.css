@@ -3,6 +3,7 @@
 @import url(/root/root.css);
 @import url(/root/blocks/page/page.css);
 @import url(/root/blocks/header/header.css);
+@import url(/root/blocks/main-content/main-content.css);
 @import url(/root/blocks/profile/profile.css);
 @import url(/root/blocks/profile/__picture/_rounded/profile__picture_rounded.css);
 @import url(/root/blocks/profile/__name/profile__name.css);
