@@ -1,4 +1,6 @@
 .photo-grid__picture{
-    min-height: 282px;
+    max-height: 282px;
     width: 100%;
+    object-fit: cover;
+
 }

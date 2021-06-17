@@ -8,6 +8,7 @@
 @import url(/root/blocks/profile/__name/profile__name.css);
 @import url(/root/blocks/profile/__job/profile__job.css);
 @import url(/root/blocks/profile/__info/profile__info.css);
+@import url(/root/blocks/profile/__info/profile__info-inner.css);
 @import url(/root/blocks/profile/__edit/profile__edit.css);
 @import url(/root/blocks/button/button.css);
 @import url(/root/blocks/overlay/overlay.css);
