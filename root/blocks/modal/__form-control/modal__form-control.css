@@ -6,3 +6,9 @@
 	align-items: center;
 	justify-content: space-between;
 }
+@media only screen and (max-width: 500px) {
+    .modal__form-control {
+    height: 26px;
+	width: 238px;
+    }
+}

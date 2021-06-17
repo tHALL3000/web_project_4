@@ -27,14 +27,9 @@
 }
 @media only screen and (max-width: 775px) {
     .photo-grid {
-    
         margin-left: 24px;
         margin-right: 24px;
         grid-template-columns: repeat(auto-fill, minmax(282px, 1fr));
-}
-
-
-    }
 }
 
 @media only screen and (max-width: 500px) {

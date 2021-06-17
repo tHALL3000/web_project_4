@@ -12,6 +12,13 @@
     border-radius: 10px;
     z-index: 3;
     min-width: 430px;
-    
-
     }
+
+    @media only screen and (max-width: 500px) {
+    .modal{
+    left: 19px;
+    right: 19px;
+    top: unset;
+    min-width: 281px;
+    }
+}

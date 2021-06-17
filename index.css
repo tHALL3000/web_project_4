@@ -1,6 +1,5 @@
 @import url(/vendor/fonts.css);
 @import url(/vendor/normalize.css);
-@import url(/root/root.css);
 @import url(/root/blocks/page/page.css);
 @import url(/root/blocks/header/header.css);
 @import url(/root/blocks/main-content/main-content.css);
@@ -18,7 +17,7 @@
 @import url(/root/blocks/modal/__text/modal__text.css);
 @import url(/root/blocks/modal/__show/modal__show.css);
 @import url(/root/blocks/modal/__form-control/modal__form-control.css);
-@import url(/root//blocks/modal/__form-control-label/modal__form-control-label.css);
+@import url(/root/blocks/modal/__form-control-label/modal__form-control-label.css);
 @import url(/root/blocks/modal/__form-control-input/modal__form-control-input.css);
 @import url(/root/blocks/modal/__contents/modal__contents.css);
 @import url(/root/blocks/modal/__close-bar/modal__close-bar.css);
