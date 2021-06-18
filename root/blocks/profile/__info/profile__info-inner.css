@@ -1,0 +1,5 @@
+@media only screen and (max-width: 700px) {
+	.profile__info-inner {
+		margin-left: 29px;
+	}
+}

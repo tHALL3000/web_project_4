@@ -1,29 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body class="main-page">
-    <header class="header">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Practicum by Yandex Project 4: Javascript" />
+        <meta name="author" content="Tiffany Hall, Front End Dev Student" />
+        <link rel="stylesheet" href="index.css" />
+        <title>Project 4: Around the US</title>
+    </head>
+    <body class="page">
+        <header class="header">
+            <img src="./images/around.png" alt="Life around the US" />
+        </header>
+        <main class="main-content">
+            <section class="profile">
+                <img class="profile__picture_rounded" src="./images/Avatar.jpg" alt="Profile picture of J. Custeau" />
+                <div class="profile__info">
+                    <div class="profile__info-inner">
+                        <h1 class="profile__name">Jacques Cousteau</h1>
+                        <p class="profile__job">Explorer</p>
+                    </div>
+                    <button class="profile__edit" id="editBtn"></button>
+                </div>
+                <img class="photo-grid__add" alt="add a photo" src="./images/Add--Button.svg" />
+                <img class="photo-grid__add-mobile" alt="add a photo" src="./images/Add-Button-mobile.svg" />
 
-    </header>
-    <section class="profile">
+                <div class="overlay"></div>
+                <section class="modal">
+                    <div class="modal__contents">
+                        <img class="modal__close-bar" alt="close" id="closeBtn" src="images/Close-Icon.svg" />
+                        <h2 class="modal__text">Edit Profile</h2>
+                        <form name="profile">
+                            <div class="modal__form-control">
+                                <label class="modal__form-control-label" for="name">Name: </label>
+                                <input class="modal__form-control-input" id="name" type="text" name="name" />
+                            </div>
+                            <div class="modal__form-control">
+                                <label class="modal__form-control-label" for="title">Occupation: </label>
+                                <input class="modal__form-control-input" id="title" type="text" name="title" />
+                            </div>
+                            <div id="saveBtn" class="button">Save</div>
+                        </form>
+                    </div>
+                </section>
+            </section>
 
-    </section>
-    <section class="photo-grid">
-        <img class="photo-grid__item" src="https://images.unsplash.com/photo-1622942817454-ed616e8d3a2d?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDE2fHFQWXNEenZKT1ljfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="highway" />
-        <img class="photo-grid__item" src="https://images.unsplash.com/photo-1621646912321-c97a233701d2?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDM5fHFQWXNEenZKT1ljfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="lake" />
-        <img class="photo-grid__item" src="https://images.unsplash.com/photo-1618245613901-e52b7e0123c7?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDYxfHFQWXNEenZKT1ljfHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="seagulls" />
-        <img class="photo-grid__item" src="https://images.unsplash.com/photo-1621870616319-eeb7fdf31234?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDEzMHxxUFlzRHp2Sk9ZY3x8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="boise, idaho" />
-        <img class="photo-grid__item" src="https://images.unsplash.com/photo-1620053553156-92e15d54f7ee?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDMwMXxxUFlzRHp2Sk9ZY3x8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="fog" />
-        <img class="photo-grid__item" src="https://images.unsplash.com/photo-1530447920184-b88c8872?ixid=MnwxMjA3fDB8MHx0b3BpYy1mZWVkfDc5MHxxUFlzRHp2Sk9ZY3x8ZW58MHx8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60" alt="valley" />
-</section>
-    <footer class="footer">
+            <div class="photo-grid">
+                <div class="photo-grid__card">
+                    <img class="photo-grid__picture" src="/images/error.jpeg" alt="-" />
+                    <div class="photo-grid__text-block">
+                        <p class="photo-grid__title">Silicon Valley</p>
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
+                    </div>
+                </div>
 
-    </footer>
-    
-</body>
+                <div class="photo-grid__card">
+                    <img class="photo-grid__picture" src="/images/fire-smoke.jpeg" alt="-" />
+                    <div class="photo-grid__text-block">
+                        <p class="photo-grid__title">Land of Fire & Ice</p>
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
+                    </div>
+                </div>
+
+                <div class="photo-grid__card">
+                    <img class="photo-grid__picture" src="/images/neon-mtn.jpeg" alt="-" />
+                    <div class="photo-grid__text-block">
+                        <p class="photo-grid__title">Neon Rain</p>
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
+                    </div>
+                </div>
+
+                <div class="photo-grid__card">
+                    <img class="photo-grid__picture" src="/images/pink-photo.jpeg" alt="-" />
+                    <div class="photo-grid__text-block">
+                        <p class="photo-grid__title">Miami Beach</p>
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
+                    </div>
+                </div>
+
+                <div class="photo-grid__card">
+                    <img class="photo-grid__picture" src="/images/red-photo.jpeg" alt="-" />
+                    <div class="photo-grid__text-block">
+                        <p class="photo-grid__title">Fashion Capital</p>
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
+                    </div>
+                </div>
+
+                <div class="photo-grid__card">
+                    <img class="photo-grid__picture" src="/images/solar-fire.jpeg" alt="-" />
+                    <div class="photo-grid__text-block">
+                        <p class="photo-grid__title">Cape Canaveral</p>
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
+                    </div>
+                </div>
+            </div>
+        </main>
+        <footer class="footer">
+            <p class="footer__text">&copy; 2021 Around The U.S. by tHALL3000</p>
+        </footer>
+        <script src="./scripts/index.js"></script>
+    </body>
 </html>
