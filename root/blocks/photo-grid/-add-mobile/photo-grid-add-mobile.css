@@ -1,14 +1,14 @@
-.photo-grid__add-mobile {
+.photo-grid-add-mobile {
 	display: none;
 }
 
 @media only screen and (max-width: 700px) {
-	.photo-grid__add-mobile {
+	.photo-grid-add-mobile {
 		display: block;
 		margin: 0;
 		padding: 0;
 	}
 }
-.photo-grid__add-mobile:hover {
+.photo-grid-add-mobile:hover {
 	opacity: 0.6;
 }
