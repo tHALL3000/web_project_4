@@ -16,7 +16,6 @@
 
 @media only screen and (max-width: 500px) {
 	.page {
-		position: fixed;
 		max-height: 2814px;
 		overflow-y: auto;
 	}
