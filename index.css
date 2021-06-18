@@ -21,8 +21,8 @@
 @import url(./root/blocks/modal/__form-control-input/modal__form-control-input.css);
 @import url(./root/blocks/modal/__contents/modal__contents.css);
 @import url(./root/blocks/modal/__close-bar/modal__close-bar.css);
-@import url(./root/blocks/photo-grid/__add/photo-grid__add.css);
-@import url(./root/blocks/photo-grid/__add/__add-mobile/photo-grid__add-mobile.css);
+@import url(./root/blocks/photo-grid/-add/photo-grid-add.css);
+@import url(./root/blocks/photo-grid/-add-mobile/photo-grid-add-mobile.css);
 @import url(./root/blocks/element/element.css);
 @import url(./root/blocks/photo-grid/photo-grid.css);
 @import url(./root/blocks/photo-grid/__item/photo-grid__item.css);
