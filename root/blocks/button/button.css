@@ -19,3 +19,9 @@
 	background-color: #838282;
 	transform: scale(95%);
 }
+@media screen and (max-width: 500px) {
+	.button {
+		margin-top: 46px;
+		margin-bottom: 25px;
+	}
+}

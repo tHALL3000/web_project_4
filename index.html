@@ -1,90 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Practicum by Yandex Project 4: Javascript">
-    <meta name="author" content="Tiffany Hall, Front End Dev Student">
-    <link rel="stylesheet" href="index.css">
-    <title>Project 4: Around the US</title>
-</head>
-<body class="page"> 
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content="Practicum by Yandex Project 4: Javascript" />
+        <meta name="author" content="Tiffany Hall, Front End Dev Student" />
+        <link rel="stylesheet" href="index.css" />
+        <title>Project 4: Around the US</title>
+    </head>
+    <body class="page">
         <header class="header">
-        <img src="./images/around.png" alt="Life around the US">
+            <img src="./images/around.png" alt="Life around the US" />
         </header>
-    <main class="main-content">
-        
-        <section class="profile">
-            <img class="profile__picture_rounded" src="./images/Avatar.jpg" alt="Profile picture of J. Custeau"> 
-            <div class="profile__info">
+        <main class="main-content">
+            <section class="profile">
+                <img class="profile__picture_rounded" src="./images/Avatar.jpg" alt="Profile picture of J. Custeau" />
+                <div class="profile__info">
                     <div class="profile__info-inner">
                         <h1 class="profile__name">Jacques Cousteau</h1>
                         <p class="profile__job">Explorer</p>
                     </div>
-                <button class="profile__edit" alt="click to edit" id="editBtn"></button>
-            </div>    
-            <img class="photo-grid__add" src="./images/Add Button.svg">
-                <img class="photo-grid__add-mobile" src="./images/Add-Button-mobile.svg">
-                    
-		<div class="overlay"></div>
-		<section class="modal">
-			<div class="modal__contents">
-				<img class="modal__close-bar" id="closeBtn" src="images/Close Icon.svg"
-				<h2 class="modal__text">Edit Profile</h2>
-                <form name="profile">
-					<div class="modal__form-control">
-						<label class="modal__form-control-label" for="name">Name: </label>
-						<input
-							class="modal__form-control-input"
-							id="name"
-							type="text"
-							name="name"
-						/>
-					</div>
-					<div class="modal__form-control">
-						<label class="modal__form-control-label" for="title"
-							>Occupation:
-						</label>
-						<input
-							class="modal__form-control-input"
-							id="title"
-							type="text"
-							name="title"
-						/>
-					</div>
-					<div id="saveBtn" class="button">Save</div>
-				</form>
-			</div>
-            
-		</section>
-        </section>
+                    <button class="profile__edit" id="editBtn"></button>
+                </div>
+                <img class="photo-grid__add" alt="add a photo" src="./images/Add--Button.svg" />
+                <img class="photo-grid__add-mobile" alt="add a photo" src="./images/Add-Button-mobile.svg" />
 
-        <!-- <section class="element"> -->
-        
+                <div class="overlay"></div>
+                <section class="modal">
+                    <div class="modal__contents">
+                        <img class="modal__close-bar" alt="close" id="closeBtn" src="images/Close-Icon.svg" />
+                        <h2 class="modal__text">Edit Profile</h2>
+                        <form name="profile">
+                            <div class="modal__form-control">
+                                <label class="modal__form-control-label" for="name">Name: </label>
+                                <input class="modal__form-control-input" id="name" type="text" name="name" />
+                            </div>
+                            <div class="modal__form-control">
+                                <label class="modal__form-control-label" for="title">Occupation: </label>
+                                <input class="modal__form-control-input" id="title" type="text" name="title" />
+                            </div>
+                            <div id="saveBtn" class="button">Save</div>
+                        </form>
+                    </div>
+                </section>
+            </section>
+
             <div class="photo-grid">
-
                 <div class="photo-grid__card">
                     <img class="photo-grid__picture" src="/images/error.jpeg" alt="-" />
                     <div class="photo-grid__text-block">
                         <p class="photo-grid__title">Silicon Valley</p>
-                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it">
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
                 </div>
-    
+
                 <div class="photo-grid__card">
                     <img class="photo-grid__picture" src="/images/fire-smoke.jpeg" alt="-" />
                     <div class="photo-grid__text-block">
                         <p class="photo-grid__title">Land of Fire & Ice</p>
-                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it">
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
                 </div>
-                
+
                 <div class="photo-grid__card">
                     <img class="photo-grid__picture" src="/images/neon-mtn.jpeg" alt="-" />
                     <div class="photo-grid__text-block">
                         <p class="photo-grid__title">Neon Rain</p>
-                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it">
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
                 </div>
 
@@ -92,7 +75,7 @@
                     <img class="photo-grid__picture" src="/images/pink-photo.jpeg" alt="-" />
                     <div class="photo-grid__text-block">
                         <p class="photo-grid__title">Miami Beach</p>
-                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it">
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
                 </div>
 
@@ -100,7 +83,7 @@
                     <img class="photo-grid__picture" src="/images/red-photo.jpeg" alt="-" />
                     <div class="photo-grid__text-block">
                         <p class="photo-grid__title">Fashion Capital</p>
-                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it">
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
                 </div>
 
@@ -108,16 +91,14 @@
                     <img class="photo-grid__picture" src="/images/solar-fire.jpeg" alt="-" />
                     <div class="photo-grid__text-block">
                         <p class="photo-grid__title">Cape Canaveral</p>
-                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it">
+                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
                 </div>
             </div>
-        <!-- </section> -->
-
-    <footer class="footer">
-        <p class="footer__text">&copy 2021 Around The U.S. by tHALL3000</p>
-
-      </footer>
-<script src="./scripts/index.js"></script>
-</body>
+        </main>
+        <footer class="footer">
+            <p class="footer__text">&copy; 2021 Around The U.S. by tHALL3000</p>
+        </footer>
+        <script src="./scripts/index.js"></script>
+    </body>
 </html>

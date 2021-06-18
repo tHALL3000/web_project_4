@@ -1,18 +1,18 @@
-.modal__text{
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 900;
-    font-size: 24px;
-    line-height: 29px;
-    color: #000000;
-    width: 100%;
+.modal__text {
+	font-family: Inter;
+	font-style: normal;
+	font-weight: 900;
+	font-size: 24px;
+	line-height: 29px;
+	color: #000000;
+	width: 100%;
 }
 
-
-    @media only screen and (max-width: 500px) {
-    .modal__text{
-    font-size: 18px;
-    line-height: 22px;
-    margin-bottom: 76px;
-    }
+@media only screen and (max-width: 500px) {
+	.modal__text {
+		font-size: 18px;
+		line-height: 22px;
+		margin-bottom: 76px;
+		margin-top: 25px;
+	}
 }
