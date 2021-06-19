@@ -14,6 +14,12 @@
 	min-width: 430px;
 }
 
+@media only screen and (max-width: 750px) {
+	.modal {
+		left: 15%;
+		max-width: 300px;
+	}
+}
 @media only screen and (max-width: 500px) {
 	.modal {
 		left: 19px;

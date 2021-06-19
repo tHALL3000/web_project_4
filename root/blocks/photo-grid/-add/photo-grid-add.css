@@ -3,7 +3,7 @@
 	margin-left: 165px;
 }
 
-@media only screen and (max-width: 900px) {
+@media only screen and (max-width: 1024px) {
 	.photo-grid-add {
 		margin-left: 0;
 	}

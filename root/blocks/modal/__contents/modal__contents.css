@@ -6,11 +6,13 @@
 	padding-top: 0;
 	margin-top: 34px;
 	position: relative;
-	/* input[type=email] { */
-	/* width: 100%; */
-	/* padding: .5rem; */
 }
-
+@media only screen and (max-width: 750px) {
+	.modal {
+		left: 15%;
+		max-width: 300px;
+	}
+}
 @media only screen and (max-width: 500px) {
 	.modal__contents {
 		padding-left: 22px;
