@@ -2,8 +2,8 @@
 	cursor: pointer;
 	display: flex;
 	justify-content: flex-end;
-	margin-right: -5rem;
-	margin-top: -5.5rem;
+	margin-right: -3rem;
+	margin-top: -3.5rem;
 	margin-left: auto;
 }
 .modal__close-bar:hover {
@@ -11,6 +11,9 @@
 }
 @media only screen and (max-width: 500px) {
 	.modal__close-bar {
-		margin-right: -5rem;
+		margin-top: -2rem;
+		margin-right: 0rem;
+		width: 26px;
+		height: 26px;
 	}
 }

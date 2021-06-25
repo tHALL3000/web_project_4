@@ -1,0 +1,30 @@
+.photo-grid-add {
+	background: #000;
+	padding-top: 10px;
+	margin-left: 165px;
+	height: 50px;
+	width: 150px;
+	vertical-align: center;
+	background-image: url(../../../images/add-button.svg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	color: #ffffff;
+	border: 0;
+}
+
+@media only screen and (max-width: 1024px) {
+	.photo-grid-add {
+		margin-left: 0;
+	}
+}
+@media only screen and (max-width: 700px) {
+	.photo-grid-add {
+		height: auto;
+		width: 282px;
+		padding-top: 50px;
+		align-self: center;
+	}
+}
+.photo-grid-add:hover {
+	opacity: 0.6;
+}

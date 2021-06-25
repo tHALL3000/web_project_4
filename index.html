@@ -23,43 +23,24 @@
                     </div>
                     <button class="profile__edit" id="editBtn"></button>
                 </div>
-                <img class="photo-grid-add" alt="add a photo" src="images/add--button.svg" />
-                <img class="photo-grid-add-mobile" alt="add a photo" src="./images/add-button-mobile.svg" />
-
-                <div class="overlay"></div>
-                <section class="modal">
-                    <div class="modal__contents">
-                        <img class="modal__close-bar" alt="close" id="closeBtn" src="./images/Close-Icon.svg" />
-                        <h2 class="modal__text">Edit Profile</h2>
-                        <form name="profile">
-                            <div class="modal__form-control">
-                                <label class="modal__form-control-label" for="name">Name: </label>
-                                <input class="modal__form-control-input" id="name" type="text" name="name" />
-                            </div>
-                            <div class="modal__form-control">
-                                <label class="modal__form-control-label" for="title">Occupation: </label>
-                                <input class="modal__form-control-input" id="title" type="text" name="title" />
-                            </div>
-                            <div id="saveBtn" class="button">Save</div>
-                        </form>
-                    </div>
-                </section>
+                <button class="photo-grid-add" aria-alt="add a photo"></button>
+                
             </section>
 
             <div class="photo-grid">
                 <div class="photo-grid__card">
                     <img class="photo-grid__picture" src="./images/error.jpeg" alt="error" />
-                    <div class="photo-grid__text-block">
-                        <p class="photo-grid__title">Silicon Valley</p>
-                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
-                    </div>
+                    <!-- <div class="photo-grid__text-block"> -->
+                        <p class="photo-grid__title">Silicon Valley </p>
+                        <button class="photo-grid__heart"  alt="heart if you like it"></button>
+                    <!-- </div> -->
                 </div>
 
                 <div class="photo-grid__card">
                     <img class="photo-grid__picture" src="./images/fire-smoke.jpeg" alt="smoke" />
                     <div class="photo-grid__text-block">
                         <p class="photo-grid__title">Land of Fire & Ice</p>
-                        <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
+                        <button class="photo-grid__heart"></button>
                     </div>
                 </div>
 
@@ -99,6 +80,22 @@
         <footer class="footer">
             <p class="footer__text">&copy; 2021 Around The U.S. by tHALL3000</p>
         </footer>
+        <div class="overlay"></div>
+                <section class="modal">
+                    <img class="modal__close-bar" alt="close" id="closeBtn" src="./images/Close-Icon.svg" />
+                    <div class="modal__contents">
+                        <h2 class="modal__text">Edit Profile</h2>
+                        <form name="profile">
+                            <div class="modal__form-control">
+                                <label class="modal__form-control-label" for="name">Name: </label>
+                                <input class="modal__form-control-input" id="name" type="text" name="name" />
+                            </div>
+                                <label class="modal__form-control-label" for="title">Occupation: </label>
+                                <input class="modal__form-control-input" id="title" type="text" name="title" />
+                            <button id="saveBtn" class="button">Save</button>
+                        </form>
+                    </div>
+                </section>
         <script src="./scripts/index.js"></script>
     </body>
 </html>
