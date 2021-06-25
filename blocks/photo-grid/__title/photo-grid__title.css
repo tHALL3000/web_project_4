@@ -5,10 +5,5 @@
 	color: #000000;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	text-align: left;
-	margin-left: 21px;
-	margin-right: 18px;
-	padding: 0;
-	min-width: 246px;
-	justify-content: space-between;
+	overflow: hidden;
 }

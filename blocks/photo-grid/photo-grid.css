@@ -43,7 +43,7 @@
 	}
 }
 
-@media only screen and (max-width: 6500px) {
+@media only screen and (max-width: 650px) {
 	.photo-grid {
 		display: flex;
 		flex-wrap: wrap;

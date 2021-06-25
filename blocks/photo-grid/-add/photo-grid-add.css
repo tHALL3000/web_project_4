@@ -4,12 +4,11 @@
 	margin-left: 165px;
 	height: 50px;
 	width: 150px;
-	vertical-align: center;
-	background-image: url(../../../images/add-button.svg);
-	background-size: cover;
+	background-image: url(../../../images/plusVector.svg);
+	background-position: center;
 	background-repeat: no-repeat;
 	color: #ffffff;
-	border: 0;
+	border: 1px #fff solid;
 }
 
 @media only screen and (max-width: 1024px) {

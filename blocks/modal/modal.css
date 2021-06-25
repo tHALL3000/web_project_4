@@ -1,8 +1,7 @@
 .modal {
-	position: absolute;
+	position: fixed;
 	top: 18%;
 	left: 25%;
-	/* display: flex; */
 	justify-content: flex-start;
 	align-items: center;
 	transition: all .3s ease;
@@ -12,6 +11,7 @@
 	border-radius: 10px;
 	z-index: 3;
 	min-width: 430px;
+	min-height: 330px;
 	padding-bottom: 36px;
 }
 

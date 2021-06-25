@@ -26,26 +26,7 @@ function closeModal() {
     profileTitle.textContent = titleInput.value;
 }
 
-editBtn.addEventListener("click", function () {
-    nameInput.value = profileName.textContent;
-    titleInput.value = profileTitle.textContent;
-    overlay.classList.add("overlay__show");
-    modal.classList.add("modal__show");
-});
-
-overlay.addEventListener("click", function () {
-    overlay.classList.remove("overlay__show");
-    modal.classList.remove("modal__show");
-});
-
-saveBtn.addEventListener("click", function () {
-    overlay.classList.remove("overlay__show");
-    modal.classList.remove("modal__show");
-    profileName.textContent = nameInput.value;
-    profileTitle.textContent = titleInput.value;
-});
-
-closeBtn.addEventListener("click", function () {
-    overlay.classList.remove("overlay__show");
-    modal.classList.remove("modal__show");
-});
+editBtn.addEventListener("click", toggleModal);
+overlay.addEventListener("click", toggleModal);
+saveBtn.addEventListener("click", toggleModal);
+closeBtn.addEventListener("click", toggleModal);

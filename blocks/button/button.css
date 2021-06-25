@@ -1,5 +1,6 @@
 .button {
-	margin: 0;
+	margin-top: 48px;
+
 	padding: 15px 40px;
 	font-size: 20px;
 	background: #000000;
@@ -8,10 +9,10 @@
 	cursor: pointer;
 	user-select: none;
 	transition: background-color 0.3s, transform 0.2s;
+	color: #fff;
 	text-align: center;
-	max-width: 358px;
-	margin-left: 36px;
-	margin-right: 36px;
+	justify-self: center;
+	width: 100%;
 }
 
 .button:hover {
@@ -24,7 +25,7 @@
 }
 @media screen and (max-width: 500px) {
 	.button {
-		margin-top: 21px;
+		margin-top: 46px;
 		margin-bottom: 25px;
 	}
 }
