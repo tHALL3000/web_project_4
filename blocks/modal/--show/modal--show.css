@@ -1,4 +1,4 @@
-.modal__show {
+.modal--show {
 	visibility: visible;
 	opacity: 1;
 	transition: opacity 0.4s 0.3s, visibility 0s;

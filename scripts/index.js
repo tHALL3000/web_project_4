@@ -5,7 +5,7 @@ let closeBtn = document.querySelector(".modal__close-bar");
 
 // Modal
 let toggleModal = () => {
-    document.querySelector(".modal").classList.toggle("modal__show");
+    document.querySelector(".modal").classList.toggle("modal--show");
     document.querySelector(".overlay").classList.toggle("overlay__show");
 };
 let overlay = document.querySelector(".overlay");
@@ -21,7 +21,7 @@ let titleInput = document.forms.profile.elements.title;
 
 function closeModal() {
     overlay.classList.remove("overlay__show");
-    modal.classList.remove("modal__show");
+    modal.classList.remove("modal--show");
     profileName.textContent = nameInput.value;
     profileTitle.textContent = titleInput.value;
 }

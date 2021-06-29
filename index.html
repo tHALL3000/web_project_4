@@ -6,18 +6,18 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <meta name="description" content="Practicum by Yandex Project 4: Javascript" />
         <meta name="author" content="Tiffany Hall, Front End Dev Student" />
-        <link rel="stylesheet" type="text/css" href="index.css" />
+        <link rel="stylesheet" type="text/css" href="pages/index.css" />
         <title>Project 4: Around the US</title>
     </head>
     <body class="page">
         <header class="header">
-            <img src="./images/around.png" alt="Life around the US" />
+            <img src="./images/around.svg" alt="Life around the US" />
         </header>
         <main class="main-content">
             <section class="profile">
                 <img class="profile__picture-rounded" src="images/avatar.jpg" alt="Profile picture of J. Cousteau" />
                 <div class="profile__info">
-                    <div class="profile__info-inner">
+                    <div class="profile__inner">
                         <h1 class="profile__name">Jacques Cousteau</h1>
                         <p class="profile__job">Explorer</p>
                     </div>
@@ -25,64 +25,62 @@
                 </div>
                 <button class="photo-grid-add"></button>
             </section>
-            <div class="photo-grid">
-                <div class="photo-grid__card">
+            <section class="photo-grid">
+                <article class="photo-grid__card">
                     <img class="photo-grid__picture" src="./images/error.jpeg" alt="error" />
                     <div class="photo-grid__text-block">
-                        <p class="photo-grid__title">Silicon Valley </p>
+                        <h3 class="photo-grid__title">Silicon Valley </h3>
                         <button class="photo-grid__heart" ></button>
                     </div>
-                </div>
-                <div class="photo-grid__card">
+                </article>
+                <article class="photo-grid__card">
                     <img class="photo-grid__picture" src="./images/fire-smoke.jpeg" alt="smoke" />
                     <div class="photo-grid__text-block">
-                        <p class="photo-grid__title">Land of Fire & Ice</p>
+                        <h3 class="photo-grid__title">Land of Fire & Ice</h3>
                         <button class="photo-grid__heart"></button>
                     </div>
-                </div>
-                <div class="photo-grid__card">
+                </article>
+                <article class="photo-grid__card">
                     <img class="photo-grid__picture" src="./images/neon-mtn.jpeg" alt="neon" />
                     <div class="photo-grid__text-block">
-                        <p class="photo-grid__title">Neon Rain</p>
+                        <h3 class="photo-grid__title">Neon Rain</h3>
                         <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
-                </div>
-                <div class="photo-grid__card">
+                </article>
+                <article class="photo-grid__card">
                     <img class="photo-grid__picture" src="./images/pink-photo.jpeg" alt="pink" />
                     <div class="photo-grid__text-block">
-                        <p class="photo-grid__title">Miami Beach</p>
+                        <h3 class="photo-grid__title">Miami Beach</h3>
                         <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
-                </div>
-                <div class="photo-grid__card">
+                </article>
+                <article class="photo-grid__card">
                     <img class="photo-grid__picture" src="./images/red-photo.jpeg" alt="red" />
                     <div class="photo-grid__text-block">
-                        <p class="photo-grid__title">Fashion Capital</p>
+                        <h3 class="photo-grid__title">Fashion Capital</h3>
                         <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
-                </div>
-                <div class="photo-grid__card">
+                </article>
+                <article class="photo-grid__card">
                     <img class="photo-grid__picture" src="./images/solar-fire.jpeg" alt="solar" />
                     <div class="photo-grid__text-block">
-                        <p class="photo-grid__title">Cape Canaveral</p>
+                        <h3 class="photo-grid__title">Cape Canaveral</h3>
                         <img class="photo-grid__heart" src="./images/heart.svg" alt="heart if you like it" />
                     </div>
-                </div>
-            </div>
+                </article>
+            </section>
         </main>
         <footer class="footer">
             <p class="footer__text">&copy; 2021 Around The U.S. by tHALL3000</p>
         </footer>
         <div class="overlay"></div>
         <section class="modal">
-            <img class="modal__close-bar" alt="close" id="closeBtn" src="./images/Close-Icon.svg" />
+            <button class="modal__close-bar" id="closeBtn"></button>
             <div class="modal__contents">
                 <h2 class="modal__text">Edit Profile</h2>
                 <form name="profile">
                     <div class="modal__form-control">
-                        <label class="modal__form-control-label" for="name">Name: </label>
                         <input class="modal__form-control-input" id="name" type="text" placeholder= "Jacques Cousteaue" name="name" />
-                        <label class="modal__form-control-label" for="title">Occupation: </label>
                         <input class="modal__form-control-input" id="title" type="text" placeholder= "Explorer" name="title" />
                         <button id="saveBtn" class="button">Save</button>
                     </div>

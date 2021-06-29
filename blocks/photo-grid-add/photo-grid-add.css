@@ -1,5 +1,5 @@
 .photo-grid-add {
-	background: #000;
+	background: #ffffff00;
 	padding-top: 10px;
 	margin-left: 165px;
 	height: 50px;
@@ -8,7 +8,7 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	color: #ffffff;
-	border: 1px #fff solid;
+	border: 2px #fff solid;
 }
 
 @media only screen and (max-width: 1024px) {

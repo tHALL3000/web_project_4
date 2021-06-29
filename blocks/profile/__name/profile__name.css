@@ -8,9 +8,8 @@
 
 @media only screen and (max-width: 400px) {
 	.profile__name {
-		font-family: 'Inter';
-		font-style: normal;
-		font-weight: 500;
+		font-family: 'Inter', Arial, sans-serif;
+		font-style: medium;
 		font-size: 22px;
 		line-height: 27px;
 		text-align: center;
