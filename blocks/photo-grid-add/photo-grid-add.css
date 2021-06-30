@@ -9,6 +9,7 @@
 	background-repeat: no-repeat;
 	color: #ffffff;
 	border: 2px #fff solid;
+	cursor: pointer;
 }
 
 @media only screen and (max-width: 1024px) {
