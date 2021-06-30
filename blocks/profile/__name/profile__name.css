@@ -15,8 +15,8 @@
 		font-style: medium;
 		font-size: 32px;
 		line-height: 37px;
+	}
 }
-
 @media only screen and (max-width: 400px) {
 	.profile__name {
 		font-size: 22px;
