@@ -1,4 +1,6 @@
 .modal__contents {
+	display: flex;
+	flex-direction: column;
 	background-color: #fff;
 	padding-left: 36px;
 	padding-right: 36px;
