@@ -12,7 +12,6 @@
 @media only screen and (max-width: 800px) {
 	.profile__name {
 		font-family: 'Inter', Arial, sans-serif;
-		font-style: medium;
 		font-size: 32px;
 		line-height: 37px;
 	}

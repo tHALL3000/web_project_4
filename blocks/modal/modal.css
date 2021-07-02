@@ -6,10 +6,8 @@
 
 @media only screen and (max-width: 750px) {
 	.modal {
-		/* left: 15%; */
 		max-width: 300px;
 		min-width: 282px;
-		margin-top: 123px;
 		border-radius: 10px;
 		-webkit-border-radius: 10px;
 	}
@@ -17,9 +15,6 @@
 
 @media only screen and (max-width: 500px) {
 	.modal {
-		left: 19px;
-		right: 19px;
-		padding-bottom: 185px;
 		min-width: 281px;
 	}
 }
