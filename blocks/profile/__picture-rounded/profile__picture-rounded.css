@@ -17,8 +17,3 @@
 		margin-right: auto;
 	}
 }
-@media only screen and (max-width: 340px) {
-	.profile__picture-rounded {
-		margin-left: 0;
-	}
-}

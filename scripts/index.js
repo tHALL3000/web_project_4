@@ -15,11 +15,11 @@ let titleInput = document.forms.profile.elements.title;
 
 // Modal
 let toggleModal = () => {
-    if (!overlay.classList.contains("overlay__show")) { 
+    if (!overlay.classList.contains("overlay_show")) { 
     nameInput.value = profileName.textContent;
     titleInput.value = profileTitle.textContent;
 }
-    document.querySelector(".overlay").classList.toggle("overlay__show");
+    document.querySelector(".overlay").classList.toggle("overlay_show");
 };
 
 

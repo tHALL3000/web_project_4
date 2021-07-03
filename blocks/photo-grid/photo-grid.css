@@ -8,6 +8,7 @@
 	align-items: stretch;
 	border-radius: 10px;
 	background-color: #000;
+	justify-items: center;
 }
 @media only screen and (max-width: 1184px) {
 	.photo-grid {
@@ -40,5 +41,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+		margin-bottom: 50px;
 	}
 }
