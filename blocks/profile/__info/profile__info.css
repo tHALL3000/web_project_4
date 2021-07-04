@@ -1,7 +1,7 @@
 .profile__info {
 	padding-left: 30px;
-	min-width: 415px;
 	display: flex;
+	max-width: 415px;
 }
 
 @media only screen and (max-width: 700px) {
