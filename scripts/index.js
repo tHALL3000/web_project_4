@@ -2,10 +2,11 @@
 let editBtn = document.querySelector("#editBtn");
 let saveBtn = document.querySelector("#saveBtn");
 let closeBtn = document.querySelector(".modal__close-bar");
-const addPhotoModalBtn = document.querySelector(".photo-grid-add")
+const addPhotoModalBtn = document.querySelector("#addPhoto");
 
 
 let overlay = document.querySelector(".overlay");
+
 const imageModal = document.querySelector(".modal__type_add-card");
 
 // Text
@@ -13,11 +14,11 @@ let profileName = document.querySelector(".profile__name");
 let profileTitle = document.querySelector(".profile__job");
 
 
-// Inputs
+// Profile Inputs
 let nameInput = document.forms.profile.elements.name;
 let titleInput = document.forms.profile.elements.title;
 
-// Modal
+// Modalfunction
 let toggleModal = () => {
     if (!overlay.classList.contains("overlay_show")) { 
     nameInput.value = profileName.textContent;
@@ -26,15 +27,19 @@ let toggleModal = () => {
     document.querySelector(".overlay").classList.toggle("overlay_show");
 };
 
+// Modalfunction-for any modal
 
+let toggleModalPhoto = () => {
+    document.querySelector(".overlayPhoto").classList.toggle("overlayPhoto_show");
+};
+
+
+//listeners
 editBtn.addEventListener("click", toggleModal);
 closeBtn.addEventListener("click", toggleModal);
-addPhotoModalBtn.addEventListener("click", toggleModal);
+addPhotoModalBtn.addEventListener("click", toggleModalPhoto);
 
-// // () => {
-//   imageModal.classList.add(toggleModal)
-// });
-
+//submit function
 const form = document.querySelector(".form");
 form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -44,7 +49,7 @@ form.addEventListener("submit", (e) => {
 }
 )
 
-//Array for photo cards- in reverse order
+//Array for photo cards- in reverse order, which is why we need the prepend not append
 
 const initialCards = [
 {
@@ -72,22 +77,28 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1621646912321-c97a233701d2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=716&q=80"
 }
 ];
+
+//new card stuffs
 const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
 const photoGrid = document.querySelector(".photo-grid")
+
 initialCards.forEach(data => {
     //make card
-
   const cardElement = cardTemplate.cloneNode(true);
   document.body.appendChild(cardElement); //unsure about this bit, w3 said this for div clone
   const cardImage = cardElement.querySelector(".photo-grid__picture");
   const cardTitle = cardElement.querySelector(".photo-grid__title");
   const cardLike = cardElement.querySelector(".photo-grid__heart");
-  const cardDelete= cardElement.querySelector(".photo-grid__delete");
-
+  const cardDelete = cardElement.querySelector(".photo-grid__delete");
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
-
   photoGrid.prepend(cardElement);
+})
+
+
+
+
+
 
   cardLike.addEventListener("click", () => {}
   )
@@ -95,6 +106,3 @@ initialCards.forEach(data => {
   )
   cardImage.addEventListener("click", () => {}
   )
-})
-
-
