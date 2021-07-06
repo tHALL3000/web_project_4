@@ -34,7 +34,7 @@
             <p class="footer__text">&copy; 2021 Around Ver 5.0 by tHALL3000</p>
         </footer>
         <div class="overlay">
-            <section class="modal">
+            <section class="modal modal__type_edit-profile">
                 <button class="modal__close-bar" id="closeBtn" type="button"></button>
                 <div class="modal__contents">
                     <h2 class="modal__text">Edit Profile</h2>
@@ -42,6 +42,19 @@
                         <div class="modal__form-control">
                             <input class="modal__form-control-input" id="name" type="text" name="name" />
                             <input class="modal__form-control-input" id="title" type="text"  name="title" />
+                            <button id="saveBtn" class="button">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            <section class="modal modal__type_add-card">
+                <button class="modal__close-bar" id="closeBtn" type="button"></button>
+                <div class="modal__contents">
+                    <h2 class="modal__text">new Place</h2>
+                    <form class="form" name="profile">
+                        <div class="modal__form-control">
+                            <input class="modal__form-control-input modal__form-control-input_image" id="nameOfPlace" type="text" name="nameOfPlace" placeholder="Title" />
+                            <input class="modal__form-control-input modal__form-control-input_url" id="link" type="url"  name="link OfPlace" placeholder="Image link"/>
                             <button id="saveBtn" class="button">Save</button>
                         </div>
                     </form>

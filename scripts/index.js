@@ -2,8 +2,12 @@
 let editBtn = document.querySelector("#editBtn");
 let saveBtn = document.querySelector("#saveBtn");
 let closeBtn = document.querySelector(".modal__close-bar");
+const addPhotoModalBtn = document.querySelector(".photo-grid-add")
+
 
 let overlay = document.querySelector(".overlay");
+const imageModal = document.querySelector(".modal__type_add-card");
+
 // Text
 let profileName = document.querySelector(".profile__name");
 let profileTitle = document.querySelector(".profile__job");
@@ -25,7 +29,11 @@ let toggleModal = () => {
 
 editBtn.addEventListener("click", toggleModal);
 closeBtn.addEventListener("click", toggleModal);
+addPhotoModalBtn.addEventListener("click", toggleModal);
 
+// // () => {
+//   imageModal.classList.add(toggleModal)
+// });
 
 const form = document.querySelector(".form");
 form.addEventListener("submit", (e) => {
@@ -36,7 +44,7 @@ form.addEventListener("submit", (e) => {
 }
 )
 
-//Array for photo cards
+//Array for photo cards- in reverse order
 
 const initialCards = [
 {
@@ -52,11 +60,11 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1622942817454-ed616e8d3a2d?ixid=MnwxMjA3fDB8MHx2aXN1YWwtc2VhcmNofDF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
   },
   {
-    name: "Neon Rain",
+    name: "JS template!",
     link: "https://images.unsplash.com/photo-1621870616319-eeb7fdf31234?ixid=MnwxMjA3fDB8MHx2aXN1YWwtc2VhcmNofDF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
   },
   {
-    name: "Land of Fire & Ice",
+    name: "Look who made a ",
     link: "https://images.unsplash.com/photo-1620053553156-92e15d54f7ee?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8eWVsbG93JTIwZmxhbWUlMjBibHVlJTIwc21va2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
   },
   {
@@ -64,10 +72,11 @@ const initialCards = [
     link: "https://images.unsplash.com/photo-1621646912321-c97a233701d2?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=716&q=80"
 }
 ];
-
+const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
+const photoGrid = document.querySelector(".photo-grid")
 initialCards.forEach(data => {
     //make card
-  const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
+
   const cardElement = cardTemplate.cloneNode(true);
   document.body.appendChild(cardElement); //unsure about this bit, w3 said this for div clone
   const cardImage = cardElement.querySelector(".photo-grid__picture");
@@ -78,8 +87,14 @@ initialCards.forEach(data => {
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
 
-  const photoGrid = document.querySelector(".photo-grid")
   photoGrid.prepend(cardElement);
+
+  cardLike.addEventListener("click", () => {}
+  )
+  cardDelete.addEventListener("click", () => {}
+  )
+  cardImage.addEventListener("click", () => {}
+  )
 })
 
 
