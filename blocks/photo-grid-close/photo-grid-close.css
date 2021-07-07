@@ -1,0 +1,32 @@
+.photo-grid-close {
+	margin-top: 48px;
+
+	padding: 15px 40px;
+	font-size: 20px;
+	background: #000000;
+	border-radius: 2px;
+	border: 1px solid #fff;
+	cursor: pointer;
+	user-select: none;
+	transition: background-color 0.3s, transform 0.2s;
+	color: #fff;
+	text-align: center;
+	justify-self: center;
+	width: 100%;
+	margin-bottom: 36px;
+}
+
+.photo-grid-close:hover {
+	opacity: .6;
+}
+
+.photo-grid-close:active {
+	background-color: #838282;
+	transform: scale(95%);
+}
+@media screen and (max-width: 500px) {
+	.photo-grid-close {
+		margin-top: 46px;
+		margin-bottom: 25px;
+	}
+}

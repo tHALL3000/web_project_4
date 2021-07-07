@@ -44,7 +44,7 @@
         </footer>
         <div class="overlay">
             <section class="modal modal__type_edit-profile">
-                <button class="modal__close-bar" id="closeBtn" type="button"></button>
+                 <button class="modal__close-bar" id="closeBtn" type="button"></button>
                 <div class="modal__contents">
                     <h2 class="modal__text">Edit Profile</h2>
                     <form class="form" name="profile">
@@ -57,9 +57,25 @@
                 </div>
             </section>
             </div>
-             <div class="overlayPhoto">
+ <div class="overlay" id="photoModal">
+            <section class="modal modal__type_edit-profile">
+                 <button class="modal__close-bar" id="closeBtn" type="button"></button>
+                <div class="modal__contents">
+                    <h2 class="modal__text">new place</h2>
+                    <form class="form" name="profile">
+                <div class="modal__form-control">
+                            <input class="modal__form-control-input modal__form-control-input_image" id="nameOfPlace" type="text" name="nameOfPlace" placeholder="Title" />
+                            <input class="modal__form-control-input modal__form-control-input_url" id="link" type="url"  name="link OfPlace" placeholder="Image link"/>
+                            <button id="saveBtn" class="button">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+            </div>
+
+            <!-- <div class="overlayPhoto">
             <section class="modal modal__type_add-card">
-                <button class="modal__close-bar" id="closeBtn" type="button"></button>
+                <button class="modal__close-bar" id="closePhotoModalBtn" type="button"></button>
                 <div class="modal__contents">
                     <h2 class="modal__text">New Place</h2>
                     <form class="form" name="profile">
@@ -71,7 +87,18 @@
                     </form>
                 </div>
             </section>
-        </div>
+        </div> -->
+        <div class="overlay">
+            <section class="modal modal__type_edit-profile">
+                <button class="photo-grid-close" id="closePhotoBtn" type="button"></button>
+                <div class="modal__contents">
+                    <figure class="modal__figure">
+                        <img class= "modal__image" src="" alt= "">
+                        <figcaption class= "modal__caption"></figcaption> 
+                    </figure>
+                </div>
+            </section>
+            </div>
        
         <script src="./scripts/index.js"></script>
     </body>

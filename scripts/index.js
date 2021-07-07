@@ -3,7 +3,9 @@ let editBtn = document.querySelector("#editBtn");
 let saveBtn = document.querySelector("#saveBtn");
 let closeBtn = document.querySelector(".modal__close-bar");
 const addPhotoModalBtn = document.querySelector("#addPhoto");
+const closePhotoModalBtn = document.querySelector("#photoModal");
 
+const modalPicture = document.querySelector(".modal__figure");
 
 let overlay = document.querySelector(".overlay");
 
@@ -19,15 +21,15 @@ let nameInput = document.forms.profile.elements.name;
 let titleInput = document.forms.profile.elements.title;
 
 // Modalfunction
-let toggleModal = () => {
-    if (!overlay.classList.contains("overlay_show")) { 
-    nameInput.value = profileName.textContent;
-    titleInput.value = profileTitle.textContent;
-}
+let toggleModal = (#photoModal) => {
+//     // if (!overlay.classList.contains("overlay_show")) { 
+//     // nameInput.value = profileName.textContent;
+//     // titleInput.value = profileTitle.textContent;
+// // }
     document.querySelector(".overlay").classList.toggle("overlay_show");
 };
 
-// Modalfunction-for any modal
+// Modalfunction-for photo card
 
 let toggleModalPhoto = () => {
     document.querySelector(".overlayPhoto").classList.toggle("overlayPhoto_show");
@@ -37,7 +39,8 @@ let toggleModalPhoto = () => {
 //listeners
 editBtn.addEventListener("click", toggleModal);
 closeBtn.addEventListener("click", toggleModal);
-addPhotoModalBtn.addEventListener("click", toggleModalPhoto);
+addPhotoModalBtn.addEventListener("click", toggleModal);
+closePhotoModalBtn.addEventListener("click", toggleModal);
 
 //submit function
 const form = document.querySelector(".form");
@@ -83,26 +86,32 @@ const cardTemplate = document.querySelector(".card-template").content.querySelec
 const photoGrid = document.querySelector(".photo-grid")
 
 initialCards.forEach(data => {
-    //make card
+  //make card
   const cardElement = cardTemplate.cloneNode(true);
   document.body.appendChild(cardElement); //unsure about this bit, w3 said this for div clone
+  
   const cardImage = cardElement.querySelector(".photo-grid__picture");
   const cardTitle = cardElement.querySelector(".photo-grid__title");
   const cardLike = cardElement.querySelector(".photo-grid__heart");
   const cardDelete = cardElement.querySelector(".photo-grid__delete");
+  
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
+
+
+  cardLike.addEventListener("click", () => { }
+  );
+  cardDelete.addEventListener("click", () => { }
+  );
+  cardImage.addEventListener("click", () => {
+    toggleModal(modalPicture)
+  }
+  );
+
   photoGrid.prepend(cardElement);
-})
+});
 
 
 
 
 
-
-  cardLike.addEventListener("click", () => {}
-  )
-  cardDelete.addEventListener("click", () => {}
-  )
-  cardImage.addEventListener("click", () => {}
-  )
