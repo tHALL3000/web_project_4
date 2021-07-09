@@ -40,11 +40,11 @@
             </section>
         </main>
         <footer class="footer">
-            <p class="footer__text">&copy; 2021 Around Ver 5.0 by tHALL3000</p>
+            <p class="footer__text">&copy; 2021 Around Ver 5.3 by tHALL3000</p>
         </footer>
         <div class="overlay">
             <section class="modal modal__type_edit-profile">
-                 <button class="modal__close-bar" id="closeBtn" type="button"></button>
+                <button class="modal__close-bar" id="closeBtn" type="button"></button>
                 <div class="modal__contents">
                     <h2 class="modal__text">Edit Profile</h2>
                     <form class="form" name="profile">
@@ -57,9 +57,9 @@
                 </div>
             </section>
             </div>
- <div class="overlay" id="photoModal">
-            <section class="modal modal__type_edit-profile">
-                 <button class="modal__close-bar" id="closeBtn" type="button"></button>
+ <div class="overlay overlay__type_add-card" id="photoModal">
+            <section class="modal">
+                 <button class="modal__close-bar modal__close-bar_add-photo" id="closeBtn" type="button"></button>
                 <div class="modal__contents">
                     <h2 class="modal__text">new place</h2>
                     <form class="form" name="profile">
@@ -88,10 +88,10 @@
                 </div>
             </section>
         </div> -->
-        <div class="overlay">
-            <section class="modal modal__type_edit-profile">
-                <button class="photo-grid-close" id="closePhotoBtn" type="button"></button>
-                <div class="modal__contents">
+        <div class="overlay overlay__type_preview">
+            <section class="modal">
+                <button class="modal__close-bar modal__close-bar_image" id="closeBtn closeBtn__img-preview" type="button"></button>
+                <div class="modal__photo-container">
                     <figure class="modal__figure">
                         <img class= "modal__image" src="" alt= "">
                         <figcaption class= "modal__caption"></figcaption> 

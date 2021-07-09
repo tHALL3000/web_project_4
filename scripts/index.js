@@ -1,13 +1,25 @@
 // Buttons
 let editBtn = document.querySelector("#editBtn");
 let saveBtn = document.querySelector("#saveBtn");
-let closeBtn = document.querySelector(".modal__close-bar");
-const addPhotoModalBtn = document.querySelector("#addPhoto");
-const closePhotoModalBtn = document.querySelector("#photoModal");
+const photoModal = document.querySelector("#addPhoto");
+
+
+//overlays
+const overlay = document.querySelector(".overlay");
+const imgPreviewModal = document.querySelector(".overlay__type_preview");
+const addPhotoModal = document.querySelector(".overlay__type_add-card")
+
+//close button classes
+const profileClose = document.querySelector(".modal__close-bar");
+const addPhotoClose = document.querySelector(".modal__close-bar_add-photo");
+const imgPreviewClose = document.querySelector(".modal__close-bar_image");
+
+const imageElement = document.querySelector(".modal__image");
+const imageCaption = document.querySelector(".modal__caption");
+
 
 const modalPicture = document.querySelector(".modal__figure");
 
-let overlay = document.querySelector(".overlay");
 
 const imageModal = document.querySelector(".modal__type_add-card");
 
@@ -21,36 +33,49 @@ let nameInput = document.forms.profile.elements.name;
 let titleInput = document.forms.profile.elements.title;
 
 // Modalfunction
-let toggleModal = (#photoModal) => {
-//     // if (!overlay.classList.contains("overlay_show")) { 
-//     // nameInput.value = profileName.textContent;
-//     // titleInput.value = profileTitle.textContent;
-// // }
-    document.querySelector(".overlay").classList.toggle("overlay_show");
-};
 
+const toggleModal = (modal) => {
+  if (!modal.classList.contains("overlay_show")) { 
+  nameInput.value = profileName.textContent;
+  titleInput.value = profileTitle.textContent;
+}
+    modal.classList.toggle("overlay_show");
+};
 // Modalfunction-for photo card
 
-let toggleModalPhoto = () => {
-    document.querySelector(".overlayPhoto").classList.toggle("overlayPhoto_show");
-};
-
+const closeModal = (modal) => {
+  modal.classlist.toggle("overlay_show");
+}
 
 //listeners
-editBtn.addEventListener("click", toggleModal);
-closeBtn.addEventListener("click", toggleModal);
-addPhotoModalBtn.addEventListener("click", toggleModal);
-closePhotoModalBtn.addEventListener("click", toggleModal);
+editBtn.addEventListener("click", () => {
+  toggleModal(overlay)
+});
+// closeBtn.addEventListener("click",  () => {
+//   toggleModal(overlay)
+// });
+//close btn/////
+//submit function
+const modal = document.querySelector(".modal");
+modal.addEventListener("click", () => {
+  toggleModal();
+}
+);
+
+photoModal.addEventListener("click",  () => {
+  toggleModal(addPhotoModal)
+});
+//photoModal.addEventListener("click", toggleModal(imgPreviewModal));
 
 //submit function
 const form = document.querySelector(".form");
 form.addEventListener("submit", (e) => {
-    e.preventDefault();
-    profileName.textContent = nameInput.value;
-    profileTitle.textContent = titleInput.value;
-    toggleModal();
+  e.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileTitle.textContent = titleInput.value;
+  toggleModal();
 }
-)
+);
 
 //Array for photo cards- in reverse order, which is why we need the prepend not append
 
@@ -83,6 +108,7 @@ const initialCards = [
 
 //new card stuffs
 const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
+
 const photoGrid = document.querySelector(".photo-grid")
 
 initialCards.forEach(data => {
@@ -93,25 +119,48 @@ initialCards.forEach(data => {
   const cardImage = cardElement.querySelector(".photo-grid__picture");
   const cardTitle = cardElement.querySelector(".photo-grid__title");
   const cardLike = cardElement.querySelector(".photo-grid__heart");
+  const cardLikeActive = cardElement.querySelector(".photo-grid__heart_active");
   const cardDelete = cardElement.querySelector(".photo-grid__delete");
-  
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
 
+  console.log(cardLike);
 
-  cardLike.addEventListener("click", () => { }
-  );
+  const toggleClass = function (cardLike) {
+    if (cardLike.classList.contains(cardLike)) {
+      cardLike.classList.toggle(cardLikeActive)
+    }
+      else {
+        cardLike.classList.toggle(cardLike)
+      }
+  }
+  cardLike.addEventListener("click", () => {
+    toggleClass(cardLike)
+  });
+  
+  });
+
+ 
+
   cardDelete.addEventListener("click", () => { }
   );
   cardImage.addEventListener("click", () => {
-    toggleModal(modalPicture)
+    imageElement.src = data.link;
+    imageElement.alt = "Image" + data.name + "";
+    imageCaption.textContent = data.name;
+    toggleModal(imgPreviewModal)
   }
   );
 
   photoGrid.prepend(cardElement);
-});
 
-
+//like btn idea
+// document.getElementsByClassName("cover-wrap")[0].addEventListener("click", function(){
+//   if(this.classList.contains("active")) {
+//     this.classList.remove("active");
+//   }
+//   else this.classList.add("active");
+// });
 
 
 

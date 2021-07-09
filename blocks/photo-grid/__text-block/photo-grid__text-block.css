@@ -1,5 +1,6 @@
 .photo-grid__text-block {
 	display: flex;
 	justify-content: space-between;
-	margin-left: 21px;
+	padding-left: 21px;
+	background-color: #fff;
 }

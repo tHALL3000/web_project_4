@@ -1,0 +1,17 @@
+.photo-grid__delete {
+	position: absolute;
+	border-style: none;
+	cursor: pointer;
+	top: 30px;
+	right: 18px;
+	background-image: url(../../../images/Trash.svg);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: contain;
+	background-color: transparent;
+	outline: none;
+	width: 21px;
+	height: 19px;
+	padding: 0;
+	margin: 0;
+}

@@ -23,6 +23,11 @@
 @import url(../blocks/modal/__form-control-input/modal__form-control-input.css);
 @import url(../blocks/modal/__contents/modal__contents.css);
 @import url(../blocks/modal/__close-bar/modal__close-bar.css);
+@import url(../blocks/modal/__figure/modal__figure.css);
+@import url(../blocks/modal/__caption/modal__caption.css);
+@import url(../blocks/modal/__image/modal__image.css);
+@import url(../blocks/modal/__photo-container/modal__photo-container.css);
+@import url(../blocks/photo-grid/__delete/photo-grid__delete.css);
 @import url(../blocks/photo-grid-add/photo-grid-add.css);
 @import url(../blocks/photo-grid/photo-grid.css);
 @import url(../blocks/photo-grid-close/photo-grid-close.css);
