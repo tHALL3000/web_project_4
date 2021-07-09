@@ -1,8 +1,10 @@
 // Buttons
-let editBtn = document.querySelector("#editBtn");
-let saveBtn = document.querySelector("#saveBtn");
+const editBtn = document.querySelector("#editBtn");
+const saveBtn = document.querySelector("#saveBtn");
 const photoModal = document.querySelector("#addPhoto");
 
+//profile section
+const modalProfile = document.querySelector(".modal__type_edit-profile");
 
 //overlays
 const overlay = document.querySelector(".overlay");
@@ -24,23 +26,24 @@ const modalPicture = document.querySelector(".modal__figure");
 const imageModal = document.querySelector(".modal__type_add-card");
 
 // Text
-let profileName = document.querySelector(".profile__name");
-let profileTitle = document.querySelector(".profile__job");
+const profileName = document.querySelector(".profile__name");
+const proficonstitle = document.querySelector(".profile__job");
 
 
 // Profile Inputs
-let nameInput = document.forms.profile.elements.name;
-let titleInput = document.forms.profile.elements.title;
+const nameInput = document.forms.profile.elements.name;
+const titleInput = document.forms.profile.elements.title;
 
-// Modalfunction
-
+// general Modal Popup function
 const toggleModal = (modal) => {
   if (!modal.classList.contains("overlay_show")) { 
   nameInput.value = profileName.textContent;
-  titleInput.value = profileTitle.textContent;
+  titleInput.value = proficonstitle.textContent;
 }
     modal.classList.toggle("overlay_show");
 };
+
+
 // Modalfunction-for photo card
 
 const closeModal = (modal) => {
@@ -51,11 +54,8 @@ const closeModal = (modal) => {
 editBtn.addEventListener("click", () => {
   toggleModal(overlay)
 });
-// closeBtn.addEventListener("click",  () => {
-//   toggleModal(overlay)
-// });
-//close btn/////
-//submit function
+
+
 const modal = document.querySelector(".modal");
 modal.addEventListener("click", () => {
   toggleModal();
@@ -67,13 +67,13 @@ photoModal.addEventListener("click",  () => {
 });
 //photoModal.addEventListener("click", toggleModal(imgPreviewModal));
 
-//submit function
+//submit function for profile section
 const form = document.querySelector(".form");
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   profileName.textContent = nameInput.value;
   profileTitle.textContent = titleInput.value;
-  toggleModal();
+  toggleModal(modal__type_edit-profile);
 }
 );
 
@@ -120,7 +120,7 @@ initialCards.forEach(data => {
   const cardTitle = cardElement.querySelector(".photo-grid__title");
   const cardLike = cardElement.querySelector(".photo-grid__heart");
   const cardLikeActive = cardElement.querySelector(".photo-grid__heart_active");
-  const cardDelete = cardElement.querySelector(".photo-grid__delete");
+  const cardDelete = cardElement.querySelector(".photo-grid__deconste");
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
 
