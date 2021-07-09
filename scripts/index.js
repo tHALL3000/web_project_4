@@ -37,7 +37,7 @@ const imageCaption = document.querySelector(".modal__caption");
 const toggleModal = (modal) => {
   if (!modal.classList.contains("overlay_show")) { 
   nameInput.value = profileName.textContent;
-  titleInput.value = proficonstitle.textContent;
+  titleInput.value = profileTitle.textContent;
 }
     modal.classList.toggle("overlay_show");
 };
@@ -110,7 +110,7 @@ const photoGrid = document.querySelector(".photo-grid")
 initialCards.forEach(data => {
   //make card
   const cardElement = cardTemplate.cloneNode(true);
-  document.body.appendChild(cardElement); //unsure about this bit, w3 said this for div clone
+  document.body.appendChild(cardElement); //w3 said this for div clone in place of list
   
   const cardImage = cardElement.querySelector(".photo-grid__picture");
   const cardTitle = cardElement.querySelector(".photo-grid__title");
@@ -136,11 +136,11 @@ initialCards.forEach(data => {
   
   });
 
- 
+
 
   cardDelete.addEventListener("click", () => { }
   );
-  cardImage.addEventListener("click", () => {
+  imageModal.addEventListener("click", () => {
     imageElement.src = data.link;
     imageElement.alt = "Image" + data.name + "";
     imageCaption.textContent = data.name;
