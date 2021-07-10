@@ -10,7 +10,7 @@ const modalProfile = document.querySelector(".modal__type_edit-profile");
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__job");
 // Profile Inputs
-const form = document.querySelector(".form");
+
 const nameInput = document.forms.profile.elements.name;
 const titleInput = document.forms.profile.elements.title;
 
@@ -36,13 +36,13 @@ const imageCaption = document.querySelector(".modal__caption");
 const modal = document.querySelector(".modal");
 
 // general Modal Popup function
-const toggleModal = (modal) => {
-  if (!modal.classList.contains("overlay_show")) { 
-  nameInput.value = profileName.textContent;
-  titleInput.value = profileTitle.textContent;
-}
-    modal.classList.toggle("overlay_show");
-};
+let toggleModal = () => { 
+    if (!overlay.classList.contains("overlay_show")) {  
+    nameInput.value = profileName.textContent; 
+    titleInput.value = profileTitle.textContent; 
+} 
+    document.querySelector(".overlay").classList.toggle("overlay_show"); 
+}; 
 
 
 // Modalfunction-for photo card
@@ -56,10 +56,7 @@ editBtn.addEventListener("click", () => {
 });
 
 
-modal.addEventListener("click", () => {
-  toggleModal();
-}
-);
+
 
 photoModal.addEventListener("click",  () => {
   toggleModal(addPhotoModal)
@@ -69,11 +66,12 @@ photoModal.addEventListener("click",  () => {
 //submit function for profile section
 
 
+const form = document.querySelector(".form"); 
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   profileName.textContent = nameInput.value;
   profileTitle.textContent = titleInput.value;
-  toggleModal("overlay_show");
+  toggleModal();
 });
 
 //Array for photo cards- in reverse order, which is why we need the prepend not append
@@ -157,7 +155,4 @@ initialCards.forEach(data => {
 //     this.classList.remove("active");
 //   }
 //   else this.classList.add("active");
-// });
-
-
-
+// )}
