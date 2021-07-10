@@ -105,14 +105,39 @@ const initialCards = [
 //new card stuffs
 const photoGrid = document.querySelector(".photo-grid")
 
+
 const createCard = (card) => {
   const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
-  const cardElement = cardTemplate.cloneNode(true);
- 
 
-  //  const cardLike = cardElement.querySelector(".photo-grid__heart");
-  //  const cardLikeActive = cardElement.querySelector(".photo-grid__heart_active");
-  //  const cardDelete = cardElement.querySelector(".photo-grid__delete");
+  const cardElement = cardTemplate.cloneNode(true);
+
+  const cardLike = cardElement.querySelector(".photo-grid__heart");
+  const cardLikeActive = cardElement.querySelector(".photo-grid__heart_active");
+  const cardDelete = cardElement.querySelector(".photo-grid__delete");
+  const image = cardElement.querySelector(".photo-grid__picture");
+
+  const handleCardLike = () => {
+if (cardElement.querySelector(".photo-grid__heart").classList.contains((".photo-grid__heart"))) {
+cardLike.classList.toggle(cardElement.querySelector(".photo-grid__heart_active"))
+  }
+  else {
+        cardElement.querySelector(".photo-grid__heart").classList.toggle((".photo-grid__heart_active"))
+      }
+}
+
+  
+  cardLike.addEventListener("click", () => {
+    handleCardLike(card);
+  });
+
+
+  cardDelete.addEventListener("click", () => {
+  });
+
+
+  image.addEventListener("click", () => {
+    handleCardImage
+  });
 
   cardElement.querySelector(".photo-grid__title").textContent = card.name;
   cardElement.querySelector(".photo-grid__picture").src = card.link;
@@ -124,17 +149,7 @@ initialCards.forEach(data => {
   const card = createCard(data);
   photoGrid.prepend(card)
 });
- /* const toggleClass = function (cardLike) {
-  //   if (cardLike.classList.contains(cardLike)) {
-  //     cardLike.classList.toggle(cardLikeActive)
-  //   }
-  //     else {
-  //       cardLike.classList.toggle(cardLike)
-  //     }
-  // }
-  // cardLike.addEventListener("click", () => {
-  //   toggleClass(cardLike)
-  // });
+ /* 
   
   // });
 
