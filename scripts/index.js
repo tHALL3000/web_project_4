@@ -10,6 +10,7 @@ const modalProfile = document.querySelector(".modal__type_edit-profile");
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__job");
 // Profile Inputs
+const form = document.querySelector(".form");
 const nameInput = document.forms.profile.elements.name;
 const titleInput = document.forms.profile.elements.title;
 
@@ -32,6 +33,7 @@ const imageCaption = document.querySelector(".modal__caption");
 
 
 
+const modal = document.querySelector(".modal");
 
 // general Modal Popup function
 const toggleModal = (modal) => {
@@ -44,9 +46,9 @@ const toggleModal = (modal) => {
 
 
 // Modalfunction-for photo card
-const closeModal = (modal) => {
-  modal.classlist.toggle("overlay_show");
-}
+//const closeModal = (modal) => {
+//  modal.classlist.toggle("overlay_show");
+//}
 
 //listeners
 editBtn.addEventListener("click", () => {
@@ -54,7 +56,6 @@ editBtn.addEventListener("click", () => {
 });
 
 
-const modal = document.querySelector(".modal");
 modal.addEventListener("click", () => {
   toggleModal();
 }
@@ -66,12 +67,13 @@ photoModal.addEventListener("click",  () => {
 
 
 //submit function for profile section
-const form = document.querySelector(".form");
+
+
 form.addEventListener("submit", (e) => {
   e.preventDefault();
   profileName.textContent = nameInput.value;
   profileTitle.textContent = titleInput.value;
-  toggleModal(modal__type_edit-profile);
+  toggleModal("overlay_show");
 });
 
 //Array for photo cards- in reverse order, which is why we need the prepend not append
@@ -103,12 +105,12 @@ const initialCards = [
 ];
 
 //new card stuffs
-const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
-
 const photoGrid = document.querySelector(".photo-grid")
+
 
 initialCards.forEach(data => {
   //make card
+  const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
   const cardElement = cardTemplate.cloneNode(true);
   document.body.appendChild(cardElement); //w3 said this for div clone in place of list
   
@@ -116,11 +118,10 @@ initialCards.forEach(data => {
   const cardTitle = cardElement.querySelector(".photo-grid__title");
   const cardLike = cardElement.querySelector(".photo-grid__heart");
   const cardLikeActive = cardElement.querySelector(".photo-grid__heart_active");
-  const cardDelete = cardElement.querySelector(".photo-grid__deconste");
+  const cardDelete = cardElement.querySelector(".photo-grid__delete");
+  
   cardTitle.textContent = data.name;
   cardImage.src = data.link;
-
-  console.log(cardLike);
 
   const toggleClass = function (cardLike) {
     if (cardLike.classList.contains(cardLike)) {
@@ -138,15 +139,15 @@ initialCards.forEach(data => {
 
 
 
-  cardDelete.addEventListener("click", () => { }
-  );
-  imageModal.addEventListener("click", () => {
-    imageElement.src = data.link;
-    imageElement.alt = "Image" + data.name + "";
-    imageCaption.textContent = data.name;
-    toggleModal(imgPreviewModal)
-  }
-  );
+  //cardDelete.addEventListener("click", () => { }
+  //);
+  // imageModal.addEventListener("click", () => {
+  //   imageElement.src = data.link;
+  //   imageElement.alt = "Image" + data.name + "";
+  //   imageCaption.textContent = data.name;
+  //   toggleModal(imgPreviewModal)
+  // }
+ // );
 
   photoGrid.prepend(cardElement);
 
