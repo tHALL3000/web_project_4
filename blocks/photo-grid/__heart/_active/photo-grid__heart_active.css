@@ -1,11 +1,11 @@
-.photo-grid__heart {
+.photo-grid__heart_active {
 	position: relative;
 	border-style: none;
 	cursor: pointer;
 	align-self: flex-end;
 	bottom: 30px;
 	right: 18px;
-	background-image: url(../../../images/filled-heart.svg);
+	background-image: url(../../../../images/filled-heart.svg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: contain;
@@ -16,5 +16,7 @@
 	border: none;
 	padding: 0;
 	margin: 0;
+	visibility: hidden;
+	z-index: 1;
 	/* transition: opacity 0.2s ease-in-out; */
 }

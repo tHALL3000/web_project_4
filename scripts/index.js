@@ -55,8 +55,13 @@ editBtn.addEventListener("click", () => {
   toggleModal(overlay)
 });
 
+profileClose.addEventListener("click", () => {
+  toggleModal(overlay)
+});
 
-
+imgPreviewClose.addEventListener("click", () => {
+  toggleModal(overlay)
+});
 
 photoModal.addEventListener("click",  () => {
   toggleModal(addPhotoModal)
@@ -116,18 +121,18 @@ const createCard = (card) => {
   const cardDelete = cardElement.querySelector(".photo-grid__delete");
   const image = cardElement.querySelector(".photo-grid__picture");
 
-  const handleCardLike = () => {
-if (cardElement.querySelector(".photo-grid__heart").classList.contains((".photo-grid__heart"))) {
-cardLike.classList.toggle(cardElement.querySelector(".photo-grid__heart_active"))
-  }
-  else {
-        cardElement.querySelector(".photo-grid__heart").classList.toggle((".photo-grid__heart_active"))
-      }
-}
+//   const handleCardLike = () => {
+// // if (cardElement.querySelector(".photo-grid__heart").classList.contains((".photo-grid__heart"))) {
+// // cardLike.classList.toggle(cardElement.querySelector(".photo-grid__heart_active"))
+// //   }
+// //   else {
+//         document.querySelector(".photo-grid__heart").classList.toggle(".photo-grid__heart_active")
+//       }
+
 
   
   cardLike.addEventListener("click", () => {
-    handleCardLike(card);
+  cardElement.querySelector(".photo-grid__heart").classList.toggle(".photo-grid__heart_active")
   });
 
 
