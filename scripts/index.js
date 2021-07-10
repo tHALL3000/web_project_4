@@ -105,36 +105,38 @@ const initialCards = [
 //new card stuffs
 const photoGrid = document.querySelector(".photo-grid")
 
-
-initialCards.forEach(data => {
-  //make card
+const createCard = (card) => {
   const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
   const cardElement = cardTemplate.cloneNode(true);
-  document.body.appendChild(cardElement); //w3 said this for div clone in place of list
-  
-  const cardImage = cardElement.querySelector(".photo-grid__picture");
-  const cardTitle = cardElement.querySelector(".photo-grid__title");
-  const cardLike = cardElement.querySelector(".photo-grid__heart");
-  const cardLikeActive = cardElement.querySelector(".photo-grid__heart_active");
-  const cardDelete = cardElement.querySelector(".photo-grid__delete");
-  
-  cardTitle.textContent = data.name;
-  cardImage.src = data.link;
+ 
 
-  const toggleClass = function (cardLike) {
-    if (cardLike.classList.contains(cardLike)) {
-      cardLike.classList.toggle(cardLikeActive)
-    }
-      else {
-        cardLike.classList.toggle(cardLike)
-      }
-  }
-  cardLike.addEventListener("click", () => {
-    toggleClass(cardLike)
-  });
-  
-  });
+  //  const cardLike = cardElement.querySelector(".photo-grid__heart");
+  //  const cardLikeActive = cardElement.querySelector(".photo-grid__heart_active");
+  //  const cardDelete = cardElement.querySelector(".photo-grid__delete");
 
+  cardElement.querySelector(".photo-grid__title").textContent = card.name;
+  cardElement.querySelector(".photo-grid__picture").src = card.link;
+
+  return cardElement;
+}
+initialCards.forEach(data => {
+
+  const card = createCard(data);
+  photoGrid.prepend(card)
+});
+ /* const toggleClass = function (cardLike) {
+  //   if (cardLike.classList.contains(cardLike)) {
+  //     cardLike.classList.toggle(cardLikeActive)
+  //   }
+  //     else {
+  //       cardLike.classList.toggle(cardLike)
+  //     }
+  // }
+  // cardLike.addEventListener("click", () => {
+  //   toggleClass(cardLike)
+  // });
+  
+  // });
 
 
   //cardDelete.addEventListener("click", () => { }
@@ -145,14 +147,15 @@ initialCards.forEach(data => {
   //   imageCaption.textContent = data.name;
   //   toggleModal(imgPreviewModal)
   // }
- // );
+  // );
 
-  photoGrid.prepend(cardElement);
+  // photoGrid.prepend(cardElement);
 
-//like btn idea
-// document.getElementsByClassName("cover-wrap")[0].addEventListener("click", function(){
-//   if(this.classList.contains("active")) {
-//     this.classList.remove("active");
-//   }
-//   else this.classList.add("active");
+  //like btn idea
+  // document.getElementsByClassName("cover-wrap")[0].addEventListener("click", function(){
+  //   if(this.classList.contains("active")) {
+  //     this.classList.remove("active");
+  //   }
+  //   else this.classList.add("active");
 // )}
+*/
