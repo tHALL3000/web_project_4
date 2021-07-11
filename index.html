@@ -25,7 +25,7 @@
                 </div>
                 <button class="photo-grid-add" id="addPhoto" type="button"></button>
             </section>
-            <section class="photo-grid"> //this is like ul
+            <section class="photo-grid">
                 <template class="card-template">
                     <article class="photo-grid__card"> 
                         <button class="photo-grid__delete" type="button"></button>
@@ -39,7 +39,7 @@
             </section>
         </main>
         <footer class="footer">
-            <p class="footer__text">&copy; 2021 Around Ver 5.9 by tHALL3000</p>
+            <p class="footer__text">&copy; 2021 Around Ver 5.10 by tHALL3000</p>
         </footer>
         <div class="overlay">
             <section class="modal modal__type_edit-profile">
@@ -56,18 +56,30 @@
                 </div>
             </section>
             </div>
-<div class="overlay overlay__type_add-card" id="photoModal">
+<div class="overlayPhoto" id="photoModal">
             <section class="modal">
                 <button class="modal__close-bar modal__close-bar_add-photo" id="closeBtn" type="button"></button>
                 <div class="modal__contents">
                     <h2 class="modal__text">new place</h2>
-                    <form class="form" name="profile">
-                <div class="modal__form-control">
-                            <input class="modal__form-control-input modal__form-control-input_image" id="nameOfPlace" type="text" name="nameOfPlace" placeholder="Title" />
-                            <input class="modal__form-control-input modal__form-control-input_url" id="link" type="url"  name="link OfPlace" placeholder="Image link"/>
+                    <!-- <form class="form form__type_add-picture" action:"#" name="newPicture"> -->
+                <form class="form" name="profile">
+                        <div class="modal__form-control">
+                            
+                            <input 
+                            class="modal__form-control-input modal__form-control-input_image" id="nameOfPlace" 
+                            type="text" 
+                            name="nameOfPlace" 
+                            placeholder="Title" />
+                            
+                            <input 
+                            class="modal__form-control-input modal__form-control-input_url" id="link" 
+                            type="url"  
+                            name="linkOfPlace" 
+                            placeholder="Image link"/>
+
                             <button id="saveBtn" class="button">Save</button>
-                        </div>
-                    </form>
+                </div>
+                </form>
                 </div>
             </section>
             </div>

@@ -14,6 +14,7 @@
 @import url(../blocks/button/button.css);
 @import url(../blocks/overlay/overlay.css);
 @import url(../blocks/overlay/_show/overlay_show.css);
+@import url(../blocks/photo-grid-add/photo-grid-add.css);
 @import url(../blocks/overlayPhoto/overlayPhoto.css);
 @import url(../blocks/overlayPhoto/_show/overlayPhoto_show.css);
 @import url(../blocks/modal/modal.css);
