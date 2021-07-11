@@ -117,7 +117,7 @@ const createCard = (card) => {
   const cardElement = cardTemplate.cloneNode(true);
 
   const cardLike = cardElement.querySelector(".photo-grid__heart");
-  const cardLikeActive = cardElement.querySelector(".photo-grid__heart_active");
+  
   const cardDelete = cardElement.querySelector(".photo-grid__delete");
   const image = cardElement.querySelector(".photo-grid__picture");
 
@@ -132,11 +132,13 @@ const createCard = (card) => {
 
   
   cardLike.addEventListener("click", () => {
-  cardElement.querySelector(".photo-grid__heart").classList.toggle(".photo-grid__heart_active")
+    cardLike.classList.add("photo-grid__heart_active");
   });
 
 
   cardDelete.addEventListener("click", () => {
+    cardElement.remove();
+
   });
 
 
