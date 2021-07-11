@@ -70,6 +70,9 @@ photoModalBtn.addEventListener("click", () => {
   toggleModalPhoto()
 });
 
+addPhotoClose.addEventListener("click", () => {
+  toggleModalPhoto()
+});
 
 //submit function for profile section
 const form = document.querySelector(".form"); 
@@ -171,11 +174,12 @@ addPictureform.addEventListener("submit", (e) => {
     link: pictureLinkInput.value,
   };
   createCard(userSubmitCard);
-  
-      // pictureName.data = pictureTitleInput.data;
+  toggleModal();
+});
+  // pictureName.data = pictureTitleInput.data;
       // pictureLink.data = pictureLinkInput.data;
-      toggleModal();
- });
+    
+
   
  
  /*
