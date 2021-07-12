@@ -2,7 +2,7 @@
 const editBtn = document.querySelector("#editBtn");
 const saveBtn = document.querySelector("#saveBtn");
 const photoModalBtn = document.querySelector("#addPhoto");
-const imageModal = document.querySelector(".modal__type_add-card");
+
 
 //profile section
 const modalProfile = document.querySelector(".modal__type_edit-profile");
@@ -10,18 +10,19 @@ const modalProfile = document.querySelector(".modal__type_edit-profile");
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__job");
 // Profile Inputs
-
 const nameInput = document.forms.profile.elements.name;
 const titleInput = document.forms.profile.elements.title;
+
 
 //add image section
 const pictureName = document.querySelector(".photo-grid__title");
 const pictureLink = document.querySelector(".photo-grid__picture");
 
+
 //overlays
 const overlay = document.querySelector(".overlay");
-const imgPreviewModal = document.querySelector(".overlay__type_preview");
 const addPhotoModal = document.querySelector(".overlayPhoto")
+
 
 //close button classes
 const profileClose = document.querySelector(".modal__close-bar");
@@ -30,6 +31,7 @@ const imgPreviewClose = document.querySelector(".modal__close-bar_image");
 
 
 //enlarge picture section
+const imageModal = document.querySelector(".overlay__type_preview");
 const modalPicture = document.querySelector(".modal__figure");
 const imageElement = document.querySelector(".modal__image");
 const imageCaption = document.querySelector(".modal__caption");
@@ -39,6 +41,10 @@ const imageCaption = document.querySelector(".modal__caption");
 
 const modal = document.querySelector(".modal");
 
+
+
+
+
 // general Modal Popup function
 let toggleModal = () => { 
     if (!overlay.classList.contains("overlay_show")) {  
@@ -47,6 +53,10 @@ let toggleModal = () => {
 } 
     document.querySelector(".overlay").classList.toggle("overlay_show"); 
 }; 
+
+
+
+
 
 
 //listeners
@@ -62,7 +72,20 @@ imgPreviewClose.addEventListener("click", () => {
   toggleModal(overlay)
 });
 
+//submit function for profile section
+const form = document.querySelector(".form"); 
+form.addEventListener("submit", (e) => {
+  e.preventDefault();
+  profileName.textContent = nameInput.value;
+  profileTitle.textContent = titleInput.value;
+  toggleModal();
+});
 
+
+
+
+
+//add photo modal
 let toggleModalPhoto = () => {
     document.querySelector(".overlayPhoto").classList.toggle("overlayPhoto_show");
 };
@@ -74,14 +97,33 @@ addPhotoClose.addEventListener("click", () => {
   toggleModalPhoto()
 });
 
-//submit function for profile section
-const form = document.querySelector(".form"); 
-form.addEventListener("submit", (e) => {
+
+
+
+
+
+// add image Inputs
+const addPictureform = document.querySelector(".form__type_add");
+const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
+const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
+
+///current state///
+addPictureform.addEventListener("submit", (e) => {
   e.preventDefault();
-  profileName.textContent = nameInput.value;
-  profileTitle.textContent = titleInput.value;
+  const userSubmitCard = {
+    name: pictureTitleInput.value,
+    link: pictureLinkInput.value,
+  };
+  createCard(userSubmitCard);
   toggleModal();
 });
+// pictureName.data = pictureTitleInput.data;
+// pictureLink.data = pictureLinkInput.data;
+  
+
+
+
+
 
 //Array for photo cards- in reverse order, which is why we need the prepend not append
 const initialCards = [
@@ -94,7 +136,7 @@ const initialCards = [
   link: "https://images.unsplash.com/photo-1622942817454-ed616e8d3a2d?ixid=MnwxMjA3fDB8MHx2aXN1YWwtc2VhcmNofDF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 },
 {
-  name: "Land of Fire and Ice",
+  name: "Land of Fire & Ice",
   link: "https://images.unsplash.com/photo-1620053553156-92e15d54f7ee?ixid=MnwxMjA3fDB8MHxzZWFyY2h8OXx8eWVsbG93JTIwZmxhbWUlMjBibHVlJTIwc21va2V8ZW58MHx8MHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60"
 },
 {
@@ -111,91 +153,97 @@ const initialCards = [
 }
 ];
 
+
+
 //new card stuffs
 const photoGrid = document.querySelector(".photo-grid")
 
-//submit function for profile section
-//const addPictureform = document.querySelector(".form__type_add-picture"); 
 
-// // addPictureform.addEventListener("submit", (e) => {
-  //  e.preventDefault();
-  //  pictureName.data = pictureTitleInput.value;
-  //  pictureLinkInput.data = pictureLinkInput.value;
-  // });
-  const createCard = (card) => {
-    const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
+
+
+////begin/////
+const createCard = (card) => {
+  const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
     
-    const cardElement = cardTemplate.cloneNode(true);
+  const cardElement = cardTemplate.cloneNode(true);
     
-    const cardLike = cardElement.querySelector(".photo-grid__heart");
+  const cardLike = cardElement.querySelector(".photo-grid__heart");
     
-    const cardDelete = cardElement.querySelector(".photo-grid__delete");
-    const image = cardElement.querySelector(".photo-grid__picture");
+  const cardDelete = cardElement.querySelector(".photo-grid__delete");
+  const cardImage = cardElement.querySelector(".photo-grid__picture");
     
 
+
+  //event listener for preview image --not done---////
+  //const previewImage = card.querySelector('.photo-grid__picture');
+  // previewImage.addEventListener('click', () => {
+  //  handlePreviewPicture(card);
+  ///////
     
-    cardLike.addEventListener("click", () => {
-      cardLike.classList.toggle("photo-grid__heart_active");
-    });
+  
+  cardLike.addEventListener("click", () => {
+    cardLike.classList.toggle("photo-grid__heart_active");
+  });
     
     
-    cardDelete.addEventListener("click", () => {
-      cardElement.remove();
+  cardDelete.addEventListener("click", () => {
+    cardElement.remove();
       
-    });
+  });
     
     
-    image.addEventListener("click", () => {
-      toggleModal(overlay__type_preview)
-    });
+  cardImage.addEventListener("click", () => {
+    imageElement.src = data.link;
+    imageElement.alt = "Image" + data.name + "";
+    imageCaption.textContent = data.name;
+    toggleModal()
+  });
     
-    cardElement.querySelector(".photo-grid__title").textContent = card.name;
-    cardElement.querySelector(".photo-grid__picture").src = card.link;
+  cardElement.querySelector(".photo-grid__title").textContent = card.name;
+  cardElement.querySelector(".photo-grid__picture").src = card.link;
     
-    return cardElement;
-  }
+  return cardElement;
+};
+  
+////end/////
 
 
 
-  initialCards.forEach(data => {
-    photoGrid.prepend(createCard(data))
+
+//bit that adds the card to the array///
+  initialCards.forEach(card => {
+    photoGrid.prepend(createCard(card))
   });
  
 
-// add image Inputs
-const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
-const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
 
 
-addPictureform.addEventListener("submit", (e) => {
-      e.preventDefault();
-  const userSubmitCard = {
-    name: pictureTitleInput.value,
-    link: pictureLinkInput.value,
-  };
-  createCard(userSubmitCard);
-  toggleModal();
-});
-  // pictureName.data = pictureTitleInput.data;
-      // pictureLink.data = pictureLinkInput.data;
-    
 
-  
- 
+////pop up for when the photo in a card is clicked/////
+  imageModal.addEventListener("click", () => {
+    imageElement.src = data.link;
+    imageElement.alt = "Image" + data.name + "";
+    imageCaption.textContent = data.name;
+    toggleModal(imgPreviewModal)
+  });
+
+
+
+
+ /////boneyard////
  /*
   
   // });
   
   
-  //cardDelete.addEventListener("click", () => { }
-  //);
-  // imageModal.addEventListener("click", () => {
-  //   imageElement.src = data.link;
-  //   imageElement.alt = "Image" + data.name + "";
-  //   imageCaption.textContent = data.name;
-  //   toggleModal(imgPreviewModal)
-  // }
-  // );
+ 
+  imageModal.addEventListener("click", () => {
+ imageElement.src = data.link;
+  imageElement.alt = "Image" + data.name + "";
+imageCaption.textContent = data.name;
+ toggleModal(imgPreviewModal)
+   }
+   );
 
   // photoGrid.prepend(cardElement);
 

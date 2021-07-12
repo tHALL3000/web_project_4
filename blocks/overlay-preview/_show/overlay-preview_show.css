@@ -1,0 +1,5 @@
+.overlay-preview_show {
+	background-color: rgba(0, 0, 0, 0.5);
+	visibility: visible;
+	opacity: 1;
+}
