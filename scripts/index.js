@@ -4,7 +4,7 @@ const saveBtn = document.querySelector("#saveBtn");
 const photoModalBtn = document.querySelector("#addPhoto");
 
 //profile section
-const modalProfile = document.querySelector(".modal__type-edit-profile");
+const modalProfile = document.querySelector(".modal-type-edit-profile");
 // Text in profile
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__job");
@@ -26,7 +26,7 @@ const addPhotoClose = document.querySelector(".modal__close-bar_add-photo");
 const imgPreviewClose = document.querySelector(".modal__close-bar_image");
 
 //enlarge picture section
-const imageModal = document.querySelector(".overlay__type-preview");
+const imageModal = document.querySelector(".overlay-type-preview");
 const modalPicture = document.querySelector(".modal__figure");
 const imageElement = document.querySelector(".modal__image");
 const imageCaption = document.querySelector(".modal__caption");
@@ -81,7 +81,7 @@ addPhotoClose.addEventListener("click", () => {
 });
 
 // add image Inputs
-const addPictureform = document.querySelector(".form__type-add");
+const addPictureform = document.querySelector(".form-type-add");
 const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
 const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
 
