@@ -54,7 +54,9 @@ let toggleModal = () => {
     document.querySelector(".overlay").classList.toggle("overlay_show"); 
 }; 
 
-
+let togglePreviewModal = () => {
+  imageModal.classList.toggle("overlay_show");
+}
 
 
 
@@ -69,7 +71,7 @@ profileClose.addEventListener("click", () => {
 });
 
 imgPreviewClose.addEventListener("click", () => {
-  toggleModal(overlay)
+  togglePreviewModal(overlay)
 });
 
 //submit function for profile section
@@ -107,22 +109,24 @@ const addPictureform = document.querySelector(".form__type_add");
 const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
 const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
 
-///current state///
+///submit button for user added picture///
 addPictureform.addEventListener("submit", (e) => {
   e.preventDefault();
   const userSubmitCard = {
     name: pictureTitleInput.value,
     link: pictureLinkInput.value,
   };
-  createCard(userSubmitCard);
-  toggleModal();
+  renderCard(createCard(userSubmitCard));
+  toggleModalPhoto();
 });
 // pictureName.data = pictureTitleInput.data;
 // pictureLink.data = pictureLinkInput.data;
   
 
 
-
+const renderCard = (card) => {
+  photoGrid.prepend(card);
+}
 
 
 //Array for photo cards- in reverse order, which is why we need the prepend not append
@@ -162,7 +166,7 @@ const photoGrid = document.querySelector(".photo-grid")
 
 
 ////begin/////
-const createCard = (card) => {
+const createCard = (cardData) => {
   const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
     
   const cardElement = cardTemplate.cloneNode(true);
@@ -190,17 +194,18 @@ const createCard = (card) => {
     cardElement.remove();
       
   });
-    
-    
+  
+  
+  ////pop up for when the photo in a card is clicked/////
   cardImage.addEventListener("click", () => {
-    imageElement.src = data.link;
-    imageElement.alt = "Image" + data.name + "";
-    imageCaption.textContent = data.name;
-    toggleModal()
+    imageElement.src = cardData.link;
+    imageElement.alt = "Image" + cardData.name + "";
+    imageCaption.textContent = cardData.name;
+    togglePreviewModal() 
   });
     
-  cardElement.querySelector(".photo-grid__title").textContent = card.name;
-  cardElement.querySelector(".photo-grid__picture").src = card.link;
+  cardElement.querySelector(".photo-grid__title").textContent = cardData.name;
+  cardElement.querySelector(".photo-grid__picture").src = cardData.link;
     
   return cardElement;
 };
@@ -212,20 +217,13 @@ const createCard = (card) => {
 
 //bit that adds the card to the array///
   initialCards.forEach(card => {
-    photoGrid.prepend(createCard(card))
+    renderCard(createCard(card));
   });
  
 
 
 
 
-////pop up for when the photo in a card is clicked/////
-  imageModal.addEventListener("click", () => {
-    imageElement.src = data.link;
-    imageElement.alt = "Image" + data.name + "";
-    imageCaption.textContent = data.name;
-    toggleModal(imgPreviewModal)
-  });
 
 
 
