@@ -7,7 +7,7 @@
 
 @media only screen and (max-width: 500px) {
 	.modal__form-control {
-		width: 238px;
+		max-width: 238px;
 		margin-top: 30px;
 	}
 }

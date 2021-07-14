@@ -10,23 +10,12 @@
         <title>Project 4: Around the US</title>
     </head>
     <body class="page">
-
-
-
         <header class="header">
-            <img 
-            class= "header-image" 
-            src="./images/around.svg" 
-            alt="Life around the US" 
-            />
+            <img class="header-image" src="./images/around.svg" alt="Life around the US" />
         </header>
         <main class="main-content">
             <section class="profile">
-                <img 
-                class="profile__picture-rounded" 
-                src="images/avatar.jpg" 
-                alt="Profile picture of J. Cousteau" 
-                />
+                <img class="profile__picture-rounded" src="images/avatar.jpg" alt="Profile picture of J. Cousteau" />
                 <div class="profile__info">
                     <div class="profile__inner">
                         <h1 class="profile__name">Jacques Cousteau</h1>
@@ -38,11 +27,11 @@
             </section>
             <section class="photo-grid">
                 <template class="card-template">
-                    <article class="photo-grid__card"> 
+                    <article class="photo-grid__card">
                         <button class="photo-grid__delete" type="button"></button>
-                        <img class="photo-grid__picture"  src=""/>
+                        <img class="photo-grid__picture" src="" />
                         <div class="photo-grid__text-block">
-                            <h2 class="photo-grid__title"> </h2>
+                            <h2 class="photo-grid__title"></h2>
                             <button class="photo-grid__heart" type="button"></button>
                         </div>
                     </article>
@@ -50,10 +39,8 @@
             </section>
         </main>
         <footer class="footer">
-            <p class="footer__text">&copy; 2021 Around Ver 5.11 by tHALL3000</p>
+            <p class="footer__text">&copy; 2021 Around Ver 5.12 by tHALL3000</p>
         </footer>
-
-
         <div class="overlay">
             <section class="modal modal__type_edit-profile">
                 <button class="modal__close-bar" id="closeBtn" type="button"></button>
@@ -62,56 +49,41 @@
                     <form class="form" name="profile">
                         <div class="modal__form-control">
                             <input class="modal__form-control-input" id="name" type="text" name="name" />
-                            <input class="modal__form-control-input" id="title" type="text"  name="title" />
+                            <input class="modal__form-control-input" id="title" type="text" name="title" />
+                            <button id="saveBtnProfile" class="button">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+        <div class="overlayPhoto" id="photoModal">
+            <section class="modal">
+                <button class="modal__close-bar modal__close-bar_add-photo" id="closeBtnPhoto" type="button"></button>
+                <div class="modal__contents">
+                    <h2 class="modal__text">New Place</h2>
+                    <form class="form form__type_add" id="newPicture">
+                        <div class="modal__form-control">
+                            <input class="modal__form-control-input modal__form-control-input_image" id="nameOfPlace" type="text" name="nameOfPlace" placeholder="Title" />
+
+                            <input class="modal__form-control-input modal__form-control-input_url" id="link" type="url" name="linkOfPlace" placeholder="Image link" />
+
                             <button id="saveBtn" class="button">Save</button>
                         </div>
                     </form>
                 </div>
             </section>
-            </div>
-
-
-<div class="overlayPhoto" id="photoModal">
-            <section class="modal">
-                <button class="modal__close-bar modal__close-bar_add-photo" id="closeBtn" type="button"></button>
-                <div class="modal__contents">
-                    <h2 class="modal__text">new place</h2>
-                     <form class="form form__type_add" id="newPicture"> 
-               
-                        <div class="modal__form-control">
-                            
-                            <input 
-                            class="modal__form-control-input modal__form-control-input_image" id="nameOfPlace" 
-                            type="text" 
-                            name="nameOfPlace" 
-                            placeholder="Title" />
-                            
-                            <input 
-                            class="modal__form-control-input modal__form-control-input_url" id="link" 
-                            type="url"  
-                            name="linkOfPlace" 
-                            placeholder="Image link"/>
-
-                            <button id="saveBtn" class="button">Save</button>
-                </div>
-                </form>
-                </div>
-            </section>
-            </div>
-
-        
+        </div>
         <div class="overlay overlay__type_preview">
             <section class="modal">
                 <button class="modal__close-bar modal__close-bar_image" id="closeBtn closeBtn__img-preview" type="button"></button>
                 <div class="modal__photo-container">
                     <figure class="modal__figure">
-                        <img class= "modal__image" src="" alt= "">
-                        <figcaption class= "modal__caption"></figcaption> 
+                        <img class="modal__image" src="" alt="" />
+                        <figcaption class="modal__caption"></figcaption>
                     </figure>
                 </div>
             </section>
-            </div>
-       
+        </div>
         <script src="./scripts/index.js"></script>
     </body>
 </html>
