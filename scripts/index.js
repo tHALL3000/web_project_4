@@ -60,7 +60,7 @@ formProfile.addEventListener("submit", (e) => {
     e.preventDefault();
     profileName.textContent = nameInput.value;
     profileTitle.textContent = titleInput.value;
-    toggleModal();
+    toggleModal(overlay);
 });
 
 photoModalBtn.addEventListener("click", () => {
