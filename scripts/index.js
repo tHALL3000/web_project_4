@@ -18,7 +18,7 @@ const pictureLink = document.querySelector(".photo-grid__picture");
 
 //overlays
 const overlay = document.querySelector(".overlay");
-const addPhotoModal = document.querySelector(".overlayPhoto");
+const addPhotoModal = document.querySelector(".overlay-photo");
 
 //close button classes
 const profileClose = document.querySelector(".modal__close-bar");
@@ -39,7 +39,7 @@ const toggleModal = () => {
         nameInput.value = profileName.textContent;
         titleInput.value = profileTitle.textContent;
     }
-    document.querySelector(".overlay").classList.toggle("overlay_show");
+    element.classList.toggle("overlay_show");
 };
 
 const togglePreviewModal = () => {
@@ -60,8 +60,8 @@ imgPreviewClose.addEventListener("click", () => {
 });
 
 //submit function for profile section
-const form = document.querySelector(".form");
-form.addEventListener("submit", (e) => {
+const formProfile = document.querySelector(".form");
+formProfile.addEventListener("submit", (e) => {
     e.preventDefault();
     profileName.textContent = nameInput.value;
     profileTitle.textContent = titleInput.value;
@@ -70,7 +70,7 @@ form.addEventListener("submit", (e) => {
 
 //add photo modal
 const toggleModalPhoto = () => {
-    document.querySelector(".overlayPhoto").classList.toggle("overlayPhoto_show");
+    document.querySelector(".overlay-photo").classList.toggle("overlay-photo_show");
 };
 photoModalBtn.addEventListener("click", () => {
     toggleModalPhoto();
@@ -160,6 +160,7 @@ const createCard = (cardData) => {
 
     cardElement.querySelector(".photo-grid__title").textContent = cardData.name;
     cardElement.querySelector(".photo-grid__picture").src = cardData.link;
+    cardElement.querySelector(".photo-grid__picture").alt = "Image" + cardData.name + "";
 
     return cardElement;
 };
