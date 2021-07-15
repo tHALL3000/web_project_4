@@ -1,4 +1,4 @@
-.photo-grid-add {
+.photo-add {
 	background: transparent;
 	padding-top: 10px;
 	margin-left: 165px;
@@ -13,18 +13,18 @@
 }
 
 @media only screen and (max-width: 1024px) {
-	.photo-grid-add {
+	.photo-add {
 		margin-left: 0;
 	}
 }
 @media only screen and (max-width: 700px) {
-	.photo-grid-add {
+	.photo-add {
 		height: auto;
 		width: 282px;
 		padding-top: 50px;
 		align-self: center;
 	}
 }
-.photo-grid-add:hover {
+.photo-add:hover {
 	opacity: 0.6;
 }
