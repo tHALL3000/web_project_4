@@ -1,6 +1,5 @@
 // Buttons
 const editBtn = document.querySelector("#editBtn");
-const saveBtn = document.querySelector("#saveBtn");
 const photoModalBtn = document.querySelector("#addPhoto");
 
 //profile section
@@ -34,16 +33,12 @@ const imageCaption = document.querySelector(".modal__caption");
 const modal = document.querySelector(".modal");
 
 // general Modal Popup function
-const toggleModal = () => {
+const toggleModal = (element) => {
     if (!overlay.classList.contains("overlay_show")) {
         nameInput.value = profileName.textContent;
         titleInput.value = profileTitle.textContent;
     }
     element.classList.toggle("overlay_show");
-};
-
-const togglePreviewModal = () => {
-    imageModal.classList.toggle("overlay_show");
 };
 
 //listeners
@@ -56,7 +51,7 @@ profileClose.addEventListener("click", () => {
 });
 
 imgPreviewClose.addEventListener("click", () => {
-    togglePreviewModal(overlay);
+    toggleModal(imageModal); //changed from toggleprieview
 });
 
 //submit function for profile section
@@ -68,16 +63,12 @@ formProfile.addEventListener("submit", (e) => {
     toggleModal();
 });
 
-//add photo modal
-const toggleModalPhoto = () => {
-    document.querySelector(".overlay-photo").classList.toggle("overlay-photo_show");
-};
 photoModalBtn.addEventListener("click", () => {
-    toggleModalPhoto();
+    toggleModal(addPhotoModal);
 });
 
 addPhotoClose.addEventListener("click", () => {
-    toggleModalPhoto();
+    toggleModal(addPhotoModal); 
 });
 
 // add image Inputs
@@ -93,7 +84,7 @@ addPictureform.addEventListener("submit", (e) => {
     link: pictureLinkInput.value,
   };
   renderCard(createCard(userSubmitCard));
-  toggleModalPhoto();
+  toggleModal(addPhotoModal);
 });
 
 const renderCard = (card) => {
@@ -155,7 +146,7 @@ const createCard = (cardData) => {
         imageElement.src = cardData.link;
         imageElement.alt = "Image" + cardData.name + "";
         imageCaption.textContent = cardData.name;
-        togglePreviewModal();
+        toggleModal(imageModal);
     });
 
     cardElement.querySelector(".photo-grid__title").textContent = cardData.name;
