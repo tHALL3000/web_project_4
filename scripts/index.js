@@ -33,10 +33,14 @@ const imageCaption = document.querySelector(".modal__caption");
 const modal = document.querySelector(".modal");
 
 // general Modal Popup function
-const toggleModal = (element) => {
-    if (!overlay.classList.contains("overlay_show")) {
+const formValues = () => {
         nameInput.value = profileName.textContent;
         titleInput.value = profileTitle.textContent;
+};
+
+const toggleModal = (element) => {
+    if (!overlay.classList.contains("overlay_show")) {
+    formValues()
     }
     element.classList.toggle("overlay_show");
 };
