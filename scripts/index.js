@@ -39,14 +39,14 @@ const formValues = () => {
 };
 
 const toggleModal = (element) => {
-    if (!overlay.classList.contains("overlay_show")) {
-    formValues()
-    }
     element.classList.toggle("overlay_show");
 };
 
 //listeners
 editBtn.addEventListener("click", () => {
+    if (!overlay.classList.contains("overlay_show")) {
+    formValues()
+    }
     toggleModal(overlay);
 });
 
