@@ -58,13 +58,26 @@ imgPreviewClose.addEventListener("click", () => {
     toggleModal(imageModal); //changed from toggleprieview
 });
 
+
+
+/////////esc to escape///////////
+
+document.addEventListener('keydown', (event) => {
+   // const allModals = document.querySelector("overlay_show");
+    if (event.key === 'Escape') {
+        (modal.classlist.toggle("overlay_show"));
+    }
+});
+
+
 //submit function for profile section
 const formProfile = document.querySelector(".form");
 formProfile.addEventListener("submit", (e) => {
+    validate_form(e);
     e.preventDefault();
     profileName.textContent = nameInput.value;
     profileTitle.textContent = titleInput.value;
-    toggleModal(overlay);
+    //toggleModal(overlay);
 });
 
 photoModalBtn.addEventListener("click", () => {
@@ -123,6 +136,8 @@ const initialCards = [
     },
 ];
 
+
+
 //new card
 const photoGrid = document.querySelector(".photo-grid");
 
@@ -165,3 +180,35 @@ const createCard = (cardData) => {
 initialCards.forEach((card) => {
     renderCard(createCard(card));
 });
+
+/*
+////////form validation//////
+ script.js 
+//const profileInput = document.classList(".modal__form-control-input");
+const input = document.querySelector("#input");
+const error = document.querySelector("#error"); // The error block is hidden by default
+
+
+//keyboard listener for form input wong lengths
+input.addEventListener("keyup", function (evt) {
+  // Check if a digit has been input
+    if (!(input.length <= 2 && input.length >= 60)) {
+    // If the user enters anything but a digit, the error block will be displayed
+    error.style.display = "block";
+    };
+});
+
+
+function validate_form() {
+    valid = true;
+    invalid = false;
+    if (document.modalProfile.profileName.value == "") {
+        alert("Please fill in the 'Your Name' box.");
+        evt.preventDefault;
+        return invalid;
+        
+    }
+    else { return valid };
+    
+}
+*/
