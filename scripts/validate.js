@@ -1,24 +1,31 @@
-const showErrorMessage = () => {
-    
-}
-
-const hideErrorMessage = (input, form, settings) => {
+const showErrorMessage = (input, { errorClass, inputErrorClass }) => {
     const error = document.querySelector(`#${input.id}-error`);
-    console.log(error)
+    error.textContent = input.validationMessage;
+
+    error.classList.add(errorClass);
+    input.classList.add(inputErrorClass);
 }
 
+const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
+    const error = document.querySelector(`#${input.id}-error`);
+    //console.log(error) //didnt log at 3119
+    error.textContent = " "; 
+    error.classList.remove(errorClass);
+    error.errorClass.remove(inputErrorClass);
 
-const checkInputValidity = (input, form, settings) => {
+}
+
+const checkInputValidity = (input, settings) => {
     if (input.validity.valid) {
-        hideErrorMessage(input, form, settings);
+        hideErrorMessage(input, settings);
     } else {
-        showErrorMessage();
+        showErrorMessage(input, settings);
     }
 }
 
-const enableValidation = ({formSelector, inputSelector, submitButtonSelector,...settings}) => {
+const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, ...settings }) => {
     const forms = [...document.querySelectorAll(formSelector)];
-
+    console.log(settings)
 
     forms.forEach(form => {
         form.addEventListener('submit', e => {
@@ -26,11 +33,11 @@ const enableValidation = ({formSelector, inputSelector, submitButtonSelector,...
         })
 
         const inputs = [...form.querySelectorAll(inputSelector)];
-        const button = form.querySelectorAll(submitButtonSelector);
+        const button = form.querySelector(submitButtonSelector);
 
         inputs.forEach(input => {
             input.addEventListener("input", () => {
-                checkInputValidity(input, form, settings);
+                checkInputValidity(input, settings);
                 //toggle button state
                 })
         })
