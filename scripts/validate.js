@@ -24,7 +24,7 @@ const checkInputValidity = (input, settings) => {
     }
 }
 
-const toggleButtonState = ({inactiveButtonClass...settings }) => {
+const toggleButtonState = ({inactiveButtonClass, ...settings }) => {
     const isValid = inputs.every(input => input.validity.valid);
 
     if (isValid) {

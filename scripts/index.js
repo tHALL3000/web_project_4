@@ -62,13 +62,19 @@ imgPreviewClose.addEventListener("click", () => {
 
 /////////esc to escape///////////
 
-document.addEventListener('keydown', (event) => {
-   // const allModals = document.querySelector("overlay_show");
-    if (event.key === 'Escape') {
-        (modal.classlist.toggle("overlay_show"));
-    }
-});
+    document.addEventListener('keydown', (event) => {
+        // const allModals = document.querySelector("overlay_show");
+        if (event.key === 'Escape') {
+            toggleModal(overlay);
+        }
+    });
 
+    document.addEventListener('keydown', (event) => {
+        // const allModals = document.querySelector("overlay_show");
+        if (event.key === 'Escape' && (document.getElementById.contains("#photoModal"))) {
+            toggleModal(addPhotoModal);
+        }
+    });
 
 //submit function for profile section
 const formProfile = document.querySelector(".form");
@@ -190,7 +196,7 @@ const error = document.querySelector("#error"); // The error block is hidden by 
 
 
 //keyboard listener for form input wong lengths
-input.addEventListener("keyup", function (evt) {
+input.addEventListener("keydown ", function (evt) {
   // Check if a digit has been input
     if (!(input.length <= 2 && input.length >= 60)) {
     // If the user enters anything but a digit, the error block will be displayed
