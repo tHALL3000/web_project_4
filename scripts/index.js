@@ -23,6 +23,7 @@ const addPhotoModal = document.querySelector(".overlay-photo");
 const profileClose = document.querySelector(".modal__close-bar");
 const addPhotoClose = document.querySelector(".modal__close-bar_add-photo");
 const imgPreviewClose = document.querySelector(".modal__close-bar_image");
+const overlayWindow = document.querySelector(".page");
 
 //enlarge picture section
 const imageModal = document.querySelector(".overlay-type-preview");
@@ -57,11 +58,17 @@ profileClose.addEventListener("click", () => {
 imgPreviewClose.addEventListener("click", () => {
     toggleModal(imageModal); //changed from toggleprieview
 });
+overlay.addEventListener("click", () => {
+    if (overlay.classList.contains("overlay_show")) {
+    toggleModal(overlay);
+    } 
+    
+});
 
 
 
 /////////esc to escape///////////
-
+//profile
     document.addEventListener('keydown', (event) => {
         // const allModals = document.querySelector("overlay_show");
         if (event.key === 'Escape') {
@@ -69,12 +76,15 @@ imgPreviewClose.addEventListener("click", () => {
         }
     });
 
+//add photo
     document.addEventListener('keydown', (event) => {
         // const allModals = document.querySelector("overlay_show");
-        if (event.key === 'Escape' && (document.getElementById.contains("#photoModal"))) {
+        if (event.key === 'Escape' && (document.classList.contains("overlay-photo"))) {
             toggleModal(addPhotoModal);
         }
     });
+
+/////////////////////////////////
 
 //submit function for profile section
 const formProfile = document.querySelector(".form");
@@ -91,8 +101,14 @@ photoModalBtn.addEventListener("click", () => {
 });
 
 addPhotoClose.addEventListener("click", () => {
-    toggleModal(addPhotoModal); 
+        toggleModal(addPhotoModal);
 });
+
+
+
+
+
+//////////////////
 
 // add image Inputs
 const addPictureform = document.querySelector(".form-type-add");
