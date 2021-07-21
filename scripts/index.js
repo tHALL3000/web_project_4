@@ -58,9 +58,18 @@ profileClose.addEventListener("click", () => {
 imgPreviewClose.addEventListener("click", () => {
     toggleModal(imageModal); //changed from toggleprieview
 });
+
 overlay.addEventListener("click", () => {
     if (overlay.classList.contains("overlay_show")) {
     toggleModal(overlay);
+    } 
+    
+});
+
+
+addPhotoModal.addEventListener("click", () => {
+    if (addPhotoModal.classList.contains("overlay_show")) {
+    toggleModal(addPhotoModal);
     } 
     
 });
