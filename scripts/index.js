@@ -43,7 +43,7 @@ const toggleModal = (element) => {
     element.classList.toggle("overlay_show");
 };
 
-//listeners
+//listeners/////////////
 editBtn.addEventListener("click", () => {
     if (!overlay.classList.contains("overlay_show")) {
     formValues()
@@ -75,6 +75,13 @@ addPhotoModal.addEventListener("click", () => {
 });
 
 
+imageModal.addEventListener("click", () => {
+    if (imageModal.classList.contains("overlay_show")) {
+    toggleModal(imageModal);
+    } 
+    
+});
+///////////////////
 
 /////////esc to escape///////////
 //profile
@@ -86,10 +93,10 @@ addPhotoModal.addEventListener("click", () => {
     });
 
 //add photo
-    document.addEventListener('keydown', (event) => {
+    addPhotoModal.addEventListener('keydown', (event) => {
         // const allModals = document.querySelector("overlay_show");
-        if (event.key === 'Escape' && (document.classList.contains("overlay-photo"))) {
-            toggleModal(addPhotoModal);
+        if (event.key === 'Escape' && (addPhotoModal.classList.contains("overlay_show"))) {
+        addPhotoModal.classList.remove("overlay_show");
         }
     });
 
