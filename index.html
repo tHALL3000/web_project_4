@@ -41,7 +41,7 @@
         <footer class="footer">
             <p class="footer__text">&copy; 2021 Around The U.S. by tHALL3000</p>
         </footer>
-        <div class="overlay">
+        <div class="overlay overlay_type_edit">
             <section class="modal modal-type-edit-profile">
                 <button class="modal__close-bar" id="closeBtn" type="button"></button>
                 <div class="modal__contents">
@@ -77,9 +77,13 @@
                 </div>
             </section>
         </div>
-        <div class="overlay overlay-photo" id="photoModal">
+        <div class="overlay overlay_type_add" id="photoModal">
             <section class="modal">
-                <button class="modal__close-bar modal__close-bar_add-photo" id="closeBtnPhoto" type="button"></button>
+                <button 
+                class="modal__close-bar modal__close-bar_add-photo"
+                id="closeBtnPhoto"
+                type="button"
+                ></button>
                 <div class="modal__contents">
                     <h2 class="modal__text">New Place</h2>
                     <form class="form form-type-add" id="newPicture">
@@ -110,9 +114,13 @@
                 </div>
             </section>
         </div>
-        <div class="overlay overlay-type-preview">
+        <div class="overlay overlay_type_preview">
             <section class="modal">
-                <button class="modal__close-bar modal__close-bar_image" id="closeBtn closeBtn__img-preview" type="button"></button>
+                <button 
+                class="modal__close-bar modal__close-bar_image"
+                id="closeBtn closeBtn__img-preview"
+                type="button"
+                ></button>
                 <div class="modal__photo-container">
                     <figure class="modal__figure">
                         <img class="modal__image" src=" " alt=" " />

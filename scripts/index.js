@@ -16,8 +16,8 @@ const pictureName = document.querySelector(".photo-grid__title");
 const pictureLink = document.querySelector(".photo-grid__picture");
 
 //overlays
-const overlay = document.querySelector(".overlay");
-const addPhotoModal = document.querySelector(".overlay-photo");
+const overlay = document.querySelector(".overlay_type_edit");
+const addPhotoModal = document.querySelector(".overlay_type_add");
 
 //close button classes
 const profileClose = document.querySelector(".modal__close-bar");
@@ -26,7 +26,7 @@ const imgPreviewClose = document.querySelector(".modal__close-bar_image");
 const overlayWindow = document.querySelector(".page");
 
 //enlarge picture section
-const imageModal = document.querySelector(".overlay-type-preview");
+const imageModal = document.querySelector(".overlay_type_preview");
 const modalPicture = document.querySelector(".modal__figure");
 const imageElement = document.querySelector(".modal__image");
 const imageCaption = document.querySelector(".modal__caption");
@@ -35,70 +35,97 @@ const modal = document.querySelector(".modal");
 
 // general Modal Popup function
 const formValues = () => {
-        nameInput.value = profileName.textContent;
-        titleInput.value = profileTitle.textContent;
+    nameInput.value = profileName.textContent;
+    titleInput.value = profileTitle.textContent;
 };
 
-const toggleModal = (element) => {
-    element.classList.toggle("overlay_show");
+const toggleModal = (modal) => {
+    modal.classList.toggle("overlay_show");
+    if (modal.classList.contains("overlay_show")) {
+        //handleEscKey
+        modal.addEventListener("click", handleOutsideClick)
+    } else {
+        //removeEscListeners
+        modal.removeEventListener("click", handleOutsideClick)
+    }
 };
+
+const handleOutsideClick = (e) => {
+    const activeModal = document.querySelector(".overlay_show");
+    if (e.target.classList.contains("overlay")) {
+        toggleModal(activeModal);
+    }
+}
+
 
 //listeners/////////////
+const modalEditWindow = document.querySelector(".overlay_type_edit");
+const modalAddWindow = document.querySelector(".overlay_type_add");
+const modalPreviewWindow = document.querySelector(".overlay_type_preview");
+
 editBtn.addEventListener("click", () => {
-    if (!overlay.classList.contains("overlay_show")) {
-    formValues()
-    }
-    toggleModal(overlay);
+    nameInput.value = profileName.textContent;
+    titleInput.value = profileTitle.textContent;
+    toggleModal(modalEditWindow);
 });
 
+photoModalBtn.addEventListener("click", () => {
+    toggleModal(modalAddWindow);
+});
+
+imageModal.addEventListener("click", () => {
+    toggleModal(modalPreviewWindow);
+});
+
+
 profileClose.addEventListener("click", () => {
-    toggleModal(overlay);
+    toggleModal(modalEditWindow);
 });
 
 imgPreviewClose.addEventListener("click", () => {
-    toggleModal(imageModal); //changed from toggleprieview
+    toggleModal(modalPreviewWindow);
 });
 
-overlay.addEventListener("click", () => {
-    if (overlay.classList.contains("overlay_show")) {
-    toggleModal(overlay);
-    } 
+// overlay.addEventListener("click", () => {
+//     if (overlay.classList.contains("overlay_show")) {
+//     toggleModal(overlay);
+//     } 
     
-});
+// });
 
 
-addPhotoModal.addEventListener("click", () => {
-    if (addPhotoModal.classList.contains("overlay_show")) {
-    toggleModal(addPhotoModal);
-    } 
+// addPhotoModal.addEventListener("click", () => {
+//     if (addPhotoModal.classList.contains("overlay_show")) {
+//     toggleModal(addPhotoModal);
+//     } 
     
-});
+// });
 
 
-imageModal.addEventListener("click", () => {
-    if (imageModal.classList.contains("overlay_show")) {
-    toggleModal(imageModal);
-    } 
+// imageModal.addEventListener("click", () => {
+//     if (imageModal.classList.contains("overlay_show")) {
+//     toggleModal(imageModal);
+//     } 
     
-});
+// });
 ///////////////////
 
 /////////esc to escape///////////
 //profile
-    document.addEventListener('keydown', (event) => {
-        // const allModals = document.querySelector("overlay_show");
-        if (event.key === 'Escape') {
-            toggleModal(overlay);
-        }
-    });
+document.addEventListener('keydown', (event) => {
+    const activeModal = document.querySelector("overlay_show");
+    if (event.key === 'Escape' && activeModal) {
+    toggleModal(activeModal);
+    }
+});
 
-//add photo
-    addPhotoModal.addEventListener('keydown', (event) => {
-        // const allModals = document.querySelector("overlay_show");
-        if (event.key === 'Escape' && (addPhotoModal.classList.contains("overlay_show"))) {
-        addPhotoModal.classList.remove("overlay_show");
-        }
-    });
+// //add photo
+// addPhotoModal.addEventListener('keydown', (event) => {
+//     // const allModals = document.querySelector("overlay_show");
+//     if (event.key === 'Escape' && (addPhotoModal.classList.contains("overlay_show"))) {
+//     addPhotoModal.classList.remove("overlay_show");
+//     }
+// });
 
 /////////////////////////////////
 
@@ -112,12 +139,12 @@ formProfile.addEventListener("submit", (e) => {
     //toggleModal(overlay);
 });
 
-photoModalBtn.addEventListener("click", () => {
-    toggleModal(addPhotoModal);
-});
+// photoModalBtn.addEventListener("click", () => {
+//     toggleModal(addPhotoModal);
+// });
 
 addPhotoClose.addEventListener("click", () => {
-        toggleModal(addPhotoModal);
+    toggleModal(modalAddWindow);
 });
 
 
@@ -133,13 +160,13 @@ const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
 
 ///submit button for user added picture///
 addPictureform.addEventListener("submit", (e) => {
-  e.preventDefault();
-  const userSubmitCard = {
-    name: pictureTitleInput.value,
-    link: pictureLinkInput.value,
-  };
-  renderCard(createCard(userSubmitCard));
-  toggleModal(addPhotoModal);
+    e.preventDefault();
+    const userSubmitCard = {
+        name: pictureTitleInput.value,
+        link: pictureLinkInput.value,
+    };
+    renderCard(createCard(userSubmitCard));
+    toggleModal(modalAddWindow);
 });
 
 const renderCard = (card) => {
@@ -181,36 +208,36 @@ const photoGrid = document.querySelector(".photo-grid");
 
 ////begin/////
 const createCard = (cardData) => {
-    const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
+const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
 
-    const cardElement = cardTemplate.cloneNode(true);
+const cardElement = cardTemplate.cloneNode(true);
 
-    const cardLike = cardElement.querySelector(".photo-grid__heart");
+const cardLike = cardElement.querySelector(".photo-grid__heart");
 
-    const cardDelete = cardElement.querySelector(".photo-grid__delete");
-    const cardImage = cardElement.querySelector(".photo-grid__picture");
+const cardDelete = cardElement.querySelector(".photo-grid__delete");
+const cardImage = cardElement.querySelector(".photo-grid__picture");
 
-    cardLike.addEventListener("click", () => {
-        cardLike.classList.toggle("photo-grid__heart_active");
-    });
+cardLike.addEventListener("click", () => {
+    cardLike.classList.toggle("photo-grid__heart_active");
+});
 
-    cardDelete.addEventListener("click", () => {
-        cardElement.remove();
-    });
+cardDelete.addEventListener("click", () => {
+    cardElement.remove();
+});
 
-    ////pop up for when the photo in a card is clicked/////
-    cardImage.addEventListener("click", () => {
-        imageElement.src = cardData.link;
-        imageElement.alt = "Image" + cardData.name + "";
-        imageCaption.textContent = cardData.name;
-        toggleModal(imageModal);
-    });
+////pop up for when the photo in a card is clicked/////
+cardImage.addEventListener("click", () => {
+    imageElement.src = cardData.link;
+    imageElement.alt = "Image" + cardData.name + "";
+    imageCaption.textContent = cardData.name;
+    toggleModal(modalPreviewWindow);
+});
 
-    cardElement.querySelector(".photo-grid__title").textContent = cardData.name;
-    cardElement.querySelector(".photo-grid__picture").src = cardData.link;
-    cardElement.querySelector(".photo-grid__picture").alt = "Image" + cardData.name + "";
+cardElement.querySelector(".photo-grid__title").textContent = cardData.name;
+cardElement.querySelector(".photo-grid__picture").src = cardData.link;
+cardElement.querySelector(".photo-grid__picture").alt = "Image" + cardData.name + "";
 
-    return cardElement;
+return cardElement;
 };
 
 ////end/////
@@ -220,7 +247,7 @@ initialCards.forEach((card) => {
 });
 
 /*
-////////form validation//////
+////////boneyard//////
  script.js 
 //const profileInput = document.classList(".modal__form-control-input");
 const input = document.querySelector("#input");
