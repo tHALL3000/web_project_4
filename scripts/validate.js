@@ -57,5 +57,5 @@ enableValidation({
     submitButtonSelector: ".button",
     inactiveButtonClass: "button-disabled",
     inputErrorClass: "modal__form-control-input-error",
-    errorClass: "popup__error_visible",
+    errorClass: "popup-error_visible",
 });
