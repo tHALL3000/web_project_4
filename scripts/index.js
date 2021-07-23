@@ -83,7 +83,7 @@ profileClose.addEventListener("click", () => {
 });
 
 imgPreviewClose.addEventListener("click", () => {
-    toggleModal(modalPreviewWindow);
+    toggleModal(activeModal);
 });
 
 // overlay.addEventListener("click", () => {
@@ -113,11 +113,13 @@ imgPreviewClose.addEventListener("click", () => {
 /////////esc to escape///////////
 //profile
 document.addEventListener('keydown', (event) => {
-    const activeModal = document.querySelector("overlay_show");
+    const activeModal = document.querySelector(".overlay_show");
     if (event.key === 'Escape' && activeModal) {
+       
     toggleModal(activeModal);
     }
 });
+
 
 // //add photo
 // addPhotoModal.addEventListener('keydown', (event) => {
