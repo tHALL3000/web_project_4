@@ -57,6 +57,12 @@ const handleOutsideClick = (e) => {
     }
 }
 
+document.addEventListener('keydown', (event) => {
+        const activeModal = document.querySelector(".overlay_show");
+        if (event.key === 'Escape' && activeModal) {
+            toggleModal(activeModal);
+        }
+});
 
 //listeners/////////////
 const modalEditWindow = document.querySelector(".overlay_type_edit");
@@ -86,50 +92,11 @@ imgPreviewClose.addEventListener("click", () => {
     toggleModal(activeModal);
 });
 
-// overlay.addEventListener("click", () => {
-//     if (overlay.classList.contains("overlay_show")) {
-//     toggleModal(overlay);
-//     } 
-    
-// });
 
 
-// addPhotoModal.addEventListener("click", () => {
-//     if (addPhotoModal.classList.contains("overlay_show")) {
-//     toggleModal(addPhotoModal);
-//     } 
-    
-// });
 
-
-// imageModal.addEventListener("click", () => {
-//     if (imageModal.classList.contains("overlay_show")) {
-//     toggleModal(imageModal);
-//     } 
-    
-// });
 ///////////////////
 
-/////////esc to escape///////////
-//profile
-document.addEventListener('keydown', (event) => {
-    const activeModal = document.querySelector(".overlay_show");
-    if (event.key === 'Escape' && activeModal) {
-       
-    toggleModal(activeModal);
-    }
-});
-
-
-// //add photo
-// addPhotoModal.addEventListener('keydown', (event) => {
-//     // const allModals = document.querySelector("overlay_show");
-//     if (event.key === 'Escape' && (addPhotoModal.classList.contains("overlay_show"))) {
-//     addPhotoModal.classList.remove("overlay_show");
-//     }
-// });
-
-/////////////////////////////////
 
 //submit function for profile section
 const formProfile = document.querySelector(".form");
@@ -150,10 +117,6 @@ addPhotoClose.addEventListener("click", () => {
 });
 
 
-
-
-
-//////////////////
 
 // add image Inputs
 const addPictureform = document.querySelector(".form-type-add");

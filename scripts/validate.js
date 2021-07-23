@@ -3,6 +3,7 @@ const showErrorMessage = (input, { errorClass, inputErrorClass }) => {
     error.textContent = input.validationMessage;
     error.classList.add(errorClass);
     input.classList.add(inputErrorClass);
+    button.classList.add(inactiveButtonClass);
 }
 
 
@@ -11,6 +12,7 @@ const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
     error.textContent = ""; 
     error.classList.remove(errorClass);
     error.classList.remove(inputErrorClass);
+    button.classList.remove(inactiveButtonClass);
 }
 
 
