@@ -3,7 +3,6 @@ const showErrorMessage = (input, { errorClass, inputErrorClass }) => {
     error.textContent = input.validationMessage;
     error.classList.add(errorClass);
     input.classList.add(inputErrorClass);
-    button.classList.add(inactiveButtonClass);
 }
 
 
@@ -25,15 +24,14 @@ const checkInputValidity = (input, settings) => {
     }
 }
 
-const toggleButtonState = (input, button, {inactiveButtonClass, ...settings }) => {
+const toggleButtonState = ( button, {inactiveButtonClass, ...settings }) => {
     const isValid = inputs.every(input => input.validity.valid);
-
+    
     if (isValid) {
         button.classList.remove(inactiveButtonClass);//remove class
     } else {
-        button.classList.add(inactiveButtonClass); //remove class
+        button.classList.add(inactiveButtonClass); 
         button.disabled = true;
-        //addclass
     }
 }
 
@@ -50,17 +48,17 @@ const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, .
             input.addEventListener("input", () => {
                 checkInputValidity(input, settings);
                 toggleButtonState(inputs, button, settings);
-                })
+            })
         })
     })
 }
 
 
 enableValidation({
-  formSelector: ".form",
+    formSelector: ".form",
   inputSelector: ".modal__form-control-input",
   submitButtonSelector: ".button",
-  inactiveButtonClass: ".button-disabled",
+  inactiveButtonClass: "button-disabled",
   inputErrorClass: "modal__form-control-input-error",
   errorClass: "popup__error_visible",
 });

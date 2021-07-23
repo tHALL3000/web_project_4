@@ -79,9 +79,9 @@ photoModalBtn.addEventListener("click", () => {
     toggleModal(modalAddWindow);
 });
 
-imageModal.addEventListener("click", () => {
-    toggleModal(modalPreviewWindow);
-});
+// imageModal.addEventListener("click", () => {
+//     toggleModal(modalPreviewWindow);
+// });
 
 
 profileClose.addEventListener("click", () => {
@@ -89,7 +89,7 @@ profileClose.addEventListener("click", () => {
 });
 
 imgPreviewClose.addEventListener("click", () => {
-    toggleModal(activeModal);
+    toggleModal(modalPreviewWindow);
 });
 
 

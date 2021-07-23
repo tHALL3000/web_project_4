@@ -1,6 +1,6 @@
-.popup__save-btn_disabled {
+.button-disabled {
 	background-color: #e5e5e5;
-	border: 1px solid rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(150, 150, 150, 0.2);
 	box-sizing: border-box;
 	border-radius: 2px;
 	cursor: not-allowed;
