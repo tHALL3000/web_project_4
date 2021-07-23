@@ -96,16 +96,30 @@ imgPreviewClose.addEventListener("click", () => {
 
 
 ///////////////////
-
+function validate_form() {
+    valid = true;
+    invalid = false;
+    if (formValues == "") {
+        alert("Please fill in the 'Your Name' box.");
+        evt.preventDefault;
+        return invalid;
+        
+    }
+    else { return valid };
+    
+}
 
 //submit function for profile section
+
+
+
 const formProfile = document.querySelector(".form");
 formProfile.addEventListener("submit", (e) => {
     validate_form(e);
     e.preventDefault();
     profileName.textContent = nameInput.value;
     profileTitle.textContent = titleInput.value;
-    //toggleModal(overlay);
+    toggleModal(overlay);
 });
 
 // photoModalBtn.addEventListener("click", () => {
@@ -229,16 +243,5 @@ input.addEventListener("keydown ", function (evt) {
 });
 
 
-function validate_form() {
-    valid = true;
-    invalid = false;
-    if (document.modalProfile.profileName.value == "") {
-        alert("Please fill in the 'Your Name' box.");
-        evt.preventDefault;
-        return invalid;
-        
-    }
-    else { return valid };
-    
-}
+
 */

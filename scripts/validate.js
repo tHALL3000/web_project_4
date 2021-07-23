@@ -11,7 +11,6 @@ const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
     error.textContent = ""; 
     error.classList.remove(errorClass);
     error.classList.remove(inputErrorClass);
-    button.classList.remove(inactiveButtonClass);
 }
 
 
@@ -24,14 +23,16 @@ const checkInputValidity = (input, settings) => {
     }
 }
 
-const toggleButtonState = ( button, {inactiveButtonClass, ...settings }) => {
+const toggleButtonState = (inputs, button, {inactiveButtonClass, ...settings }) => {
     const isValid = inputs.every(input => input.validity.valid);
     
     if (isValid) {
-        button.classList.remove(inactiveButtonClass);//remove class
+        button.classList.remove(inactiveButtonClass);
+        button.disabled = false;//remove class
     } else {
         button.classList.add(inactiveButtonClass); 
         button.disabled = true;
+        //addclass
     }
 }
 
