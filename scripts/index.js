@@ -43,10 +43,10 @@ const toggleModal = (modal) => {
     modal.classList.toggle("overlay_show");
     if (modal.classList.contains("overlay_show")) {
         //handleEscKey
-        modal.addEventListener("click", handleOutsideClick)
+        modal.addEventListener("click", handleOutsideClick);
     } else {
         //removeEscListeners
-        modal.removeEventListener("click", handleOutsideClick)
+        modal.removeEventListener("click", handleOutsideClick);
     }
 };
 
@@ -55,13 +55,13 @@ const handleOutsideClick = (e) => {
     if (e.target.classList.contains("overlay")) {
         toggleModal(activeModal);
     }
-}
+};
 
-document.addEventListener('keydown', (event) => {
-        const activeModal = document.querySelector(".overlay_show");
-        if (event.key === 'Escape' && activeModal) {
-            toggleModal(activeModal);
-        }
+document.addEventListener("keydown", (event) => {
+    const activeModal = document.querySelector(".overlay_show");
+    if (event.key === "Escape" && activeModal) {
+        toggleModal(activeModal);
+    }
 });
 
 //listeners/////////////
@@ -83,7 +83,6 @@ photoModalBtn.addEventListener("click", () => {
 //     toggleModal(modalPreviewWindow);
 // });
 
-
 profileClose.addEventListener("click", () => {
     toggleModal(modalEditWindow);
 });
@@ -91,9 +90,6 @@ profileClose.addEventListener("click", () => {
 imgPreviewClose.addEventListener("click", () => {
     toggleModal(modalPreviewWindow);
 });
-
-
-
 
 ///////////////////
 function validate_form() {
@@ -103,15 +99,12 @@ function validate_form() {
         alert("Please fill in the 'Your Name' box.");
         evt.preventDefault;
         return invalid;
-        
+    } else {
+        return valid;
     }
-    else { return valid };
-    
 }
 
 //submit function for profile section
-
-
 
 const formProfile = document.querySelector(".form");
 formProfile.addEventListener("submit", (e) => {
@@ -129,8 +122,6 @@ formProfile.addEventListener("submit", (e) => {
 addPhotoClose.addEventListener("click", () => {
     toggleModal(modalAddWindow);
 });
-
-
 
 // add image Inputs
 const addPictureform = document.querySelector(".form-type-add");
@@ -180,43 +171,40 @@ const initialCards = [
     },
 ];
 
-
-
 //new card
 const photoGrid = document.querySelector(".photo-grid");
 
 ////begin/////
 const createCard = (cardData) => {
-const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
+    const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
 
-const cardElement = cardTemplate.cloneNode(true);
+    const cardElement = cardTemplate.cloneNode(true);
 
-const cardLike = cardElement.querySelector(".photo-grid__heart");
+    const cardLike = cardElement.querySelector(".photo-grid__heart");
 
-const cardDelete = cardElement.querySelector(".photo-grid__delete");
-const cardImage = cardElement.querySelector(".photo-grid__picture");
+    const cardDelete = cardElement.querySelector(".photo-grid__delete");
+    const cardImage = cardElement.querySelector(".photo-grid__picture");
 
-cardLike.addEventListener("click", () => {
-    cardLike.classList.toggle("photo-grid__heart_active");
-});
+    cardLike.addEventListener("click", () => {
+        cardLike.classList.toggle("photo-grid__heart_active");
+    });
 
-cardDelete.addEventListener("click", () => {
-    cardElement.remove();
-});
+    cardDelete.addEventListener("click", () => {
+        cardElement.remove();
+    });
 
-////pop up for when the photo in a card is clicked/////
-cardImage.addEventListener("click", () => {
-    imageElement.src = cardData.link;
-    imageElement.alt = "Image" + cardData.name + "";
-    imageCaption.textContent = cardData.name;
-    toggleModal(modalPreviewWindow);
-});
+    ////pop up for when the photo in a card is clicked/////
+    cardImage.addEventListener("click", () => {
+        imageElement.src = cardData.link;
+        imageElement.alt = "Image" + cardData.name + "";
+        imageCaption.textContent = cardData.name;
+        toggleModal(modalPreviewWindow);
+    });
 
-cardElement.querySelector(".photo-grid__title").textContent = cardData.name;
-cardElement.querySelector(".photo-grid__picture").src = cardData.link;
-cardElement.querySelector(".photo-grid__picture").alt = "Image" + cardData.name + "";
-
-return cardElement;
+    cardElement.querySelector(".photo-grid__title").textContent = cardData.name;
+    cardElement.querySelector(".photo-grid__picture").src = cardData.link;
+    cardElement.querySelector(".photo-grid__picture").alt = "Image" + cardData.name + "";
+    return cardElement;
 };
 
 ////end/////
@@ -224,24 +212,3 @@ return cardElement;
 initialCards.forEach((card) => {
     renderCard(createCard(card));
 });
-
-/*
-////////boneyard//////
- script.js 
-//const profileInput = document.classList(".modal__form-control-input");
-const input = document.querySelector("#input");
-const error = document.querySelector("#error"); // The error block is hidden by default
-
-
-//keyboard listener for form input wong lengths
-input.addEventListener("keydown ", function (evt) {
-  // Check if a digit has been input
-    if (!(input.length <= 2 && input.length >= 60)) {
-    // If the user enters anything but a digit, the error block will be displayed
-    error.style.display = "block";
-    };
-});
-
-
-
-*/

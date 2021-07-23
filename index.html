@@ -29,7 +29,7 @@
                 <template class="card-template">
                     <article class="photo-grid__card">
                         <button class="photo-grid__delete" type="button"></button>
-                        <img class="photo-grid__picture" src=" " alt=" "/>
+                        <img class="photo-grid__picture" src=" " alt=" " />
                         <div class="photo-grid__text-block">
                             <h2 class="photo-grid__title"></h2>
                             <button class="photo-grid__heart" type="button"></button>
@@ -48,30 +48,13 @@
                     <h2 class="modal__text">Edit Profile</h2>
                     <form class="form" name="profile">
                         <div class="modal__form-control" id="input">
-                            <input 
-                                class="modal__form-control-input"
-                                id="name"
-                                type="text"
-                                name="name"
-                                required
-                                minlength="2"
-                                maxlength="40"
-                            />
+                            <input class="modal__form-control-input" id="name" type="text" name="name" required minlength="2" maxlength="40" />
                             <span id="name-error" class="popup__error"></span>
-                            
-                            
-                            <input 
-                                class="modal__form-control-input"
-                                id="title"
-                                type="text"
-                                name="title"
-                                required
-                                minlength="2"
-                                maxlength="200"
-                            />
+
+                            <input class="modal__form-control-input" id="title" type="text" name="title" required minlength="2" maxlength="200" />
                             <span id="title-error" class="popup__error"></span>
-                            
-                            <button id="saveBtnProfile" class="button" >Save</button>
+
+                            <button id="saveBtnProfile" class="button">Save</button>
                         </div>
                     </form>
                 </div>
@@ -79,34 +62,14 @@
         </div>
         <div class="overlay overlay_type_add" id="photoModal">
             <section class="modal">
-                <button 
-                class="modal__close-bar modal__close-bar_add-photo"
-                id="closeBtnPhoto"
-                type="button"
-                ></button>
+                <button class="modal__close-bar modal__close-bar_add-photo" id="closeBtnPhoto" type="button"></button>
                 <div class="modal__contents">
                     <h2 class="modal__text">New Place</h2>
                     <form class="form form-type-add" id="newPicture">
                         <div class="modal__form-control">
-                            <input 
-                                class="modal__form-control-input modal__form-control-input_image" 
-                                id="nameOfPlace"
-                                type="text"
-                                name="nameOfPlace"
-                                placeholder="Title"
-                                required
-                                minlength="1"
-                                maxlength="30"
-                            />
+                            <input class="modal__form-control-input modal__form-control-input_image" id="nameOfPlace" type="text" name="nameOfPlace" placeholder="Title" required minlength="1" maxlength="30" />
                             <span id="nameOfPlace-error" class="popup__error"></span>
-                            <input 
-                                class="modal__form-control-input modal__form-control-input_url" 
-                                id="link"
-                                type="url"
-                                name="linkOfPlace"
-                                placeholder="Image link"
-                                required
-                            />
+                            <input class="modal__form-control-input modal__form-control-input_url" id="link" type="url" name="linkOfPlace" placeholder="Image link" required />
                             <span id="link-error" class="popup__error"></span>
                             <button id="saveBtn" class="button">Save</button>
                         </div>
@@ -116,14 +79,10 @@
         </div>
         <div class="overlay overlay_type_preview">
             <section class="modal">
-                <button 
-                class="modal__close-bar modal__close-bar_image"
-                id="closeBtn closeBtn__img-preview"
-                type="button"
-                ></button>
+                <button class="modal__close-bar modal__close-bar_image" id="closeBtn__img-preview" type="button"></button>
                 <div class="modal__photo-container">
                     <figure class="modal__figure">
-                        <img class="modal__image" src=" " alt=" " />
+                        <img class="modal__image" alt=" " />
                         <figcaption class="modal__caption"></figcaption>
                     </figure>
                 </div>
