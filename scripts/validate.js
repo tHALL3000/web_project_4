@@ -1,4 +1,4 @@
-const showErrorMessage = (input, { errorClass, inputErrorClass, errorLine }) => {
+const showErrorMessage = (input, { errorClass, inputErrorClass }) => {
     const error = document.querySelector(`#${input.id}-error`);
     error.textContent = input.validationMessage;
     error.classList.add(errorClass);
@@ -6,9 +6,8 @@ const showErrorMessage = (input, { errorClass, inputErrorClass, errorLine }) => 
 }
 
 
-const hideErrorMessage = (input, { errorClass, inputErrorClass, errorLine }) => {
+const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
     const error = document.querySelector(`#${input.id}-error`);
-    console.log(error) //didnt log at 3119
     error.textContent = ""; 
     error.classList.remove(errorClass);
     error.classList.remove(inputErrorClass);
@@ -31,6 +30,7 @@ const toggleButtonState = (input, button, {inactiveButtonClass, ...settings }) =
         button.classList.remove(inactiveButtonClass);//remove class
     } else {
         button.classList.add(inactiveButtonClass); //remove class
+        button.disabled = true;
         //addclass
     }
 }
@@ -58,7 +58,8 @@ enableValidation({
   formSelector: ".form",
   inputSelector: ".modal__form-control-input",
   submitButtonSelector: ".button",
-  inactiveButtonClass: "popup__button_disabled",
-  inputErrorClass: "popup__input_type_error",
+  inactiveButtonClass: ".button-disabled",
+  inputErrorClass: "modal__form-control-input-error",
   errorClass: "popup__error_visible",
 });
+

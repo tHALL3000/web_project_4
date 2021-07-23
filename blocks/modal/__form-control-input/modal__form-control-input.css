@@ -8,7 +8,3 @@
 	padding-bottom: 13px;
 	padding-top: 30px;
 }
-
-input:invalid {
-	border-bottom: #ff0000;
-}
