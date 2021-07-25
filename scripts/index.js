@@ -203,7 +203,7 @@ const createCard = (cardData) => {
 
     cardElement.querySelector(".photo-grid__title").textContent = cardData.name;
     cardElement.querySelector(".photo-grid__picture").src = cardData.link;
-    cardElement.querySelector(".photo-grid__picture").alt = "Image" + cardData.name + "";
+    cardImage.alt = "Image" + cardData.name + "";
     return cardElement;
 };
 
