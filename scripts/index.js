@@ -38,35 +38,33 @@ const formValues = () => {
     nameInput.value = profileName.textContent;
     titleInput.value = profileTitle.textContent;
 };
-
 const toggleModal = (modal) => {
     modal.classList.toggle("overlay_show");
     if (modal.classList.contains("overlay_show")) {
-        //handleEscKey
+        document.addEventListener('keydown', handleEscKey);
         modal.addEventListener("click", handleOutsideClick);
     } else {
-        //removeEscListeners
+        document.removeEventListener('keydown', handleEscKey);
         modal.removeEventListener("click", handleOutsideClick);
     }
 };
 
 const handleOutsideClick = (e) => {
-    const activeModal = document.querySelector(".overlay_show");
     if (e.target.classList.contains("overlay")) {
+        toggleModal(e.target);
+    }
+}
+const handleEscKey = (e) => {
+    const activeModal = document.querySelector(".overlay_show");
+    if (e.key === 'Escape' && activeModal) {
         toggleModal(activeModal);
     }
 };
 
-document.addEventListener("keydown", (event) => {
-    const activeModal = document.querySelector(".overlay_show");
-    if (event.key === "Escape" && activeModal) {
-        toggleModal(activeModal);
-    }
-});
 
 //listeners/////////////
 const modalEditWindow = document.querySelector(".overlay_type_edit");
-const modalAddWindow = document.querySelector(".overlay_type_add");
+const modalAddWindow = document.querySelector(".overlay_type_add")
 const modalPreviewWindow = document.querySelector(".overlay_type_preview");
 
 editBtn.addEventListener("click", () => {
@@ -77,11 +75,8 @@ editBtn.addEventListener("click", () => {
 
 photoModalBtn.addEventListener("click", () => {
     toggleModal(modalAddWindow);
+    // defaultButtonState(button);
 });
-
-// imageModal.addEventListener("click", () => {
-//     toggleModal(modalPreviewWindow);
-// });
 
 profileClose.addEventListener("click", () => {
     toggleModal(modalEditWindow);
@@ -92,35 +87,22 @@ imgPreviewClose.addEventListener("click", () => {
 });
 
 ///////////////////
-function validate_form() {
-    valid = true;
-    invalid = false;
-    if (formValues == "") {
-        alert("Please fill in the 'Your Name' box.");
-        evt.preventDefault;
-        return invalid;
-    } else {
-        return valid;
-    }
-}
+
 
 //submit function for profile section
 
-const formProfile = document.querySelector(".form");
+const formProfile = document.querySelector(".formProfile");
 formProfile.addEventListener("submit", (e) => {
-    validate_form(e);
     e.preventDefault();
     profileName.textContent = nameInput.value;
     profileTitle.textContent = titleInput.value;
     toggleModal(overlay);
 });
 
-// photoModalBtn.addEventListener("click", () => {
-//     toggleModal(addPhotoModal);
-// });
 
 addPhotoClose.addEventListener("click", () => {
     toggleModal(modalAddWindow);
+    
 });
 
 // add image Inputs
