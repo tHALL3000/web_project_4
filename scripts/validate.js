@@ -20,37 +20,26 @@ const checkInputValidity = (input, settings) => {
     }
 };
 
-//const hasInvalidInput = (inputs) => {
-//     return inputs.every((input) => {
-//         return !input.validity.valid;
-//     })
-// };
-
-
-
 const toggleButtonState = (inputs, button, { inactiveButtonClass, ...settings }) => {
-    const hasInvalidInput = inputs.every((input) => !input.validity.valid);
-    if (hasInvalidInput) {
-        button.classList.add(inactiveButtonClass)
-        button.disabled = true;
-    }
-    else {
-        button.classList.remove(inactiveButtonClass)
+    const isValid = inputs.every((input) => input.validity.valid);
+    if (isValid) {
+        button.classList.remove(inactiveButtonClass);
         button.disabled = false;
+    } else {
+        button.classList.add(inactiveButtonClass);
+        button.disabled = true;
     }
 };
 
 function setEventListeners(inputs, formSelector, button) {
-inputs.forEach((input) => {
-    input.addEventListener("input", () => {
-        //Check input validity
-    checkInputValidity(input, formSelector, rest)
-        //toggle button state
-    toggleButtonState(inputs, button, rest);
-
-    })
-})
-
+    inputs.forEach((input) => {
+        input.addEventListener("input", () => {
+            //Check input validity
+            checkInputValidity(input, formSelector, rest);
+            //toggle button state
+            toggleButtonState(inputs, button, rest);
+        });
+    });
 }
 
 const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, ...settings }) => {
@@ -66,13 +55,10 @@ const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, .
             input.addEventListener("input", () => {
                 checkInputValidity(input, settings);
                 toggleButtonState(inputs, button, settings);
-                
             });
         });
     });
 };
-
-
 
 enableValidation({
     formSelector: ".form",

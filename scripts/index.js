@@ -41,10 +41,10 @@ const formValues = () => {
 const toggleModal = (modal) => {
     modal.classList.toggle("overlay_show");
     if (modal.classList.contains("overlay_show")) {
-        document.addEventListener('keydown', handleEscKey);
+        document.addEventListener("keydown", handleEscKey);
         modal.addEventListener("click", handleOutsideClick);
     } else {
-        document.removeEventListener('keydown', handleEscKey);
+        document.removeEventListener("keydown", handleEscKey);
         modal.removeEventListener("click", handleOutsideClick);
     }
 };
@@ -53,18 +53,17 @@ const handleOutsideClick = (e) => {
     if (e.target.classList.contains("overlay")) {
         toggleModal(e.target);
     }
-}
+};
 const handleEscKey = (e) => {
     const activeModal = document.querySelector(".overlay_show");
-    if (e.key === 'Escape' && activeModal) {
+    if (e.key === "Escape" && activeModal) {
         toggleModal(activeModal);
     }
 };
 
-
 //listeners/////////////
 const modalEditWindow = document.querySelector(".overlay_type_edit");
-const modalAddWindow = document.querySelector(".overlay_type_add")
+const modalAddWindow = document.querySelector(".overlay_type_add");
 const modalPreviewWindow = document.querySelector(".overlay_type_preview");
 
 editBtn.addEventListener("click", () => {
@@ -88,7 +87,6 @@ imgPreviewClose.addEventListener("click", () => {
 
 ///////////////////
 
-
 //submit function for profile section
 
 const formProfile = document.querySelector(".formProfile");
@@ -99,10 +97,8 @@ formProfile.addEventListener("submit", (e) => {
     toggleModal(overlay);
 });
 
-
 addPhotoClose.addEventListener("click", () => {
     toggleModal(modalAddWindow);
-    
 });
 
 // add image Inputs
