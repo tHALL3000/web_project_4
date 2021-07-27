@@ -116,6 +116,7 @@ addPictureform.addEventListener("submit", (e) => {
     };
     renderCard(createCard(userSubmitCard));
     toggleModal(modalAddWindow);
+    
 });
 
 const renderCard = (card) => {
