@@ -12,11 +12,11 @@ const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
     error.classList.remove(inputErrorClass);
 };
 
-const checkInputValidity = (input, settings) => {
+const checkInputValidity = (input, button, settings) => {
     if (input.validity.valid) {
-        hideErrorMessage(input, settings);
+        hideErrorMessage(input, button, settings);
     } else {
-        showErrorMessage(input, settings);
+        showErrorMessage(input, button, settings);
     }
 };
 

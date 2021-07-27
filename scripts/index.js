@@ -75,6 +75,7 @@ editBtn.addEventListener("click", () => {
 photoModalBtn.addEventListener("click", () => {
     toggleModal(modalAddWindow);
     // defaultButtonState(button);
+    document.getElementById("newPicture").reset();
 });
 
 profileClose.addEventListener("click", () => {
