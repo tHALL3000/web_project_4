@@ -31,6 +31,14 @@ const toggleButtonState = (inputs, button, { inactiveButtonClass, ...settings })
     }
 };
 
+const photoDefault = document.querySelector("#addPhoto");
+
+photoDefault.addEventListener("click", () => {
+    checkInputValidity(input);
+    toggleButtonState(inputs, button);
+});
+
+
 function setEventListeners(inputs, formSelector, button) {
     inputs.forEach((input) => {
         input.addEventListener("input", () => {
