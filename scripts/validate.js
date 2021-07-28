@@ -9,7 +9,7 @@ const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
     const error = document.querySelector(`#${input.id}-error`);
     error.textContent = "";
     error.classList.remove(errorClass);
-    error.classList.remove(inputErrorClass);
+    input.classList.remove(inputErrorClass);
 };
 
 const checkInputValidity = (input, button, settings) => {
@@ -31,25 +31,8 @@ const toggleButtonState = (inputs, button, { inactiveButtonClass, ...settings })
     }
 };
 
-const photoDefault = document.getElementById("#addPhoto");
+const photoDefault = document.querySelector("#addPhoto");
 
-photoDefault.addEventListener("click", (input, button,) => {
-    checkInputValidity(input, button);
-    console.log(input);
-    toggleButtonState(inputs, button);
-});
-
-
-function setEventListeners(inputs, formSelector, button) {
-    inputs.forEach((input) => {
-        input.addEventListener("input", () => {
-            //Check input validity
-            checkInputValidity(input, formSelector, rest);
-            //toggle button state
-            toggleButtonState(inputs, button, rest);
-        });
-    });
-}
 
 const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, ...settings }) => {
     const forms = [...document.querySelectorAll(formSelector)];
@@ -57,12 +40,16 @@ const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, .
     forms.forEach((form) => {
         form.addEventListener("submit", (e) => {
             e.preventDefault();
+            button.classList.add(settings.inactiveButtonClass);
+            button.disabled = true;
         });
         const inputs = [...form.querySelectorAll(inputSelector)];
         const button = form.querySelector(submitButtonSelector);
         inputs.forEach((input) => {
             input.addEventListener("input", () => {
-                checkInputValidity(input, settings);
+                //Check input validity
+                checkInputValidity(input, formSelector, settings);
+                //toggle button state
                 toggleButtonState(inputs, button, settings);
             });
         });
