@@ -31,10 +31,11 @@ const toggleButtonState = (inputs, button, { inactiveButtonClass, ...settings })
     }
 };
 
-const photoDefault = document.querySelector("#addPhoto");
+const photoDefault = document.getElementById("#addPhoto");
 
-photoDefault.addEventListener("click", () => {
-    checkInputValidity(input);
+photoDefault.addEventListener("click", (input, button,) => {
+    checkInputValidity(input, button);
+    console.log(input);
     toggleButtonState(inputs, button);
 });
 
