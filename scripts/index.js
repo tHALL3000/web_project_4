@@ -1,9 +1,12 @@
+import FormValidator from "./FormValidator.js";
+
 // Buttons
 const editBtn = document.querySelector("#editBtn");
 const photoModalBtn = document.querySelector("#addPhoto");
 
 //profile section
 const modalProfile = document.querySelector(".modal-type-edit-profile");
+const editFormElement = modalProfile.querySelector(".formProfile");
 // Text in profile
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__job");
@@ -32,6 +35,7 @@ const imageElement = document.querySelector(".modal__image");
 const imageCaption = document.querySelector(".modal__caption");
 
 const modal = document.querySelector(".modal");
+const cardFormElement = modal.querySelector(".form-type-add");
 
 // general Modal Popup function
 const formValues = () => {
@@ -193,3 +197,17 @@ const createCard = (cardData) => {
 initialCards.forEach((card) => {
     renderCard(createCard(card));
 });
+
+const defaultFormConfig = {
+    
+    inputSelector: ".modal__form-control-input",
+    submitButtonSelector: ".button",
+    inactiveButtonClass: "button-disabled",
+    inputErrorClass: "modal__form-control-input-error",
+    errorClass: "popup-error",
+}
+const editFormValidator = new FormValidator(defaultFormConfig, editFormElement);
+const cardFormValidator = new FormValidator(defaultFormConfig, cardFormElement);
+
+editFormValidator.enableValidation();
+cardFormValidator.enableValidation();

@@ -12,24 +12,24 @@ const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
     input.classList.remove(inputErrorClass);
 };
 
-const checkInputValidity = (input, button, settings) => {
-    if (input.validity.valid) {
-        hideErrorMessage(input, button, settings);
-    } else {
-        showErrorMessage(input, button, settings);
-    }
-};
+// const checkInputValidity = (input, button, settings) => {
+//     if (input.validity.valid) {
+//         hideErrorMessage(input, button, settings);
+//     } else {
+//         showErrorMessage(input, button, settings);
+//     }
+// };
 
-const toggleButtonState = (inputs, button, { inactiveButtonClass, ...settings }) => {
-    const isValid = inputs.every((input) => input.validity.valid);
-    if (isValid) {
-        button.classList.remove(inactiveButtonClass);
-        button.disabled = false;
-    } else {
-        button.classList.add(inactiveButtonClass);
-        button.disabled = true;
-    }
-};
+// const toggleButtonState = (inputs, button, { inactiveButtonClass, ...settings }) => {
+//     const isValid = inputs.every((input) => input.validity.valid);
+//     if (isValid) {
+//         button.classList.remove(inactiveButtonClass);
+//         button.disabled = false;
+//     } else {
+//         button.classList.add(inactiveButtonClass);
+//         button.disabled = true;
+//     }
+// };
 
 const photoDefault = document.querySelector("#addPhoto");
 
@@ -56,11 +56,11 @@ const photoDefault = document.querySelector("#addPhoto");
 //     });
 // };
 
-enableValidation({
-    formSelector: ".form",
-    inputSelector: ".modal__form-control-input",
-    submitButtonSelector: ".button",
-    inactiveButtonClass: "button-disabled",
-    inputErrorClass: "modal__form-control-input-error",
-    errorClass: "popup-error",
-});
+// enableValidation({
+//     formSelector: ".form",
+//     inputSelector: ".modal__form-control-input",
+//     submitButtonSelector: ".button",
+//     inactiveButtonClass: "button-disabled",
+//     inputErrorClass: "modal__form-control-input-error",
+//     errorClass: "popup-error",
+// });
