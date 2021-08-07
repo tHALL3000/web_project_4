@@ -35,9 +35,7 @@ const imageElement = document.querySelector(".modal__image");
 const imageCaption = document.querySelector(".modal__caption");
 
 const modal = document.querySelector(".modal");
-const cardFormElement = modal.querySelector(".form-type-add");
-console.log(cardFormElement);
-console.log(modal);
+const cardFormElement = document.querySelector(".form-type-add");
 
 // general Modal Popup function
 const formValues = () => {
@@ -45,6 +43,9 @@ const formValues = () => {
     titleInput.value = profileTitle.textContent;
 };
 const toggleModal = (modal) => {
+    // const modal = document.querySelector(".modal");
+    // console.log(modal);
+    
     modal.classList.toggle("overlay_show");
     if (modal.classList.contains("overlay_show")) {
         document.addEventListener("keydown", handleEscKey);
