@@ -5,12 +5,12 @@
 //     input.classList.add(inputErrorClass);
 // };
 
-const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
-    const error = document.querySelector(`#${input.id}-error`);
-    error.textContent = "";
-    error.classList.remove(errorClass);
-    input.classList.remove(inputErrorClass);
-};
+// const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
+//     const error = document.querySelector(`#${input.id}-error`);
+//     error.textContent = "";
+//     error.classList.remove(errorClass);
+//     input.classList.remove(inputErrorClass);
+// };
 
 // const checkInputValidity = (input, button, settings) => {
 //     if (input.validity.valid) {
@@ -31,7 +31,7 @@ const hideErrorMessage = (input, { errorClass, inputErrorClass }) => {
 //     }
 // };
 
-const photoDefault = document.querySelector("#addPhoto");
+// const photoDefault = document.querySelector("#addPhoto");
 
 
 // const enableValidation = ({ formSelector, inputSelector, submitButtonSelector, ...settings }) => {
@@ -56,11 +56,4 @@ const photoDefault = document.querySelector("#addPhoto");
 //     });
 // };
 
-// enableValidation({
-//     formSelector: ".form",
-//     inputSelector: ".modal__form-control-input",
-//     submitButtonSelector: ".button",
-//     inactiveButtonClass: "button-disabled",
-//     inputErrorClass: "modal__form-control-input-error",
-//     errorClass: "popup-error",
-// });
+

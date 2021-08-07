@@ -1,5 +1,5 @@
 import FormValidator from "./FormValidator.js";
-
+import Card from "./Card.js";
 // Buttons
 const editBtn = document.querySelector("#editBtn");
 const photoModalBtn = document.querySelector("#addPhoto");
@@ -36,6 +36,8 @@ const imageCaption = document.querySelector(".modal__caption");
 
 const modal = document.querySelector(".modal");
 const cardFormElement = modal.querySelector(".form-type-add");
+console.log(cardFormElement);
+console.log(modal);
 
 // general Modal Popup function
 const formValues = () => {
@@ -119,13 +121,14 @@ addPictureform.addEventListener("submit", (e) => {
         name: pictureTitleInput.value,
         link: pictureLinkInput.value,
     };
-    renderCard(createCard(userSubmitCard));
+    renderCard(userSubmitCard);
     toggleModal(modalAddWindow);
     
 });
 
 const renderCard = (card) => {
-    photoGrid.prepend(card);
+    card = new Card(data, cardSelector);
+    photoGrid.prepend(card.generateCard());
 };
 
 //Array for photo cards- in reverse order, which is why we need the prepend not append
@@ -160,45 +163,16 @@ const initialCards = [
 const photoGrid = document.querySelector(".photo-grid");
 
 ////begin/////
-const createCard = (cardData) => {
-    const cardTemplate = document.querySelector(".card-template").content.querySelector(".photo-grid__card");
 
-    const cardElement = cardTemplate.cloneNode(true);
-
-    const cardLike = cardElement.querySelector(".photo-grid__heart");
-
-    const cardDelete = cardElement.querySelector(".photo-grid__delete");
-    const cardImage = cardElement.querySelector(".photo-grid__picture");
-
-    cardLike.addEventListener("click", () => {
-        cardLike.classList.toggle("photo-grid__heart_active");
-    });
-
-    cardDelete.addEventListener("click", () => {
-        cardElement.remove();
-    });
-
-    ////pop up for when the photo in a card is clicked/////
-    cardImage.addEventListener("click", () => {
-        imageElement.src = cardData.link;
-        imageElement.alt = "Image" + cardData.name + "";
-        imageCaption.textContent = cardData.name;
-        toggleModal(modalPreviewWindow);
-    });
-
-    cardElement.querySelector(".photo-grid__title").textContent = cardData.name;
-    cardElement.querySelector(".photo-grid__picture").src = cardData.link;
-    cardImage.alt = "Image" + cardData.name + "";
-    return cardElement;
-};
 
 ////end/////
 //bit that adds the card to the array///
-initialCards.forEach((card) => {
-    renderCard(createCard(card));
-});
+// initialCards.forEach((card) => {
+//     renderCard(createCard(card));
+// });
 
-const defaultFormConfig = {
+
+const config = {
     
     inputSelector: ".modal__form-control-input",
     submitButtonSelector: ".button",
@@ -206,8 +180,9 @@ const defaultFormConfig = {
     inputErrorClass: "modal__form-control-input-error",
     errorClass: "popup-error",
 }
-const editFormValidator = new FormValidator(defaultFormConfig, editFormElement);
-const cardFormValidator = new FormValidator(defaultFormConfig, cardFormElement);
+
+const editFormValidator = new FormValidator(config, editFormElement);
+const cardFormValidator = new FormValidator(config, cardFormElement);
 
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
