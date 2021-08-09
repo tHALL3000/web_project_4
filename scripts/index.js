@@ -114,23 +114,23 @@ addPhotoClose.addEventListener("click", () => {
 const addPictureform = document.querySelector(".form-type-add");
 const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
 const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
-
+const cardSelector = document.querySelector(".card-template");
 ///submit button for user added picture///
+const renderCard = (data) => {
+       const  card = new Card(data, cardSelector);
+        photoGrid.prepend(card.generateCard());
+    };
+
 addPictureform.addEventListener("submit", (e) => {
     e.preventDefault();
     const userSubmitCard = {
         name: pictureTitleInput.value,
         link: pictureLinkInput.value,
     };
+    
     renderCard(userSubmitCard);
     toggleModal(modalAddWindow);
-    
 });
-
-const renderCard = (card) => {
-    card = new Card(data, cardSelector);
-    photoGrid.prepend(card.generateCard());
-};
 
 //Array for photo cards- in reverse order, which is why we need the prepend not append
 const initialCards = [
@@ -168,22 +168,22 @@ const photoGrid = document.querySelector(".photo-grid");
 
 ////end/////
 //bit that adds the card to the array///
-// initialCards.forEach((card) => {
-//     renderCard(createCard(card));
-// });
+initialCards.forEach((card) => {
+    renderCard(card);
+    });
 
 
-const config = {
+    const config = {
     
-    inputSelector: ".modal__form-control-input",
-    submitButtonSelector: ".button",
-    inactiveButtonClass: "button-disabled",
-    inputErrorClass: "modal__form-control-input-error",
-    errorClass: "popup-error",
-}
+        inputSelector: ".modal__form-control-input",
+        submitButtonSelector: ".button",
+        inactiveButtonClass: "button-disabled",
+        inputErrorClass: "modal__form-control-input-error",
+        errorClass: "popup-error",
+    };
 
 const editFormValidator = new FormValidator(config, editFormElement);
 const cardFormValidator = new FormValidator(config, cardFormElement);
 
-editFormValidator.enableValidation();
-cardFormValidator.enableValidation();
+    editFormValidator.enableValidation();
+    cardFormValidator.enableValidation();

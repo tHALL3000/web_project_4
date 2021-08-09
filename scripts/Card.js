@@ -34,11 +34,15 @@ class Card {
     constructor(data, cardSelector) {
         this._name = data.name;
         this._link = data.link;
-        this._cardSelector = cardSelector
-    }
 
+        this._cardSelector = cardSelector
+        
+        
+    }
     _getTemplate() {
-        return document.querySelector(this._cardSelector).content.querySelector(".photo-grid__card").cloneNode(true);
+        
+        const cardElement = this._cardSelector.content.querySelector(".photo-grid__card").cloneNode(true);
+        return cardElement;
     }
 
     _handleLikeIcon() {
@@ -73,7 +77,7 @@ class Card {
         
         this._card.querySelector(".photo-grid__title").textContent = this._name;
         this._card.querySelector(".photo-grid__picture").src = this._link;
-        cardImage.alt = "Image" + cardData.name + "";
+        this._card.alt = "Image" + this._name + "";
         
         return this._card;
     }
