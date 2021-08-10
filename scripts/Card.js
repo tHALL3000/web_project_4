@@ -60,8 +60,8 @@ class Card {
         
 
         cardLike.addEventListener("click", this._handleLikeIcon);
-        cardDelete.addEventListener("click", this._handleDeleteIcon);
-        cardImage.addEventListener("click", this._handlePreviewPicture);
+        cardDelete.addEventListener("click", () => this._handleDeleteIcon());
+        cardImage.addEventListener("click", () => this._handlePreviewPicture());
     }
     
     _handlePreviewPicture() {
@@ -77,8 +77,8 @@ class Card {
     this._card.querySelector(".photo-grid__heart").classList.toggle("photo-grid__heart_active")
 };
 
-    _handleDeleteIcon = () => {
-        this._card.querySelector(".photo-grid__card").remove()
+    _handleDeleteIcon() {
+        this._card.remove()
     };
 
 
