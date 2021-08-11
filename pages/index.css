@@ -14,7 +14,7 @@
 @import url(../blocks/profile/__inner/profile__inner.css);
 @import url(../blocks/profile/__edit/profile__edit.css);
 @import url(../blocks/button/button.css);
-@import url(../blocks/button-disabled/button-disabled.css);
+@import url(../blocks/button/button_disabled/button-disabled.css
 @import url(../blocks/overlay/overlay.css);
 @import url(../blocks/overlay/_show/overlay_show.css);
 @import url(../blocks/photo-add/photo-add.css);
