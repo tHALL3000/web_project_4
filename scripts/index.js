@@ -92,25 +92,25 @@ addPhotoClose.addEventListener("click", () => {
 });
 
 
-const addPictureform = document.querySelector(".form-type_add");
+const addPictureForm = document.querySelector(".form-type_add");
 const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
 const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
-const cardSelector = document.querySelector(".card-template");
+const cardSelector = ".card-template";
 
 const renderCard = (data) => {
         const  card = new Card(data, cardSelector);
         photoGrid.prepend(card.generateCard());
     };
 
-addPictureform.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const userSubmitCard = {
-        name: pictureTitleInput.value,
-        link: pictureLinkInput.value,
-    };
-    
-    renderCard(userSubmitCard);
-    toggleModal(modalAddWindow);
+addPictureForm.addEventListener("submit", (e) => {
+	e.preventDefault();
+	const userCard = {
+		name: pictureTitleInput.value,
+		link: pictureLinkInput.value,
+	};
+
+	renderCard(userCard);
+	toggleModal(modalAddWindow);
 });
 
 
