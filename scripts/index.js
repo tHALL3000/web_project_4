@@ -1,8 +1,8 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
 // Buttons
-const editBtn = document.querySelector("#editBtn");
-const photoModalBtn = document.querySelector("#addPhoto");
+const editButton = document.querySelector("#editButton");
+const photoModalButton = document.querySelector("#addPhoto");
 
 //profile section
 const modalProfile = document.querySelector(".modal-type-edit-profile");
@@ -73,13 +73,13 @@ const modalEditWindow = document.querySelector(".overlay_type_edit");
 const modalAddWindow = document.querySelector(".overlay_type_add");
 const modalPreviewWindow = document.querySelector(".overlay_type_preview");
 
-editBtn.addEventListener("click", () => {
+editButton.addEventListener("click", () => {
     nameInput.value = profileName.textContent;
     titleInput.value = profileTitle.textContent;
     toggleModal(modalEditWindow);
 });
 
-photoModalBtn.addEventListener("click", () => {
+photoModalButton.addEventListener("click", () => {
     toggleModal(modalAddWindow);
     // defaultButtonState(button);
     document.getElementById("newPicture").reset();
