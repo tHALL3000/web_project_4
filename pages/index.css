@@ -25,7 +25,7 @@
 @import url(../blocks/modal/__form-control-input/modal__form-control-input.css);
 @import url(../blocks/modal/__form-control-input/-error/modal__form-control-input-error.css);
 @import url(../blocks/modal/__contents/modal__contents.css);
-@import url(../blocks/modal/__close-bar/modal__close-bar.css);
+@import url(../blocks/modal/__close-button/modal__close-button.css);
 @import url(../blocks/modal/__figure/modal__figure.css);
 @import url(../blocks/modal/__caption/modal__caption.css);
 @import url(../blocks/modal/__image/modal__image.css);

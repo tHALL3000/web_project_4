@@ -1,50 +1,34 @@
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
-// Buttons
+
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
 
-//profile section
-const modalProfile = document.querySelector(".modal-type-edit-profile");
-const editFormElement = modalProfile.querySelector(".formProfile");
-// Text in profile
+
+const modalProfile = document.querySelector(".modal-type_edit_profile");
+const editFormElement = modalProfile.querySelector(".form-profile");
+
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__job");
-// Profile Inputs
+
 const nameInput = document.forms.profile.elements.name;
 const titleInput = document.forms.profile.elements.title;
 
-//add image section
-const pictureName = document.querySelector(".photo-grid__title");
-const pictureLink = document.querySelector(".photo-grid__picture");
 
-//overlays
+
+
 const overlay = document.querySelector(".overlay_type_edit");
-const addPhotoModal = document.querySelector(".overlay_type_add");
 
-//close button classes
-const profileClose = document.querySelector(".modal__close-bar");
-const addPhotoClose = document.querySelector(".modal__close-bar_add-photo");
-const imgPreviewClose = document.querySelector(".modal__close-bar_image");
-const overlayWindow = document.querySelector(".page");
+const profileClose = document.querySelector(".modal__close-button");
+const addPhotoClose = document.querySelector(".modal__close-button_add-photo");
+const imgPreviewClose = document.querySelector(".modal__close-button_image");
 
-//enlarge picture section
-const imageModal = document.querySelector(".overlay_type_preview");
-const modalPicture = document.querySelector(".modal__figure");
-const imageElement = document.querySelector(".modal__image");
-const imageCaption = document.querySelector(".modal__caption");
 
 const modal = document.querySelector(".modal");
-const cardFormElement = document.querySelector(".form-type-add");
+const cardFormElement = document.querySelector(".form-type_add");
 
-// general Modal Popup function
-const formValues = () => {
-    nameInput.value = profileName.textContent;
-    titleInput.value = profileTitle.textContent;
-};
+
 const toggleModal = (modal) => {
-    // const modal = document.querySelector(".modal");
-    // console.log(modal);
     
     modal.classList.toggle("overlay_show");
     if (modal.classList.contains("overlay_show")) {
@@ -68,7 +52,7 @@ const handleEscKey = (e) => {
     }
 };
 
-//listeners/////////////
+
 const modalEditWindow = document.querySelector(".overlay_type_edit");
 const modalAddWindow = document.querySelector(".overlay_type_add");
 const modalPreviewWindow = document.querySelector(".overlay_type_preview");
@@ -81,7 +65,7 @@ editButton.addEventListener("click", () => {
 
 photoModalButton.addEventListener("click", () => {
     toggleModal(modalAddWindow);
-    // defaultButtonState(button);
+
     document.getElementById("newPicture").reset();
 
 });
@@ -94,11 +78,8 @@ imgPreviewClose.addEventListener("click", () => {
     toggleModal(modalPreviewWindow);
 });
 
-///////////////////
 
-//submit function for profile section
-
-const formProfile = document.querySelector(".formProfile");
+const formProfile = document.querySelector(".form-profile");
 formProfile.addEventListener("submit", (e) => {
     e.preventDefault();
     profileName.textContent = nameInput.value;
@@ -110,14 +91,14 @@ addPhotoClose.addEventListener("click", () => {
     toggleModal(modalAddWindow);
 });
 
-// add image Inputs
-const addPictureform = document.querySelector(".form-type-add");
+
+const addPictureform = document.querySelector(".form-type_add");
 const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
 const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
 const cardSelector = document.querySelector(".card-template");
-///submit button for user added picture///
+
 const renderCard = (data) => {
-       const  card = new Card(data, cardSelector);
+        const  card = new Card(data, cardSelector);
         photoGrid.prepend(card.generateCard());
     };
 
@@ -132,7 +113,7 @@ addPictureform.addEventListener("submit", (e) => {
     toggleModal(modalAddWindow);
 });
 
-//Array for photo cards- in reverse order, which is why we need the prepend not append
+
 const initialCards = [
     {
         name: "Silicon Valley",
@@ -160,14 +141,9 @@ const initialCards = [
     },
 ];
 
-//new card
+
 const photoGrid = document.querySelector(".photo-grid");
 
-////begin/////
-
-
-////end/////
-//bit that adds the card to the array///
 initialCards.forEach((card) => {
     renderCard(card);
     });
