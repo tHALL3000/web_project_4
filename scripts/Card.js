@@ -34,7 +34,7 @@ class Card {
     constructor(data, cardSelector) {
         this._name = data.name;
         this._link = data.link;
-        
+        this._heart = this._card.querySelector(".photo-grid__heart");
         this._cardSelector = cardSelector;
     }
     
@@ -63,7 +63,7 @@ class Card {
     }
 
     _handleLikeIcon = () => {
-        this._card.querySelector(".photo-grid__heart").classList.toggle("photo-grid__heart_active")
+        this._heart.classList.toggle("photo-grid__heart_active")
     };
 
     _handleDeleteIcon() {
