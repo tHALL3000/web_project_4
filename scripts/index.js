@@ -4,7 +4,7 @@ import Card from "./Card.js";
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
 
-const modalProfile = document.querySelector(".modal-type_edit_profile");
+const modalProfile = document.querySelector(".modal_edit_profile");
 const editFormElement = modalProfile.querySelector(".form-profile");
 
 const profileName = document.querySelector(".profile__name");

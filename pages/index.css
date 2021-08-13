@@ -1,7 +1,7 @@
 @import url(../vendor/normalize.css);
 @import url(../vendor/fonts.css);
 @import url(../blocks/page/page.css);
-@import url(../blocks/popup/popup__error/popup__error.css);
+@import url(../blocks/error-message/error-message.css);
 @import url(../blocks/popup/__input/_type/_error/popup__input_type_error.css);
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/header__image/header__image.css);
