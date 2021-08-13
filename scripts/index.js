@@ -20,7 +20,7 @@ const addPhotoClose = document.querySelector(".modal__close-button_add-photo");
 const imgPreviewClose = document.querySelector(".modal__close-button_image");
 
 const modal = document.querySelector(".modal");
-const cardFormElement = document.querySelector(".form-type_add");
+const cardFormElement = document.querySelector(".form_add");
 
 const toggleModal = (modal) => {
 	modal.classList.toggle("overlay_show");
