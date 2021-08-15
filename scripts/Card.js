@@ -56,6 +56,17 @@ const handleOutsideClick = (e) => {
 
 class Card {
 	constructor(data, cardSelector) {
+		this._cardSelector =
+			cardSelector;
+		this._card =
+			document
+				.querySelector(
+					this
+						._cardSelector
+				)
+				.content.querySelector(
+					".photo-grid__card"
+				);
 		this._name =
 			data.name;
 		this._link =
@@ -64,8 +75,6 @@ class Card {
 			this._card.querySelector(
 				".photo-grid__heart"
 			);
-		this._cardSelector =
-			cardSelector;
 	}
 
 	_getTemplate() {
@@ -101,8 +110,8 @@ class Card {
 
 		cardLike.addEventListener(
 			"click",
-			this
-				._handleLikeIcon
+			() =>
+				this._handleLikeIcon()
 		);
 		cardDelete.addEventListener(
 			"click",
@@ -132,6 +141,10 @@ class Card {
 	}
 
 	_handleLikeIcon = () => {
+		console.log(
+			this
+				._heart
+		);
 		this._heart.classList.toggle(
 			"photo-grid__heart_active"
 		);

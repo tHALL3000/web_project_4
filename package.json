@@ -1,0 +1,21 @@
+{
+  "name": "web_project_4",
+  "version": "1.0.0",
+  "description": "### Overview Intro to JavaScript. Incorperates the use of my own chosen images, which vary in size but must fit in grid. Edit form uses JS to replace the name and job from the form fields. Media query again for responsive design. Also used the :hover and :active features on classes.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tHALL3000/web_project_4.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tHALL3000/web_project_4/issues"
+  },
+  "homepage": "https://github.com/tHALL3000/web_project_4#readme",
+  "dependencies": {}
+}

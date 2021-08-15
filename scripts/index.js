@@ -114,7 +114,7 @@ addPhotoClose.addEventListener("click", () => {
 	toggleModal(modalAddWindow);
 });
 
-const addPictureForm = document.querySelector(".form-type_add");
+const addPictureForm = document.querySelector(".form_add");
 const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
 const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
 const cardSelector = ".card-template";
