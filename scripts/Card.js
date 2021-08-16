@@ -70,7 +70,7 @@ class Card {
 		this._card.remove();
 	}
 
-	_preparingCard() {
+	_prepareCard() {
 		this._card.querySelector(".photo-grid__title").textContent = this._name;
 		this._card.querySelector(".photo-grid__picture").src = this._link;
 		this._card.alt = "Image" + this._name + "";
@@ -80,7 +80,7 @@ class Card {
 	generateCard() {
 		this._card = this._getTemplate();
 		this._setEventListeners();
-		this._preparingCard();
+		this._prepareCard();
 
 		return this._card;
 	}
