@@ -140,7 +140,7 @@ initialCards.forEach((card) => {
 const config = {
 	inputSelector: ".modal__form-control-input",
 	submitButtonSelector: ".button",
-	inactiveButtonClass: "button-disabled",
+	inactiveButtonClass: "button_disabled",
 	inputErrorClass: "modal__form-control-input-error",
 	errorClass: "popup-error",
 };
