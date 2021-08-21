@@ -30,10 +30,11 @@ const handleOutsideClick = (e) => {
 };
 
 class Card {
-	constructor(data, cardSelector) {
+	constructor({ data, handleCardClick }, cardSelector) {
 		this._cardSelector = cardSelector;
 		this._name = data.name;
 		this._link = data.link;
+		this._handleCardClick = handleCardClick;
 	}
 
 	_getTemplate() {
@@ -52,15 +53,20 @@ class Card {
 
 		cardLike.addEventListener("click", () => this._handleLikeIcon());
 		cardDelete.addEventListener("click", () => this._handleDeleteIcon());
-		cardImage.addEventListener("click", () => this._handlePreviewPicture());
+		cardImage.addEventListener("click", () =>
+			this._handleCardClick({
+				link: this._link,
+				name: this._name,
+			})
+		);
 	}
 
-	_handlePreviewPicture() {
-		imageElement.src = this._link;
-		imageElement.alt = "Image" + this._name + "";
-		imageCaption.textContent = this._name;
-		toggleModal(modalPreviewWindow);
-	}
+	// _handlePreviewPicture() {
+	// 	imageElement.src = this._link;
+	// 	imageElement.alt = "Image" + this._name + "";
+	// 	imageCaption.textContent = this._name;
+	// 	toggleModal(modalPreviewWindow);
+	// }
 
 	_handleLikeIcon = () => {
 		this._heart.classList.toggle("photo-grid__heart_active");

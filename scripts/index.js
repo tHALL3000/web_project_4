@@ -142,6 +142,18 @@ initialCards.forEach((card) => {
 	renderCard(card);
 });
 
+const imagePopup = new PopupWithImage(PopupSelector);
+imagePopup.setEventListeners();
+const card = new Card(
+	{
+		data,
+		handleCardClick: (data) => {
+			imagePopup.open(data);
+		},
+	},
+	".card-template"
+);
+
 const config = {
 	inputSelector: ".modal__form-control-input",
 	submitButtonSelector: ".button",

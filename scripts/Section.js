@@ -7,7 +7,7 @@ class Section {
 		this.cardContainer = document.querySelector(cardContainer);
 	}
 
-	rendererSection() {
+	renderSection() {
 		//render each element on page
 		this.items.forEach((item) => {
 			this.renderer(item);

@@ -8,22 +8,27 @@ class PopupWithForm extends Popup {
 		super(popupSelector);
 	}
 
-	_getInputValues() {
+    _getInputValues() {
+       profileName.textContent = nameInput.value;
+	    profileTitle.textContent = titleInput.value;
 		//input values from form fields
 		//"name": newItemName.value,
 		//"link": newItemLink.value
 	}
 
 	setEventListeners() {
-		//add click event listenerclose icon
-		//add submit to submit button
-	}
+        super.setEventListeners();
+            this._popup.addEventListener("submit", (e) => {
+                e.preventDefault();
+                //add click event listenerclose icon
+                //add submit to submit button
+            });
 
 	close() {
 		super.close();
 		form.reset();
 		//reset
 	}
-}
+    };
 
 export default PopupWithForm;
