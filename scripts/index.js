@@ -2,6 +2,11 @@
 
 import FormValidator from "./FormValidator.js";
 import Card from "./Card.js";
+import "../pages/index.css";
+import "../images/avatar.jpg";
+import Popup from "./Popup.js";
+import PopupWithForm from "./PopupWithForm.js";
+import PopupWithImage from "./PopupWithImage.js";
 
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
@@ -17,7 +22,7 @@ const titleInput = document.forms.profile.elements.title;
 
 const overlay = document.querySelector(".overlay_type_edit");
 
-const profileClose = document.querySelector(".modal__close-button");
+// const profileClose = document.querySelector(".modal__close-button");
 const addPhotoClose = document.querySelector(".modal__close-button_add-photo");
 const imgPreviewClose = document.querySelector(".modal__close-button_image");
 
@@ -40,12 +45,12 @@ const handleOutsideClick = (e) => {
 		toggleModal(e.target);
 	}
 };
-const handleEscKey = (e) => {
-	const activeModal = document.querySelector(".overlay_show");
-	if (e.key === "Escape" && activeModal) {
-		toggleModal(activeModal);
-	}
-};
+//const handleEscKey = (e) => {
+// 	const activeModal = document.querySelector(".overlay_show");
+// 	if (e.key === "Escape" && activeModal) {
+// 		toggleModal(activeModal);
+// 	}
+// };
 
 const modalEditWindow = document.querySelector(".overlay_type_edit");
 const modalAddWindow = document.querySelector(".overlay_type_add");
@@ -63,9 +68,9 @@ photoModalButton.addEventListener("click", () => {
 	document.getElementById("newPicture").reset();
 });
 
-profileClose.addEventListener("click", () => {
-	toggleModal(modalEditWindow);
-});
+// profileClose.addEventListener("click", () => {
+// 	toggleModal(modalEditWindow);
+// });
 
 imgPreviewClose.addEventListener("click", () => {
 	toggleModal(modalPreviewWindow);

@@ -16,12 +16,12 @@ const toggleModal = (modal) => {
 	}
 };
 
-const handleEscKey = (e) => {
-	const activeModal = document.querySelector(".overlay_show");
-	if (e.key === "Escape" && activeModal) {
-		toggleModal(activeModal);
-	}
-};
+// const handleEscKey = (e) => {
+// 	const activeModal = document.querySelector(".overlay_show");
+// 	if (e.key === "Escape" && activeModal) {
+// 		toggleModal(activeModal);
+// 	}
+// };
 
 const handleOutsideClick = (e) => {
 	if (e.target.classList.contains("overlay")) {
