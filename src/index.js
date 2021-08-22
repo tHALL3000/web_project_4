@@ -2,14 +2,14 @@
 
 //** @format */
 
-import FormValidator from "./FormValidator.js";
+import FormValidator from "../scripts/FormValidator.js";
 import Card from "../components/Card.js";
 import "../pages/index.css";
 //import "../images/avatar.jpg";
 import Popup from "../components/Popup.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
-import Section from "./Section.js";
+import Section from "../scripts/Section.js";
 
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
