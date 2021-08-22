@@ -1,16 +1,18 @@
 /** @format */
 
+//** @format */
+
 import FormValidator from "./FormValidator.js";
-import Card from "./Card.js";
+import Card from "../components/Card.js";
 import "../pages/index.css";
-import "../images/avatar.jpg";
-import Popup from "./Popup.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
+//import "../images/avatar.jpg";
+import Popup from "../components/Popup.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "./Section.js";
 
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
-
 const modalProfile = document.querySelector(".modal_edit_profile");
 const editFormElement = modalProfile.querySelector(".form-profile");
 
@@ -64,7 +66,6 @@ editButton.addEventListener("click", () => {
 
 photoModalButton.addEventListener("click", () => {
 	toggleModal(modalAddWindow);
-
 	document.getElementById("newPicture").reset();
 });
 
@@ -142,17 +143,36 @@ initialCards.forEach((card) => {
 	renderCard(card);
 });
 
+// const userInfo = new userInfo({
+// 	usernameSelector: profileConfig.profileTitle,
+// 	userDescriptionSelector: profileConfig.profileDescription
+// })
+
 const imagePopup = new PopupWithImage(PopupSelector);
 imagePopup.setEventListeners();
-const card = new Card(
-	{
-		data,
-		handleCardClick: (data) => {
-			imagePopup.open(data);
-		},
+
+const section = new Section({
+	renderer: (data) => {
+		const card = new Card(
+			{
+				data,
+				// handleCardClick: (data) => {
+				// 	imagePopup.open(data)
+				// }
+			},
+			cardSelector
+		);
+		photoGrid.prepend(card.generateCard());
+		(".card-template");
 	},
-	".card-template"
-);
+});
+section.setEventListeners();
+
+const popup = new Popup(PopupSelector);
+popup.setEventListeners();
+
+const popupForm = new PopupWithForm();
+popupForm.setEventListeners();
 
 const config = {
 	inputSelector: ".modal__form-control-input",

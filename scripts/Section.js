@@ -1,5 +1,7 @@
 /** @format */
 
+//** @format */
+
 class Section {
 	constructor({ items, renderer }, cardContainer) {
 		this.renderer = renderer;

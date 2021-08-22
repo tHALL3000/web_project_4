@@ -1,5 +1,7 @@
 /** @format */
 
+//** @format */
+
 const imageElement = document.querySelector(".modal__image");
 const imageCaption = document.querySelector(".modal__caption");
 

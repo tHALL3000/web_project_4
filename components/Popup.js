@@ -1,5 +1,7 @@
 /** @format */
 
+//** @format */
+
 class Popup {
 	constructor(popupSelector) {
 		this._popupElement = document.querySelector(popupSelector);
@@ -8,7 +10,8 @@ class Popup {
 		// const activeModal = document.querySelector(".overlay_show");
 		// if (e.key === "Escape" && activeModal) {
 		//     toggleModal(activeModal); //close function
-		this.close();
+		e.preventDefault();
+		if (e.key === "Escape") this.close();
 	};
 
 	_handleOutsideClick = (e) => {
