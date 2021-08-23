@@ -12,15 +12,26 @@ module.exports = {
 		main: "./src/index.js",
 	},
 	output: {
-		path: path.resolve(__dirname, "dist"),
-		filename: "main.js",
+		path: path.resolve(
+			__dirname,
+			"dist"
+		),
+		filename: "bundle.js",
 		publicPath: "",
 	},
 	target: ["web", "es5"],
 	stats: { children: true },
 	mode: "development",
 	devServer: {
-		contentBase: path.resolve(__dirname, "./dist"),
+		static: [
+			{
+				directory: path.resolve(
+					__dirname,
+					"/dist"
+				),
+				watch: true,
+			},
+		],
 		compress: true,
 		port: 8080,
 		open: true,
@@ -58,9 +69,11 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new HtmlWebpackPlugin({
-			template: "./src/index.html", // path to our index.html file
-		}),
+		new HtmlWebpackPlugin(
+			{
+				template: "./src/index.html", // path to our index.html file
+			}
+		),
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin(), // connect the plugin for merging CSS files
 	],
