@@ -10,7 +10,6 @@ import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import Section from "./utils/Section.js";
 import UserInfo from "./components/UserInfo";
-import UserInfo from "./components/UserInfo";
 
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
