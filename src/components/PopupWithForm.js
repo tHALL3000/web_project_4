@@ -5,9 +5,9 @@
 import Popup from "./Popup";
 
 class PopupWithForm extends Popup {
-	constructor(submitForm, popupSelector) {
+	constructor(submitForm, PopupSelector) {
 		super(
-			popupSelector
+			PopupSelector
 		);
 		this._submitForm =
 			submitForm;

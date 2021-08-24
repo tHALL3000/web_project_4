@@ -205,10 +205,10 @@ section.setEventListeners();
 const popup = new Popup(PopupSelector);
 popup.setEventListeners();
 
-const popupForm = new PopupWithForm();
+const popupForm = new PopupWithForm(submitForm, PopupSelector);
 popupForm.setEventListeners();
 
-const UserInfo = new UserInfo();
+const UserInfo = new UserInfo(nameSelector, titleSelector);
 
 const config = {
 	inputSelector: ".modal__form-control-input",
