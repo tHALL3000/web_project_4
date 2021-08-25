@@ -184,13 +184,21 @@ imagePopup.setEventListeners();
 
 const section = new Section({
 	renderer: (data) => {
+		console.log(
+			"renderer",
+			data
+		);
 		const card =
 			new Card(
 				{
 					data,
-					// handleCardClick: (data) => {
-					// 	imagePopup.open(data)
-					// }
+					handleCardClick: (
+						data
+					) => {
+						imagePopup.open(
+							data
+						);
+					},
 				},
 				cardSelector
 			);
@@ -208,7 +216,7 @@ popup.setEventListeners();
 const popupForm = new PopupWithForm(submitForm, PopupSelector);
 popupForm.setEventListeners();
 
-const UserInfo = new UserInfo(nameSelector, titleSelector);
+// const userInfo = new UserInfo(nameSelector, titleSelector);
 
 const config = {
 	inputSelector: ".modal__form-control-input",
