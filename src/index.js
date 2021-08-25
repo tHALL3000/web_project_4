@@ -33,40 +33,18 @@ const cardFormElement = document.querySelector(".form_add");
 
 const toggleModal = (modal) => {
 	modal.classList.toggle("overlay_show");
-	if (
-		modal.classList.contains(
-			"overlay_show"
-		)
-	) {
-		document.addEventListener(
-			"keydown",
-			handleEscKey
-		);
-		modal.addEventListener(
-			"click",
-			handleOutsideClick
-		);
+	if (modal.classList.contains("overlay_show")) {
+		document.addEventListener("keydown", handleEscKey);
+		modal.addEventListener("click", handleOutsideClick);
 	} else {
-		document.removeEventListener(
-			"keydown",
-			handleEscKey
-		);
-		modal.removeEventListener(
-			"click",
-			handleOutsideClick
-		);
+		document.removeEventListener("keydown", handleEscKey);
+		modal.removeEventListener("click", handleOutsideClick);
 	}
 };
 
 const handleOutsideClick = (e) => {
-	if (
-		e.target.classList.contains(
-			"overlay"
-		)
-	) {
-		toggleModal(
-			e.target
-		);
+	if (e.target.classList.contains("overlay")) {
+		toggleModal(e.target);
 	}
 };
 //const handleEscKey = (e) => {
@@ -81,18 +59,14 @@ const modalAddWindow = document.querySelector(".overlay_type_add");
 const modalPreviewWindow = document.querySelector(".overlay_type_preview");
 
 editButton.addEventListener("click", () => {
-	nameInput.value =
-		profileName.textContent;
-	titleInput.value =
-		profileTitle.textContent;
+	nameInput.value = profileName.textContent;
+	titleInput.value = profileTitle.textContent;
 	toggleModal(modalEditWindow);
 });
 
 photoModalButton.addEventListener("click", () => {
 	toggleModal(modalAddWindow);
-	document.getElementById(
-		"newPicture"
-	).reset();
+	document.getElementById("newPicture").reset();
 });
 
 // profileClose.addEventListener("click", () => {
@@ -106,10 +80,8 @@ imgPreviewClose.addEventListener("click", () => {
 const formProfile = document.querySelector(".form-profile");
 formProfile.addEventListener("submit", (e) => {
 	e.preventDefault();
-	profileName.textContent =
-		nameInput.value;
-	profileTitle.textContent =
-		titleInput.value;
+	profileName.textContent = nameInput.value;
+	profileTitle.textContent = titleInput.value;
 	toggleModal(overlay);
 });
 
@@ -121,14 +93,6 @@ const addPictureForm = document.querySelector(".form_add");
 const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
 const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
 const cardSelector = ".card-template";
-
-const renderCard = (data) => {
-	const card = new Card(
-		data,
-		cardSelector
-	);
-	photoGrid.prepend(card.generateCard());
-};
 
 addPictureForm.addEventListener("submit", (e) => {
 	e.preventDefault();
@@ -170,51 +134,50 @@ const initialCards = [
 
 const photoGrid = document.querySelector(".photo-grid");
 
-initialCards.forEach((card) => {
-	renderCard(card);
-});
-
 // const userInfo = new userInfo({
 // 	usernameSelector: profileConfig.profileTitle,
 // 	userDescriptionSelector: profileConfig.profileDescription
 // })
 
-const imagePopup = new PopupWithImage(PopupSelector);
-imagePopup.setEventListeners();
-
 const section = new Section({
 	renderer: (data) => {
-		console.log(
-			"renderer",
-			data
-		);
-		const card =
-			new Card(
-				{
-					data,
-					handleCardClick: (
-						data
-					) => {
-						imagePopup.open(
-							data
-						);
-					},
+		console.log("renderer", data);
+		const card = new Card(
+			{
+				data,
+				handleCardClick: (data) => {
+					imagePopup.open({
+						name: data.name,
+						link: data.link,
+					});
 				},
-				cardSelector
-			);
-		photoGrid.prepend(
-			card.generateCard()
+			},
+			cardSelector
 		);
+		photoGrid.prepend(card.generateCard());
 		(".card-template");
 	},
 });
-section.setEventListeners();
+//section.setEventListeners();
+//console.log(section);
+
+const renderCard = (data) => {
+	const card = new Card({ data, handleCardClick }, cardSelector);
+	photoGrid.prepend(card.generateCard());
+};
+
+initialCards.forEach((card) => {
+	renderCard(card);
+});
 
 const popup = new Popup(PopupSelector);
 popup.setEventListeners();
 
 const popupForm = new PopupWithForm(submitForm, PopupSelector);
 popupForm.setEventListeners();
+
+const imagePopup = new PopupWithImage(PopupSelector);
+imagePopup.setEventListeners();
 
 // const userInfo = new UserInfo(nameSelector, titleSelector);
 
