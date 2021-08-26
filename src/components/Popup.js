@@ -1,9 +1,9 @@
 /** @format */
 
 //** @format */
-
 class Popup {
 	constructor(popupSelector) {
+		// const popupSelector = document.querySelectorAll(".modal");
 		this._popupElement = document.querySelector(popupSelector);
 	}
 	_handleEscKey = (e) => {

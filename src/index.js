@@ -144,6 +144,7 @@ const handleCardClick = (data) => {
 		link: data.link,
 	});
 };
+
 const submitForm = (item) => {
 	popupForm.open({
 		nameInput: input.name,
@@ -165,8 +166,6 @@ const section = new Section({
 		(".card-template");
 	},
 });
-//section.setEventListeners();
-//console.log(section);
 
 const renderCard = (data) => {
 	const card = new Card({ data, handleCardClick }, cardSelector);
@@ -179,8 +178,10 @@ initialCards.forEach((card) => {
 
 // const popup = new Popup(popupSelector);
 // popup.setEventListeners();
+const popupSelector = document.querySelectorAll(".modal");
 
-const popupForm = new PopupWithForm({ submitForm  = (input) => { formProfile(input) } }, popupSelector);
+// { submitForm  = (input) => { formProfile(input) } }
+const popupForm = new PopupWithForm(submitForm, popupSelector);
 popupForm.setEventListeners();
 
 const imagePopup = new PopupWithImage(popupSelector);
