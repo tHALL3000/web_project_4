@@ -24,7 +24,7 @@ const titleInput = document.forms.profile.elements.title;
 
 const overlay = document.querySelector(".overlay_type_edit");
 
-// const profileClose = document.querySelector(".modal__close-button");
+const profileClose = document.querySelector(".modal__close-button");
 const addPhotoClose = document.querySelector(".modal__close-button_add-photo");
 const imgPreviewClose = document.querySelector(".modal__close-button_image");
 
@@ -138,6 +138,18 @@ const photoGrid = document.querySelector(".photo-grid");
 // 	usernameSelector: profileConfig.profileTitle,
 // 	userDescriptionSelector: profileConfig.profileDescription
 // })
+const handleCardClick = (data) => {
+	imagePopup.open({
+		name: data.name,
+		link: data.link,
+	});
+};
+const submitForm = (item) => {
+	popupForm.open({
+		nameInput: input.name,
+		titleInput: input.title,
+	});
+};
 
 const section = new Section({
 	renderer: (data) => {
@@ -145,12 +157,7 @@ const section = new Section({
 		const card = new Card(
 			{
 				data,
-				handleCardClick: (data) => {
-					imagePopup.open({
-						name: data.name,
-						link: data.link,
-					});
-				},
+				handleCardClick,
 			},
 			cardSelector
 		);
@@ -170,13 +177,13 @@ initialCards.forEach((card) => {
 	renderCard(card);
 });
 
-const popup = new Popup(PopupSelector);
-popup.setEventListeners();
+// const popup = new Popup(popupSelector);
+// popup.setEventListeners();
 
-const popupForm = new PopupWithForm(submitForm, PopupSelector);
+const popupForm = new PopupWithForm({ submitForm  = (input) => { formProfile(input) } }, popupSelector);
 popupForm.setEventListeners();
 
-const imagePopup = new PopupWithImage(PopupSelector);
+const imagePopup = new PopupWithImage(popupSelector);
 imagePopup.setEventListeners();
 
 // const userInfo = new UserInfo(nameSelector, titleSelector);

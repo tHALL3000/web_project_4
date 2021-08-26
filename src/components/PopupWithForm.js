@@ -5,43 +5,28 @@
 import Popup from "./Popup";
 
 class PopupWithForm extends Popup {
-	constructor(submitForm, PopupSelector) {
-		super(
-			PopupSelector
-		);
-		this._submitForm =
-			submitForm;
-		this._popupForm =
-			this._popupElement.querySelector(
-				".form-profile"
-			);
+	constructor(submitForm, popupSelector) {
+		super(popupSelector);
+		this._submitForm = submitForm;
+		this._popupForm = this._popupElement.querySelector(".form-profile");
 	}
 
 	_getInputValues() {
-		profileName.textContent =
-			nameInput.value;
-		profileTitle.textContent =
-			titleInput.value;
-		//input values from form fields
-		//"name": newItemName.value,
-		//"link": newItemLink.value
+		this._inputSource = this._popupForm.querySelectorAll(".modal__form-control-input");
+		profileName.textContent = nameInput.value;
+		profileTitle.textContent = titleInput.value;
+		this._inputValues = {};
+		this._inputSource.forEach((input) => (this._inputValues[nameInput.name] = nameInput.value));
+		return this._inputValues;
 	}
 
 	setEventListeners() {
 		super.setEventListeners();
-		this._popupSelector.addEventListener(
-			"submit",
-			(
-				e
-			) => {
-				e.preventDefault();
-				toggleModal(
-					overlay
-				);
-				//add click event listenerclose icon
-				//add submit to submit button
-			}
-		);
+		this._popupSelector.addEventListener("submit", (e) => {
+			e.preventDefault();
+			this._submitForm(this._getInputValues());
+			toggleModal(overlay);
+		});
 	}
 
 	close() {
