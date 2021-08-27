@@ -2,10 +2,10 @@
 
 //** @format */
 class Popup {
-	constructor(popupSelector) {
-		// const popupSelector = document.querySelectorAll(".modal");
-		this._popupElement = document.querySelector(popupSelector);
-	}
+	// constructor(popupSelector) {
+	// 	// this._popupElement = document.querySelector(popupSelector);
+	// 	this._handleEscClose = this._handleEscClose.bind(this);
+	// }
 	_handleEscKey = (e) => {
 		// const activeModal = document.querySelector(".overlay_show");
 		// if (e.key === "Escape" && activeModal) {
