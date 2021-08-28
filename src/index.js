@@ -4,7 +4,6 @@
 import "./index.css";
 import FormValidator from "./utils/FormValidator";
 import Card from "./components/Card.js";
-//import "../images/avatar.jpg";
 import Popup from "./components/Popup.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
@@ -31,28 +30,11 @@ const imgPreviewClose = document.querySelector(".modal__close-button_image");
 const modal = document.querySelector(".modal");
 const cardFormElement = document.querySelector(".form_add");
 
-const toggleModal = (modal) => {
-	modal.classList.toggle("overlay_show");
-	if (modal.classList.contains("overlay_show")) {
-		document.addEventListener("keydown", handleEscKey);
-		modal.addEventListener("click", handleOutsideClick);
-	} else {
-		document.removeEventListener("keydown", handleEscKey);
-		modal.removeEventListener("click", handleOutsideClick);
-	}
-};
-
 const handleOutsideClick = (e) => {
 	if (e.target.classList.contains("overlay")) {
 		toggleModal(e.target);
 	}
 };
-//const handleEscKey = (e) => {
-// 	const activeModal = document.querySelector(".overlay_show");
-// 	if (e.key === "Escape" && activeModal) {
-// 		toggleModal(activeModal);
-// 	}
-// };
 
 const modalEditWindow = document.querySelector(".overlay_type_edit");
 const modalAddWindow = document.querySelector(".overlay_type_add");
@@ -61,12 +43,13 @@ const modalPreviewWindow = document.querySelector(".overlay_type_preview");
 editButton.addEventListener("click", () => {
 	nameInput.value = profileName.textContent;
 	titleInput.value = profileTitle.textContent;
-	toggleModal(modalEditWindow);
+	popupForm.open();
 });
 
 photoModalButton.addEventListener("click", () => {
-	toggleModal(modalAddWindow);
+	// toggleModal(modalAddWindow);
 	document.getElementById("newPicture").reset();
+	addCardModal.open();
 });
 
 // profileClose.addEventListener("click", () => {
@@ -85,9 +68,9 @@ formProfile.addEventListener("submit", (e) => {
 	toggleModal(overlay);
 });
 
-addPhotoClose.addEventListener("click", () => {
-	toggleModal(modalAddWindow);
-});
+// addPhotoClose.addEventListener("click", () => {
+// 	toggleModal(modalAddWindow);
+// });
 
 const addPictureForm = document.querySelector(".form_add");
 const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
@@ -176,16 +159,17 @@ initialCards.forEach((card) => {
 	renderCard(card);
 });
 
-// const popup = new Popup(popupSelector);
-// popup.setEventListeners();
-const popupSelector = document.querySelectorAll(".modal");
+const popupEditSelector = ".overlay_type_edit";
+const popupAddSelector = ".overlay_type_add";
 
-// { submitForm  = (input) => { formProfile(input) } }
-const popupForm = new PopupWithForm(submitForm, popupSelector);
+const popupForm = new PopupWithForm(submitForm, popupEditSelector);
 popupForm.setEventListeners();
 
-const imagePopup = new PopupWithImage(popupSelector);
-imagePopup.setEventListeners();
+const addCardModal = new PopupWithForm(submitForm, popupAddSelector);
+addCardModal.setEventListeners();
+
+// const imagePopup = new PopupWithImage(popupSelector);
+// imagePopup.setEventListeners();
 
 // const userInfo = new UserInfo(nameSelector, titleSelector);
 
