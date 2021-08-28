@@ -60,13 +60,13 @@ imgPreviewClose.addEventListener("click", () => {
 	toggleModal(modalPreviewWindow);
 });
 
-const formProfile = document.querySelector(".form-profile");
-formProfile.addEventListener("submit", (e) => {
-	e.preventDefault();
-	profileName.textContent = nameInput.value;
-	profileTitle.textContent = titleInput.value;
-	toggleModal(overlay);
-});
+// const formProfile = document.querySelector(".form-profile");
+// formProfile.addEventListener("submit", (e) => {
+// 	e.preventDefault();
+// 	profileName.textContent = nameInput.value;
+// 	profileTitle.textContent = titleInput.value;
+// 	toggleModal(overlay);
+// });
 
 // addPhotoClose.addEventListener("click", () => {
 // 	toggleModal(modalAddWindow);
@@ -84,8 +84,8 @@ addPictureForm.addEventListener("submit", (e) => {
 		link: pictureLinkInput.value,
 	};
 
-	renderCard(userCard);
-	toggleModal(modalAddWindow);
+	// renderCard(userCard);
+	// toggleModal(modalAddWindow);
 });
 
 const initialCards = [
@@ -127,15 +127,15 @@ const handleCardClick = (data) => {
 		link: data.link,
 	});
 };
-
+console.log("Do you see me?");
 const submitForm = (item) => {
 	popupForm.open({
-		nameInput: input.name,
-		titleInput: input.title,
+		nameInput: item.name,
+		titleInput: item.title,
 	});
 };
 
-const section = new Section({
+const cardList = new Section({
 	renderer: (data) => {
 		console.log("renderer", data);
 		const card = new Card(
@@ -149,15 +149,7 @@ const section = new Section({
 		(".card-template");
 	},
 });
-
-const renderCard = (data) => {
-	const card = new Card({ data, handleCardClick }, cardSelector);
-	photoGrid.prepend(card.generateCard());
-};
-
-initialCards.forEach((card) => {
-	renderCard(card);
-});
+cardList.renderSection(initialCards);
 
 const popupEditSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
@@ -165,7 +157,22 @@ const popupAddSelector = ".overlay_type_add";
 const popupForm = new PopupWithForm(submitForm, popupEditSelector);
 popupForm.setEventListeners();
 
-const addCardModal = new PopupWithForm(submitForm, popupAddSelector);
+const addCardModal = new PopupWithForm(
+	{
+		submitForm: (data) => {
+			const card = new Card(
+				{
+					data,
+					handleCardClick,
+				},
+				cardSelector
+			);
+
+			cardList.addItem(card);
+		},
+	},
+	popupAddSelector
+);
 addCardModal.setEventListeners();
 
 // const imagePopup = new PopupWithImage(popupSelector);

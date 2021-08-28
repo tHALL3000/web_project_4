@@ -3,15 +3,14 @@
 //** @format */
 
 class Section {
-	constructor({ items, renderer }, cardContainer) {
+	constructor({ renderer }, cardContainer) {
 		this.renderer = renderer;
-		this.items = items;
 		this.cardContainer = document.querySelector(cardContainer);
 	}
 
-	renderSection() {
+	renderSection(items) {
 		//render each element on page
-		this.items.forEach((item) => {
+		items.forEach((item) => {
 			this.renderer(item);
 		});
 	}
