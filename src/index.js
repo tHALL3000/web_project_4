@@ -84,7 +84,9 @@ addPictureForm.addEventListener("submit", (e) => {
 		link: pictureLinkInput.value,
 	};
 
-	// renderCard(userCard);
+	photoGrid.prepend(userCard.generateCard());
+	(".card-template");
+	addPictureForm.close();
 	// toggleModal(modalAddWindow);
 });
 

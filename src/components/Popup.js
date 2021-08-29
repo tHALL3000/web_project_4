@@ -9,7 +9,7 @@ class Popup {
 		// const activeModal = document.querySelector(".overlay_show");
 		// if (e.key === "Escape" && activeModal) {
 		//     toggleModal(activeModal); //close function
-		e.preventDefault();
+		e.stopPropagation();
 		if (e.key === "Escape") this.close();
 	};
 
