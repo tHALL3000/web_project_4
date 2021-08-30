@@ -1,13 +1,6 @@
 /** @format */
 
-//** @format */
-
 import Popup from "./Popup";
-
-const profileName = document.querySelector(".profile__name");
-const profileTitle = document.querySelector(".profile__job");
-const nameInput = document.forms.profile.elements.name;
-const titleInput = document.forms.profile.elements.title;
 
 class PopupWithForm extends Popup {
 	constructor(submitForm, popupSelector) {
@@ -29,7 +22,6 @@ class PopupWithForm extends Popup {
 			e.preventDefault();
 			this._submitForm(this._getInputEditValues());
 			this.close();
-			// popupForm.close();
 		});
 	}
 }

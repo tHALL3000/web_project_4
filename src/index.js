@@ -1,42 +1,25 @@
 /** @format */
 
 import "./index.css";
-import FormValidator from "./utils/FormValidator";
-import Card from "./components/Card.js";
-import PopupWithForm from "./components/PopupWithForm.js";
-import PopupWithImage from "./components/PopupWithImage.js";
-import Section from "./utils/Section.js";
-import UserInfo from "./components/UserInfo";
+import FormValidator from "../components/FormValidator.js";
+import Card from "../components/Card.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo";
 
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
 const modalProfile = document.querySelector(".modal_edit_profile");
 const editFormElement = modalProfile.querySelector(".form-profile");
-
+const photoGrid = document.querySelector(".photo-grid");
 const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__job");
-
 const nameInput = document.forms.profile.elements.name;
 const titleInput = document.forms.profile.elements.title;
-
-const overlay = document.querySelector(".overlay_type_edit");
-
-const profileClose = document.querySelector(".modal__close-button");
-const addPhotoClose = document.querySelector(".modal__close-button_add-photo");
 const imgPreviewClose = document.querySelector(".modal__close-button_image");
-
-const modal = document.querySelector(".modal");
 const cardFormElement = document.querySelector(".form_add");
-
-const handleOutsideClick = (e) => {
-	if (e.target.classList.contains("overlay")) {
-		toggleModal(e.target);
-	}
-};
-
-const modalEditWindow = document.querySelector(".overlay_type_edit");
-const modalAddWindow = document.querySelector(".overlay_type_add");
-const modalPreviewWindow = document.querySelector(".overlay_type_preview");
+const cardSelector = ".card-template";
 
 editButton.addEventListener("click", () => {
 	nameInput.value = profileName.textContent;
@@ -45,7 +28,6 @@ editButton.addEventListener("click", () => {
 });
 
 photoModalButton.addEventListener("click", () => {
-	// toggleModal(modalAddWindow);
 	document.getElementById("newPicture").reset();
 	addCardModal.open();
 });
@@ -53,11 +35,6 @@ photoModalButton.addEventListener("click", () => {
 imgPreviewClose.addEventListener("click", () => {
 	previewPicture.close();
 });
-
-// const addPictureForm = document.querySelector(".form_add");
-const pictureTitleInput = document.forms.newPicture.elements.name;
-const pictureLinkInput = document.forms.newPicture.elements.link;
-const cardSelector = ".card-template";
 
 const initialCards = [
 	{
@@ -85,8 +62,6 @@ const initialCards = [
 		link: "https://images.unsplash.com/photo-1530447920184-b88c8872?ixid=MnwxMjA3fDB8MHx2aXN1YWwtc2VhcmNofDF8fHxlbnwwfHx8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
 	},
 ];
-
-const photoGrid = document.querySelector(".photo-grid");
 
 const userInfo = new UserInfo({
 	nameSelector: "profile__name",
@@ -116,14 +91,13 @@ const cardList = new Section(
 	},
 	".photo-grid"
 );
+
 cardList.renderSection(initialCards);
 
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
-
 const popupForm = new PopupWithForm(submitForm, popupSelector);
 popupForm.setEventListeners();
-
 const addCardModal = new PopupWithForm((data) => {
 	const card = new Card(
 		{

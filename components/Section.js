@@ -1,7 +1,5 @@
 /** @format */
 
-//** @format */
-
 class Section {
 	constructor({ renderer }, cardContainer) {
 		this.renderer = renderer;
@@ -9,7 +7,6 @@ class Section {
 	}
 
 	renderSection(items) {
-		//render each element on page
 		items.forEach((item) => {
 			this.renderer(item);
 		});

@@ -1,16 +1,19 @@
 /** @format */
 
-//** @format */
 class Popup {
 	constructor(popupSelector) {
 		this._popupElement = document.querySelector(popupSelector);
 	}
 	_handleEscKey = (e) => {
-		// const activeModal = document.querySelector(".overlay_show");
-		// if (e.key === "Escape" && activeModal) {
-		//     toggleModal(activeModal); //close function
 		e.stopPropagation();
 		if (e.key === "Escape") this.close();
+	};
+
+	_handleOutsideClick = (e) => {
+		e.stopPropagation();
+		if (e.target.classList.contains("overlay")) {
+			this.close();
+		}
 	};
 
 	open() {
