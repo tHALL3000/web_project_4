@@ -1,10 +1,8 @@
 /** @format */
 
-//** @format */
 import "./index.css";
 import FormValidator from "./utils/FormValidator";
 import Card from "./components/Card.js";
-import Popup from "./components/Popup.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import Section from "./utils/Section.js";
@@ -53,12 +51,12 @@ photoModalButton.addEventListener("click", () => {
 });
 
 imgPreviewClose.addEventListener("click", () => {
-	toggleModal(modalPreviewWindow);
+	previewPicture.close();
 });
 
 // const addPictureForm = document.querySelector(".form_add");
-const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
-const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
+const pictureTitleInput = document.forms.newPicture.elements.name;
+const pictureLinkInput = document.forms.newPicture.elements.link;
 const cardSelector = ".card-template";
 
 const initialCards = [
@@ -90,43 +88,40 @@ const initialCards = [
 
 const photoGrid = document.querySelector(".photo-grid");
 
-// const userInfo = new userInfo({
-// 	usernameSelector: profileConfig.profileTitle,
-// 	userDescriptionSelector: profileConfig.profileDescription
-// })
+const userInfo = new UserInfo({
+	nameSelector: "profile__name",
+	titleSelector: "profile__job",
+});
 const handleCardClick = (data) => {
-	// imagePopup.open({
-	pictureTitleInput.textContent = data.name;
-	pictureLinkInput.link = data.link;
-	// });
+	previewPicture.open(data);
 };
 
 const submitForm = (item) => {
-	//add user info here
-	profileTitle.textContent = item.title;
-	profileName.textContent = item.name;
+	userInfo.setUserInfo(item);
 };
 
-const cardList = new Section({
-	renderer: (data) => {
-		console.log("renderer", data);
-		const card = new Card(
-			{
-				data,
-				handleCardClick,
-			},
-			cardSelector
-		);
-		photoGrid.prepend(card.generateCard());
-		(".card-template");
+const cardList = new Section(
+	{
+		renderer: (data) => {
+			console.log("renderer", data);
+			const card = new Card(
+				{
+					data,
+					handleCardClick,
+				},
+				cardSelector
+			);
+			photoGrid.prepend(card.generateCard());
+		},
 	},
-});
+	".photo-grid"
+);
 cardList.renderSection(initialCards);
 
-const popupEditSelector = ".overlay_type_edit";
+const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
 
-const popupForm = new PopupWithForm(submitForm, popupEditSelector);
+const popupForm = new PopupWithForm(submitForm, popupSelector);
 popupForm.setEventListeners();
 
 const addCardModal = new PopupWithForm((data) => {
@@ -138,10 +133,11 @@ const addCardModal = new PopupWithForm((data) => {
 		cardSelector
 	);
 
-	cardList.addItem(card);
+	cardList.addItem(card.generateCard());
 }, popupAddSelector);
 addCardModal.setEventListeners();
 
+const previewPicture = new PopupWithImage(".overlay_type_preview");
 const config = {
 	inputSelector: ".modal__form-control-input",
 	submitButtonSelector: ".button",

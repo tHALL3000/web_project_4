@@ -10,14 +10,14 @@ const nameInput = document.forms.profile.elements.name;
 const titleInput = document.forms.profile.elements.title;
 
 class PopupWithForm extends Popup {
-	constructor(submitForm, popupEditSelector) {
-		super(popupEditSelector);
+	constructor(submitForm, popupSelector) {
+		super(popupSelector);
 		this._submitForm = submitForm;
-		this._popupForm = document.querySelector(".form-profile");
+		this._popupForm = this._popupElement.querySelector(".form");
 	}
 
 	_getInputEditValues(data) {
-		this._inputSource = document.querySelectorAll(".modal__form-control-input");
+		this._inputSource = this._popupForm.querySelectorAll(".modal__form-control-input");
 		this._inputValues = {};
 		this._inputSource.forEach((input) => (this._inputValues[input.name] = input.value));
 		return this._inputValues;

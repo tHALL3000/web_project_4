@@ -15,10 +15,9 @@ class Section {
 		});
 	}
 
-	// addItem(card) {
-	// 	//takes DOM element and adds it to the container
-	// 	this.cardContainer.prepend(card);
-	// }
+	addItem(card) {
+		this.cardContainer.prepend(card);
+	}
 }
 
 export default Section;

@@ -33,7 +33,7 @@ const toggleModal = (modal) => {
 
 class Card {
 	constructor({ data, handleCardClick }, cardSelector) {
-		this._text = data.name;
+		this._name = data.name;
 		this._link = data.link;
 		this._cardSelector = cardSelector;
 		this._handleCardClick = handleCardClick;

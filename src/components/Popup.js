@@ -2,8 +2,8 @@
 
 //** @format */
 class Popup {
-	constructor(popupEditSelector) {
-		this._popupElement = document.querySelector(popupEditSelector);
+	constructor(popupSelector) {
+		this._popupElement = document.querySelector(popupSelector);
 	}
 	_handleEscKey = (e) => {
 		// const activeModal = document.querySelector(".overlay_show");
