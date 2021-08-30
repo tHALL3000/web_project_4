@@ -25,11 +25,11 @@ const toggleModal = (modal) => {
 // 	}
 // };
 
-const handleOutsideClick = (e) => {
-	if (e.target.classList.contains("overlay")) {
-		toggleModal(e.target);
-	}
-};
+// const handleOutsideClick = (e) => {
+// 	if (e.target.classList.contains("overlay")) {
+// 		// toggleModal(e.target);
+// 	}
+// };
 
 class Card {
 	constructor({ data, handleCardClick }, cardSelector) {

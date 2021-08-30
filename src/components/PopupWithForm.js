@@ -16,42 +16,18 @@ class PopupWithForm extends Popup {
 		this._popupForm = document.querySelector(".form-profile");
 	}
 
-	submitForm = (data) => {
-		console.log("Do you see me?");
-		popupForm.open({
-			nameInput: data.name,
-			titleInput: data.title,
-		});
-	};
 	_getInputEditValues(data) {
 		this._inputSource = document.querySelectorAll(".modal__form-control-input");
-		// profileName.textContent = nameInput.value;
-		// profileTitle.textContent = titleInput.value;
 		this._inputValues = {};
-		this._inputSource.forEach((input) => (this._inputSource[nameInput.name] = nameInput.value));
+		this._inputSource.forEach((input) => (this._inputValues[input.name] = input.value));
 		return this._inputValues;
-
-		// cardList.renderSection(initialCards);
-
-		// if e.target === "saveButton"() => {
-		// 	addCardModal()
-		// }
-
-		// 	this._popupElement.addEventListener("click", (e) => {
-		// 		if (e.target.classList === "saveButton") {
-		// 			addCardModal(data);
-		// 		} else {
-		// 			cardList(data)
-		// 			}));
-		// 	this.close();
-		// });
 	}
 
 	setEventListeners() {
 		super.setEventListeners();
 		this._popupElement.addEventListener("submit", (e) => {
 			e.preventDefault();
-			this._submitForm(this._getInputEditValues);
+			this._submitForm(this._getInputEditValues());
 			this.close();
 			// popupForm.close();
 		});

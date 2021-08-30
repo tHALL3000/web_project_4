@@ -52,43 +52,14 @@ photoModalButton.addEventListener("click", () => {
 	addCardModal.open();
 });
 
-// profileClose.addEventListener("click", () => {
-// 	toggleModal(modalEditWindow);
-// });
-
 imgPreviewClose.addEventListener("click", () => {
 	toggleModal(modalPreviewWindow);
 });
 
-// const formProfile = document.querySelector(".form-profile");
-// formProfile.addEventListener("submit", (e) => {
-// 	e.preventDefault();
-// 	profileName.textContent = nameInput.value;
-// 	profileTitle.textContent = titleInput.value;
-// 	toggleModal(overlay);
-// });
-
-// addPhotoClose.addEventListener("click", () => {
-// 	toggleModal(modalAddWindow);
-// });
-
-const addPictureForm = document.querySelector(".form_add");
+// const addPictureForm = document.querySelector(".form_add");
 const pictureTitleInput = document.forms.newPicture.elements.nameOfPlace;
 const pictureLinkInput = document.forms.newPicture.elements.linkOfPlace;
 const cardSelector = ".card-template";
-
-addPictureForm.addEventListener("submit", (e) => {
-	e.preventDefault();
-	const userCard = {
-		name: pictureTitleInput.value,
-		link: pictureLinkInput.value,
-	};
-
-	photoGrid.prepend(userCard.generateCard());
-	(".card-template");
-	addPictureForm.close();
-	// toggleModal(modalAddWindow);
-});
 
 const initialCards = [
 	{
@@ -124,17 +95,16 @@ const photoGrid = document.querySelector(".photo-grid");
 // 	userDescriptionSelector: profileConfig.profileDescription
 // })
 const handleCardClick = (data) => {
-	imagePopup.open({
-		name: data.name,
-		link: data.link,
-	});
+	// imagePopup.open({
+	pictureTitleInput.textContent = data.name;
+	pictureLinkInput.link = data.link;
+	// });
 };
-console.log("Do you see me?");
+
 const submitForm = (item) => {
-	popupForm.open({
-		nameInput: item.name,
-		titleInput: item.title,
-	});
+	//add user info here
+	profileTitle.textContent = item.title;
+	profileName.textContent = item.name;
 };
 
 const cardList = new Section({
@@ -159,28 +129,18 @@ const popupAddSelector = ".overlay_type_add";
 const popupForm = new PopupWithForm(submitForm, popupEditSelector);
 popupForm.setEventListeners();
 
-const addCardModal = new PopupWithForm(
-	{
-		submitForm: (data) => {
-			const card = new Card(
-				{
-					data,
-					handleCardClick,
-				},
-				cardSelector
-			);
-
-			cardList.addItem(card);
+const addCardModal = new PopupWithForm((data) => {
+	const card = new Card(
+		{
+			data,
+			handleCardClick,
 		},
-	},
-	popupAddSelector
-);
+		cardSelector
+	);
+
+	cardList.addItem(card);
+}, popupAddSelector);
 addCardModal.setEventListeners();
-
-// const imagePopup = new PopupWithImage(popupSelector);
-// imagePopup.setEventListeners();
-
-// const userInfo = new UserInfo(nameSelector, titleSelector);
 
 const config = {
 	inputSelector: ".modal__form-control-input",
