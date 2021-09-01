@@ -26,7 +26,6 @@ class Popup {
 		this._popupElement.classList.remove("overlay_show");
 		document.removeEventListener("keydown", this._handleEscKey);
 		this._popupElement.removeEventListener("click", this._handleOutsideClick);
-		document.getElementById("newPicture").reset();
 	}
 
 	setEventListeners() {

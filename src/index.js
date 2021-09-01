@@ -23,7 +23,9 @@ const cardFormElement = document.querySelector(".form_add");
 const cardSelector = ".card-template";
 
 editButton.addEventListener("click", () => {
-	userInfo.getUserInfo();
+	const profileText = userInfo.getUserInfo();
+	profileName.value = profileText.name;
+	profileTitle.value = profileText.title;
 	popupEditProfile.open();
 });
 
@@ -42,12 +44,15 @@ const handleCardClick = (data) => {
 const submitEditProfileForm = (item) => {
 	userInfo.setUserInfo(item);
 };
+function createCard(data, cardSelector) {
+	return new Card(data, cardSelector);
+}
 
 const cardList = new Section(
 	{
 		renderer: (data) => {
 			console.log("renderer", data);
-			const card = new Card(
+			const card = createCard(
 				{
 					data,
 					handleCardClick,
@@ -67,14 +72,13 @@ const popupAddSelector = ".overlay_type_add";
 const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
 popupEditProfile.setEventListeners();
 const addCardModal = new PopupWithForm((data) => {
-	const card = new Card(
+	const card = createCard(
 		{
 			data,
 			handleCardClick,
 		},
 		cardSelector
 	);
-
 	cardList.addItem(card.generateCard());
 }, popupAddSelector);
 addCardModal.setEventListeners();
