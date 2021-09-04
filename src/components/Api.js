@@ -19,50 +19,69 @@ class Api {
 		});
 	}
 
-	setUserInfo(item) {
-		return (
-			fetch(`${this.url}/11/users/me`,
-			{
-				method: "PATCH",
-				headers: {
-					authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({
-					name: item.userInfo.name,
-					title: item.userInfo.title,
-				}),
-			}
-		)   
-        )
-    };
-    
-    addCard() {
-        return fetch(`${this.url}/cards`,
-        {
+    getProfile() {
+        return fetch(`${this.url}/11/users/me`, {
             method: "PATCH",
             headers: {
                 authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
                 "Content-Type": "application/json",
             },
         })
-        .then((res) => {
+                .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+                .then((result) => {
+                    profileName.value = userInfo.getUserInfo().name;
+                    profileTitle.value = userInfo.getUserInfo().title;
+                })
+            });
+    };
+    
+    
+
+	setUserInfo(item) {
+        return fetch(`${this.url}/11/users/me`, {
+            method: "PATCH",
+            headers: {
+                authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => {
+                if (res.ok) {
+                    return res.json();
+                }
+                .then((result) => {
+                    profileName.value = userInfo.getUserInfo().name;
+                    profileTitle.value = userInfo.getUserInfo().title;
+                })
+            });
+
+	addCard() {
+		return fetch(`${this.url}/cards`, {
+			method: "PATCH",
+			headers: {
+				authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+				"Content-Type": "application/json",
+			},
+		}).then((res) => {
 			if (res.ok) {
 				return res.json();
 			}
 			// if the server returns an error, reject the promise
 			return Promise.reject(`Error: ${res.status}`);
-    }
-
-	// catch() {
-	// 	api.getInitialCards()
-	// 		.then((result) => {
-	// 			// process the result
-	// 		})
-	// 		.catch((err) => {
-	// 			console.log(err); // log the error to the console
-	// 		});
-	// }
+		});
+	}
 }
+// catch() {
+// 	api.getInitialCards()
+// 		.then((result) => {
+// 			// process the result
+// 		})
+// 		.catch((err) => {
+// 			console.log(err); // log the error to the console
+// 		});
+// }
 
 export default Api;

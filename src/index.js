@@ -31,8 +31,7 @@ const api = new Api({
 	},
 });
 
-// console.log(api);
-console.log(Api.setUserInfo);
+console.log(api);
 
 editButton.addEventListener("click", () => {
 	const profileText = userInfo.getUserInfo();
