@@ -94,6 +94,13 @@ class Api {
             body: JSON.stringify(avatar),
             avatar: avatar
         })
+        .then((res) => {
+			if (res.ok) {
+				return res.json();
+			}
+			// if the server returns an error, reject the promise
+			return Promise.reject(`Error: ${res.status}`);
+		});
         
 }
 // catch() {
