@@ -8,6 +8,7 @@ import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo";
+import Api from "./components/Api";
 
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
@@ -21,6 +22,16 @@ const titleInput = document.forms.profile.elements.title;
 
 const cardFormElement = document.querySelector(".form_add");
 const cardSelector = ".card-template";
+
+const api = new Api({
+	baseUrl: "https://around.nomoreparties.co/v1/group-11",
+	headers: {
+		authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+		"Content-Type": "application/json",
+	},
+});
+
+console.log(api);
 
 editButton.addEventListener("click", () => {
 	const profileText = userInfo.getUserInfo();
@@ -51,7 +62,6 @@ function createCard(data, cardSelector) {
 const cardList = new Section(
 	{
 		renderer: (data) => {
-			console.log("renderer", data);
 			const card = createCard(
 				{
 					data,
