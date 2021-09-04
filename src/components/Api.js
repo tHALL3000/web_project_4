@@ -19,44 +19,33 @@ class Api {
 		});
 	}
 
-    getProfile() {
-        return fetch(`${this.url}/11/users/me`, {
-            method: "PATCH",
-            headers: {
-                authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
-                "Content-Type": "application/json",
-            },
-        })
-                .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
-                .then((result) => {
-                    profileName.value = userInfo.getUserInfo().name;
-                    profileTitle.value = userInfo.getUserInfo().title;
-                })
-            });
-    };
-    
-    
+	getProfile() {
+		return fetch(`${this.url}/11/users/me`, {
+			method: "PATCH",
+			headers: {
+				authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				name: item.userInfo.name,
+				title: item.userInfo.title,
+			}),
+		});
+	}
 
 	setUserInfo(item) {
-        return fetch(`${this.url}/11/users/me`, {
-            method: "PATCH",
-            headers: {
-                authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
-                "Content-Type": "application/json",
-            },
-        })
-            .then((res) => {
-                if (res.ok) {
-                    return res.json();
-                }
-                .then((result) => {
-                    profileName.value = userInfo.getUserInfo().name;
-                    profileTitle.value = userInfo.getUserInfo().title;
-                })
-            });
+		return fetch(`${this.url}/11/users/me`, {
+			method: "PATCH",
+			headers: {
+				authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				name: item.userInfo.name,
+				title: item.userInfo.title,
+			}),
+		});
+	}
 
 	addCard() {
 		return fetch(`${this.url}/cards`, {
