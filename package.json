@@ -1,0 +1,43 @@
+{
+	"name": "web_project_4",
+	"version": "1.0.0",
+	"description": "### Overview Intro to JavaScript. Incorperates the use of my own chosen images, which vary in size but must fit in grid. Edit form uses JS to replace the name and job from the form fields. Media query again for responsive design. Also used the :hover and :active features on classes.",
+	"main": "index.js",
+	"scripts": {
+		"build": "webpack --mode production",
+		"dev": "webpack serve",
+		"predeploy": "npm run build",
+		"deploy": "gh-pages -d dist"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/tHALL3000/web_project_4.git"
+	},
+	"keywords": [],
+	"author": "tHALL3000",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/tHALL3000/web_project_4/issues"
+	},
+	"homepage": "https://github.com/tHALL3000/web_project_4#readme",
+	"dependencies": {
+		"core-js": "^3.16.2"
+	},
+	"devDependencies": {
+		"@babel/core": "^7.15.0",
+		"@babel/preset-env": "^7.15.0",
+		"autoprefixer": "^10.3.2",
+		"babel-loader": "^8.2.2",
+		"build": "^0.1.4",
+		"clean-webpack-plugin": "^4.0.0-alpha.0",
+		"css-loader": "^6.2.0",
+		"cssnano": "^5.0.8",
+		"gh-pages": "^3.2.3",
+		"html-webpack-plugin": "^5.3.2",
+		"mini-css-extract-plugin": "^2.2.0",
+		"postcss-loader": "^6.1.1",
+		"webpack": "^5.51.1",
+		"webpack-cli": "^4.8.0",
+		"webpack-dev-server": "^4.0.0"
+	}
+}
