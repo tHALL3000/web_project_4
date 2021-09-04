@@ -19,6 +19,7 @@ const profileName = document.querySelector(".profile__name");
 const profileTitle = document.querySelector(".profile__job");
 const nameInput = document.forms.profile.elements.nameProfile;
 const titleInput = document.forms.profile.elements.title;
+const avatar = document.querySelector(".profile__picture-rounded");
 
 const cardFormElement = document.querySelector(".form_add");
 const cardSelector = ".card-template";
@@ -101,3 +102,5 @@ const cardFormValidator = new FormValidator(config, cardFormElement);
 
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+
+export default { nameSelector, titleSelector };
