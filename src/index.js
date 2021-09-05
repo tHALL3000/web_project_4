@@ -1,7 +1,7 @@
 /** @format */
 
 import "./index.css";
-import { config, initialCards } from "./utils/constants";
+import config from "./utils/constants";
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
 import PopupWithForm from "./components/PopupWithForm.js";
@@ -23,16 +23,6 @@ const avatar = document.querySelector(".profile__picture-rounded");
 
 const cardFormElement = document.querySelector(".form_add");
 const cardSelector = ".card-template";
-
-const api = new Api({
-	baseUrl: "https://around.nomoreparties.co/v1/group-11",
-	headers: {
-		authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
-		"Content-Type": "application/json",
-	},
-});
-
-console.log(api);
 
 editButton.addEventListener("click", () => {
 	const profileText = userInfo.getUserInfo();
@@ -60,23 +50,34 @@ function createCard(data, cardSelector) {
 	return new Card(data, cardSelector);
 }
 
-const cardList = new Section(
-	{
-		renderer: (data) => {
-			const card = createCard(
-				{
-					data,
-					handleCardClick,
-				},
-				cardSelector
-			);
-			photoGrid.prepend(card.generateCard());
-		},
+const api = new Api({
+	baseUrl: "https://around.nomoreparties.co/v1/group-11",
+	headers: {
+		authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+		"Content-Type": "application/json",
 	},
-	".photo-grid"
-);
+});
 
-cardList.renderSection(initialCards);
+console.log(api);
+
+api.getInitialCards().then((cards) => {
+	cardList.renderSection(cards);
+});
+// const cardList = new Section(
+// 	{
+// 		renderer: (data) => {
+// 			const card = createCard(
+// 				{
+// 					data,
+// 					handleCardClick,
+// 				},
+// 				cardSelector
+// 			);
+// 			photoGrid.prepend(card.generateCard());
+// 		},
+// 	},
+// 	".photo-grid"
+// );
 
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
@@ -103,4 +104,4 @@ const cardFormValidator = new FormValidator(config, cardFormElement);
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
 
-export default { nameSelector, titleSelector };
+// export default { nameSelector, titleSelector };
