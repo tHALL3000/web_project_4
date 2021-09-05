@@ -9,6 +9,7 @@ class Api {
 	}
 
 	getInitialCards() {
+		console.log(this.url);
 		return fetch(`${this.url}/cards`, {
 			headers: { authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b" },
 		}).then((res) => {

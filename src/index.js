@@ -49,35 +49,34 @@ const submitEditProfileForm = (item) => {
 function createCard(data, cardSelector) {
 	return new Card(data, cardSelector);
 }
-
-const api = new Api({
-	baseUrl: "https://around.nomoreparties.co/v1/group-11",
+const baseUrl = "https://around.nomoreparties.co/v1/group-11";
+const api = new Api(baseUrl, {
 	headers: {
 		authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
 		"Content-Type": "application/json",
 	},
 });
 
-console.log(api);
+const cardList = new Section(
+	{
+		renderer: (data) => {
+			const card = createCard(
+				{
+					data,
+					handleCardClick,
+				},
+				cardSelector
+			);
+			photoGrid.prepend(card.generateCard());
+		},
+	},
+	".photo-grid"
+);
 
 api.getInitialCards().then((cards) => {
 	cardList.renderSection(cards);
+	console.log(cards);
 });
-// const cardList = new Section(
-// 	{
-// 		renderer: (data) => {
-// 			const card = createCard(
-// 				{
-// 					data,
-// 					handleCardClick,
-// 				},
-// 				cardSelector
-// 			);
-// 			photoGrid.prepend(card.generateCard());
-// 		},
-// 	},
-// 	".photo-grid"
-// );
 
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
