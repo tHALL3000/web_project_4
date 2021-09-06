@@ -8,98 +8,82 @@ class Api {
 		this.cardId = cardId;
 	}
 
+	_ifResReturnJson(res) {
+		if (res.ok) {
+			return res.json();
+		}
+		return Promise.reject(`Error: ${res.status}`);
+	}
+
 	getInitialCards() {
 		console.log(this.url);
 		return fetch(`${this.url}/cards`, {
-			headers: { authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b" },
-		}).then((res) => {
-			if (res.ok) {
-				return res.json();
-			}
-			// if the server returns an error, reject the promise
-			return Promise.reject(`Error: ${res.status}`);
-		});
+			headers: { authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f" },
+		}).then((res) => this._ifResReturnJson(res));
 	}
 
 	getProfile() {
 		return fetch(`${this.url}/11/users/me`, {
 			method: "GET",
 			headers: {
-				authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
-		})
-			.then((res) => {
-				return res.json();
-			})
-			.then((result) => {
-				//check this
-				// profileName.value = nameSelector.name;
-				// profileTitle.value = titleSelector.title;
-			});
+		}).then((res) => this._ifResReturnJson(res));
 	}
 
 	setUserInfo(item) {
 		return fetch(`${this.url}/11/users/me`, {
 			method: "PATCH",
 			headers: {
-				authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
 				//check this
-				name: item.userInfo.name,
-				title: item.userInfo.title,
+				name: item.name,
+				title: item.title,
 			}),
 		});
 	}
 
-	addCard() {
+	addCard(data) {
 		return fetch(`${this.url}/cards`, {
-			method: "PATCH",
+			method: "POST",
 			headers: {
-				authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
-		}).then((res) => {
-			if (res.ok) {
-				return res.json();
-			}
-			// if the server returns an error, reject the promise
-			return Promise.reject(`Error: ${res.status}`);
-		});
+			body: JSON.stringify({
+				link: data.link,
+				name: data.name,
+			}),
+		}).then((res) => this._ifResReturnJson(res));
 	}
 
 	cardLikesTotal() {}
 
 	deleteCard(cardId) {
-		return fetch(`${this.url}/cards/cardId `, {
+		return fetch(`${this.url}/cards/${cardId}`, {
 			method: "DELETE",
 			headers: {
-				authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
 		});
-		//get the id into the url
-		//unfinished
 	}
+
 	updateProfilePicture() {
 		const avatar = document.querySelector(".profile__picture-rounded");
 		return fetch(`${this.url}/users/me/avatar`, {
 			method: "PATCH",
 			headers: {
-				authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify(avatar),
 			avatar: avatar,
-		}).then((res) => {
-			if (res.ok) {
-				return res.json();
-			}
-			// if the server returns an error, reject the promise
-			return Promise.reject(`Error: ${res.status}`);
-		});
+		}).then((res) => this._ifResReturnJson(res));
 	}
 }
 

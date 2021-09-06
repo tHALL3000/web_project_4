@@ -52,7 +52,7 @@ function createCard(data, cardSelector) {
 const baseUrl = "https://around.nomoreparties.co/v1/group-11";
 const api = new Api(baseUrl, {
 	headers: {
-		authorization: "eb3d74ef-4bef-4682-9577-7a37c5b0009b",
+		authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f ",
 		"Content-Type": "application/json",
 	},
 });
@@ -82,15 +82,12 @@ const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
 const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
 popupEditProfile.setEventListeners();
+
 const addCardModal = new PopupWithForm((data) => {
-	const card = createCard(
-		{
-			data,
-			handleCardClick,
-		},
-		cardSelector
-	);
-	cardList.addItem(card.generateCard());
+	api.addCard(data).then((cards) => {
+		cardList.addCard(cards);
+		console.log(cards);
+	});
 }, popupAddSelector);
 addCardModal.setEventListeners();
 
