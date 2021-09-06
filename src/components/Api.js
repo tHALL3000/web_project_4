@@ -44,7 +44,7 @@ class Api {
 				name: item.name,
 				title: item.title,
 			}),
-		});
+		}).then((res) => this._ifResReturnJson(res));
 	}
 
 	addCard(data) {

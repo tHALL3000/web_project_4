@@ -44,7 +44,10 @@ const handleCardClick = (data) => {
 };
 
 const submitEditProfileForm = (item) => {
-	userInfo.setUserInfo(item);
+	api.getProfile(item).then((item) => {
+		api.setUserInfo(item);
+	});
+	// userInfo.setUserInfo(item);
 };
 function createCard(data, cardSelector) {
 	return new Card(data, cardSelector);
@@ -86,7 +89,6 @@ popupEditProfile.setEventListeners();
 const addCardModal = new PopupWithForm((data) => {
 	api.addCard(data).then((cards) => {
 		cardList.addCard(cards);
-		console.log(cards);
 	});
 }, popupAddSelector);
 addCardModal.setEventListeners();
