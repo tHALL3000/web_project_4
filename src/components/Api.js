@@ -16,7 +16,6 @@ class Api {
 	}
 
 	getInitialCards() {
-		console.log(this.url);
 		return fetch(`${this.url}/cards`, {
 			headers: { authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f" },
 		}).then((res) => this._ifResReturnJson(res));
@@ -29,6 +28,10 @@ class Api {
 				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
+			body: JSON.stringify({
+				name: item.name,
+				title: item.title,
+			}),
 		}).then((res) => this._ifResReturnJson(res));
 	}
 
@@ -40,7 +43,6 @@ class Api {
 				"Content-Type": "application/json",
 			},
 			body: JSON.stringify({
-				//check this
 				name: item.name,
 				title: item.title,
 			}),

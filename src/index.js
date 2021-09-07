@@ -44,10 +44,9 @@ const handleCardClick = (data) => {
 };
 
 const submitEditProfileForm = (item) => {
-	api.getProfile(item).then((item) => {
-		api.setUserInfo(item);
-	});
-	// userInfo.setUserInfo(item);
+	// api.getProfile().then((item) => {
+	userInfo.setUserInfo(item);
+	//api.setUserInfo(item);
 };
 function createCard(data, cardSelector) {
 	return new Card(data, cardSelector);
