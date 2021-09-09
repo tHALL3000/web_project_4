@@ -20,23 +20,22 @@ class Api {
 			headers: { authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f" },
 		}).then((res) => this._ifResReturnJson(res));
 	}
+	getAppInfo() {
+		return Promise.all([this.getInitialCards(), this.getProfile()]);
+	}
 
 	getProfile() {
-		return fetch(`${this.url}/11/users/me`, {
+		return fetch(`${this.url}/users/me`, {
 			method: "GET",
 			headers: {
 				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify({
-				name: item.name,
-				title: item.title,
-			}),
 		}).then((res) => this._ifResReturnJson(res));
 	}
 
-	setUserInfo(item) {
-		return fetch(`${this.url}/11/users/me`, {
+	setProfile(item) {
+		return fetch(`${this.url}/users/me`, {
 			method: "PATCH",
 			headers: {
 				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
@@ -44,7 +43,7 @@ class Api {
 			},
 			body: JSON.stringify({
 				name: item.name,
-				title: item.title,
+				about: item.title,
 			}),
 		}).then((res) => this._ifResReturnJson(res));
 	}

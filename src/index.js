@@ -15,8 +15,6 @@ const photoModalButton = document.querySelector("#addPhoto");
 const modalProfile = document.querySelector(".modal_edit_profile");
 const editFormElement = modalProfile.querySelector(".form-profile");
 const photoGrid = document.querySelector(".photo-grid");
-const profileName = document.querySelector(".profile__name");
-const profileTitle = document.querySelector(".profile__job");
 const nameInput = document.forms.profile.elements.nameProfile;
 const titleInput = document.forms.profile.elements.title;
 const avatar = document.querySelector(".profile__picture-rounded");
@@ -26,8 +24,8 @@ const cardSelector = ".card-template";
 
 editButton.addEventListener("click", () => {
 	const profileText = userInfo.getUserInfo();
-	profileName.value = profileText.name;
-	profileTitle.value = profileText.title;
+	nameInput.value = profileText.name;
+	titleInput.value = profileText.title;
 	popupEditProfile.open();
 });
 
@@ -43,11 +41,8 @@ const handleCardClick = (data) => {
 	popupImage.open(data);
 };
 
-const submitEditProfileForm = () => {
-	api.getProfile().then(() => {
-		userInfo.setUserInfo();
-		//api.setUserInfo(item);
-	});
+const submitEditProfileForm = (data) => {
+	api.setProfile(data).then((data) => userInfo.setUserInfo(data));
 };
 
 function createCard(data, cardSelector) {
@@ -77,9 +72,10 @@ const cardList = new Section(
 	".photo-grid"
 );
 
-api.getInitialCards().then((cards) => {
-	cardList.renderSection(cards);
-	console.log(cards);
+api.getAppInfo().then(([cardsArray, profileData]) => {
+	userInfo.setUserInfo(profileData);
+
+	cardList.renderSection(cardsArray);
 });
 
 const popupSelector = ".overlay_type_edit";

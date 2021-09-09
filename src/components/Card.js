@@ -4,6 +4,8 @@ class Card {
 	constructor({ data, handleCardClick }, cardSelector) {
 		this._name = data.name;
 		this._link = data.link;
+		this._likes = data._likes;
+		this._ownerId = data.owner._ownerId;
 		this._cardSelector = cardSelector;
 		this._handleCardClick = handleCardClick;
 	}

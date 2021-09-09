@@ -12,9 +12,9 @@ class UserInfo {
 		};
 	}
 
-	setUserInfo({ name, title }) {
+	setUserInfo({ name, about }) {
 		this._nameSelector.textContent = name;
-		this._titleSelector.textContent = title;
+		this._titleSelector.textContent = about;
 	}
 }
 export default UserInfo;

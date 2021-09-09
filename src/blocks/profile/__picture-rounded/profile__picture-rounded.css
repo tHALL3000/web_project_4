@@ -18,10 +18,19 @@
 		margin-right: auto;
 	}
 }
+/* 
 
+.profile__picture-rounded:hover::before {
+   opacity: 0.2; 
 
-.profile__picture-rounded:hover {
-  /* opacity: 0.2; */
-  display: block;
-  background-image: url(../../../images/pencil.png) center no-repeat; 
 }
+
+.profile__picture-rounded:hover::after{
+content: " ";
+	position: absolute;
+top: 0;
+left: 0;
+opacity: 0;
+	background-image: url(../../../images/pencil.png);
+	display: inline
+} */
