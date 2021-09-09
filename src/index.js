@@ -43,11 +43,13 @@ const handleCardClick = (data) => {
 	popupImage.open(data);
 };
 
-const submitEditProfileForm = (item) => {
-	// api.getProfile().then((item) => {
-	userInfo.setUserInfo(item);
-	//api.setUserInfo(item);
+const submitEditProfileForm = () => {
+	api.getProfile().then(() => {
+		userInfo.setUserInfo();
+		//api.setUserInfo(item);
+	});
 };
+
 function createCard(data, cardSelector) {
 	return new Card(data, cardSelector);
 }
@@ -100,5 +102,3 @@ const cardFormValidator = new FormValidator(config, cardFormElement);
 
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
-
-// export default { nameSelector, titleSelector };
