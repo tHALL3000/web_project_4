@@ -1,0 +1,23 @@
+.photo-grid__delete_confirm{
+    margin: 0;
+    padding: 0px 36px;
+    margin-top: 34px;
+    margin-bottom: 54px;
+    box-sizing: border-box;
+    font-style: normal;
+    font-weight: 900;
+    font-size: 24px;
+    line-height: 29px;
+    color: #000000;
+}
+
+@media screen and (max-width: 500px) {
+.photo-grid__delete_confirm{
+    padding: 0 22px;
+    margin-top: 25px;
+    margin-bottom: 76px;
+    max-width: 238px;
+    font-size: 18px;
+    line-height: 22px;
+}
+}
