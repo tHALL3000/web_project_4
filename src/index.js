@@ -78,6 +78,10 @@ api.getAppInfo().then(([cardsArray, profileData]) => {
 	cardList.renderSection(cardsArray);
 });
 
+const popupDeleteSelector = ".overlay_type_delete";
+const popupDeleteConfirm = new PopupDelete(popupDeleteSelector);
+popupDeleteConfirm.setEventListeners();
+
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
 const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
