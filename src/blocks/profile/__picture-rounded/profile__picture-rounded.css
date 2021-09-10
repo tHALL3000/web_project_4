@@ -22,13 +22,5 @@
 
 .profile__picture-rounded:hover {
 	background-color: rgba(0, 0, 0, .8);
-	transition: 3s;
-}
-
-.profile__picture-rounded:hover::after{
-	content: url(../../../images/pencil.png);
-	height: 100%;
-	width: 100%;
-	opacity: 1;
 
 }
