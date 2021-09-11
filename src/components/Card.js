@@ -1,13 +1,16 @@
 /** @format */
 
 class Card {
-	constructor({ data, handleCardClick }, cardSelector) {
+	constructor({ data, handleCardClick, handleDeleteClick }, cardSelector) {
 		this._name = data.name;
 		this._link = data.link;
-		this._likes = data._likes;
-		this._ownerId = data.owner._ownerId;
+		this._likes = data.likes;
+		this._ownerId = data.owner._id;
 		this._cardSelector = cardSelector;
 		this._handleCardClick = handleCardClick;
+		this._handleDeleteClick; = handleDeleteClick;
+		this._cardId = data._id;
+		this._currentUser = data._id;
 	}
 
 	_getTemplate() {
@@ -15,14 +18,26 @@ class Card {
 
 		return cardElement;
 	}
+	removeCard() {
+		this._card.remove();
+	}
+	if(this._currentUser === this._ownerId) {
+	document.querySelector(".photo-grid__delete").style.visibility = "visible";
+} else {document.querySelector(".photo-grid__delete").style.visibility = "hidden";
+	}
 
 	_setEventListeners() {
 		const cardLike = this._card.querySelector(".photo-grid__heart");
 		const cardDelete = this._card.querySelector(".photo-grid__delete");
 		const cardImage = this._card.querySelector(".photo-grid__picture");
 
-		cardLike.addEventListener("click", () => this._handleLikeIcon());
-		cardDelete.addEventListener("click", () => this._handleDeleteIcon());
+		cardLike.addEventListener("click", () => {
+			this._handleLikeIcon()
+				.then((card) => this._cardLikeCount());
+		})
+			.catch((error) => console.log("Ya done messed up A-A-ron : ${error)"))
+		
+		cardDelete.addEventListener("click", () => this._handleDeleteClick(this._card));
 		cardImage.addEventListener("click", () =>
 			this._handleCardClick({
 				link: this._link,
@@ -35,8 +50,8 @@ class Card {
 		this._heart.classList.toggle("photo-grid__heart_active");
 	};
 
-	_handleDeleteIcon() {
-		this._card.remove();
+	_cardLikeCount = () => {
+		this._card.querySelector(".textContent") = this._likes.length;
 	}
 
 	_prepareCard() {

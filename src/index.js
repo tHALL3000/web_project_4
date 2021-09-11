@@ -9,6 +9,7 @@ import PopupWithImage from "./components/PopupWithImage.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo";
 import Api from "./components/Api";
+import PopupDelete from "./components/PopupDelete";
 
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
@@ -56,6 +57,12 @@ const api = new Api(baseUrl, {
 	},
 });
 
+const popupDeleteSelector = ".overlay_type_delete";
+const popupDeleteConfirm = new PopupDelete(popupDeleteSelector, () => {
+	api.deleteCard();
+});
+popupDeleteConfirm.setEventListeners();
+
 const cardList = new Section(
 	{
 		renderer: (data) => {
@@ -63,6 +70,16 @@ const cardList = new Section(
 				{
 					data,
 					handleCardClick,
+					handleDeleteClick: (cardId) => {
+						popupDeleteConfirm.open();
+						popupDeleteConfirm.setSubmitAction(() => {
+							api.deleteCard(cardId).then(() => {
+								//loading icon here
+								card.removeCard();
+								popupDeleteConfirm.close();
+							});
+						});
+					},
 				},
 				cardSelector
 			);
@@ -77,10 +94,6 @@ api.getAppInfo().then(([cardsArray, profileData]) => {
 
 	cardList.renderSection(cardsArray);
 });
-
-const popupDeleteSelector = ".overlay_type_delete";
-const popupDeleteConfirm = new PopupDelete(popupDeleteSelector);
-popupDeleteConfirm.setEventListeners();
 
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
