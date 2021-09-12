@@ -41,7 +41,9 @@ const userInfo = new UserInfo({
 const handleCardClick = (data) => {
 	popupImage.open(data);
 };
-
+const submitEditProfilePicture = (item) => {
+	api.updateProfilePicture(item).then((item) => userInfo.setProfilePicture(item));
+};
 const submitEditProfileForm = (data) => {
 	api.setProfile(data).then((data) => userInfo.setUserInfo(data));
 };
@@ -55,6 +57,18 @@ const api = new Api(baseUrl, {
 		authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f ",
 		"Content-Type": "application/json",
 	},
+});
+const popupProfilePicture = ".overlay_type_profile";
+// const popupProfileConfirm = new PopupProfilePicture(popupProfilePicture, () => {
+//  	submitEditProfilePicture: (item) => {
+//  		api.updateProfilePicture(item.link);
+//  	},
+//  });
+//  popupProfileConfirm.setEventListeners();
+
+api.cardLikesAdd().then(() => {
+	cardList.querySelector((card._cardLikeCount = cardLikesAdd.value));
+	return this._handleLikeIcon;
 });
 
 const popupDeleteSelector = ".overlay_type_delete";
@@ -70,6 +84,14 @@ const cardList = new Section(
 				{
 					data,
 					handleCardClick,
+					handleLikeIcon: (cardId) => {
+						card._setEventListeners(() =>
+							api.cardLikesAdd(cardId).then(() => {
+								card._cardLikeCount();
+							})
+						);
+					},
+
 					handleDeleteClick: (cardId) => {
 						popupDeleteConfirm.open();
 						popupDeleteConfirm.setSubmitAction(() => {
@@ -81,6 +103,7 @@ const cardList = new Section(
 						});
 					},
 				},
+
 				cardSelector
 			);
 			photoGrid.prepend(card.generateCard());
@@ -102,7 +125,8 @@ popupEditProfile.setEventListeners();
 
 const addCardModal = new PopupWithForm((data) => {
 	api.addCard(data).then((cards) => {
-		cardList.addCard(cards);
+		cardList.addItem(cards);
+		console.log(cards);
 	});
 }, popupAddSelector);
 addCardModal.setEventListeners();

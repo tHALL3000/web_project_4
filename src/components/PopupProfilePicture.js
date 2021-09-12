@@ -2,17 +2,17 @@
 
 import Popup from "./Popup";
 
-class PopupWithForm extends Popup {
+class PopupProfilePicture extends Popup {
 	constructor(submitEditProfileForm, popupSelector) {
 		super(popupSelector);
 		this._submitForm = submitEditProfileForm;
-		this._popupForm = this._popupElement.querySelector(".form");
+		this._popupForm = this._popupElement.querySelector(".form_profile-picture");
 	}
 
 	_getInputEditValues(data) {
-		this._inputSource = this._popupForm.querySelectorAll(".modal__form-control-input");
+		this._inputSource = this._popupForm.querySelectorAll(".modal__form-control_profile-picture-url");
 		this._inputValues = {};
-		this._inputSource.forEach((input) => (this._inputValues[input.name] = input.value));
+		this._inputSource.forEach((input) => (this._inputValues[input.link] = input.value));
 		return this._inputValues;
 	}
 
@@ -20,8 +20,7 @@ class PopupWithForm extends Popup {
 		super.setEventListeners();
 		this._popupElement.addEventListener("submit", (e) => {
 			e.preventDefault();
-			this.savebutton;
-			this._submitForm(this._getInputEditValues());
+			this._submitForm();
 			this.close();
 		});
 	}
@@ -31,4 +30,4 @@ class PopupWithForm extends Popup {
 		super.close();
 	}
 }
-export default PopupWithForm;
+export default PopupProfilePicture;

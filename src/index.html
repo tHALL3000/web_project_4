@@ -34,6 +34,7 @@
                         <div class="photo-grid__text-block">
                             <h2 class="photo-grid__title"></h2>
                             <button class="photo-grid__heart" type="button"></button>
+                            <p class="photo-grid__heart-counter"></p>
                         </div>
                     </article>
                 </template>
@@ -42,6 +43,22 @@
         <footer class="footer">
             <p class="footer__text">&copy; 2021 Around The U.S. by tHALL3000</p>
         </footer>
+<div class="overlay overlay_type_profile" id="photoModal">
+            <section class="modal">
+                <button class="modal__close-button modal__close-button-profile" id="closeButtonProfilePhoto" type="button"></button>
+                <div class="modal__contents">
+                    <h2 class="modal__text">Change profile picture</h2>
+                    <form class="form form_profile-picture" id="newPicture">
+                        <div class="modal__form-control">
+                            <input class="modal__form-control-input modal__form-control-input_profile-picture-url" id="pictute-link" type="url" name="picture-link" required />
+                            <span id="link-error" class="error-message"></span>
+                            <button id="saveButton" class="button button_disabled" disabled>Save</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+
         <div class="overlay overlay_type_edit">
             <section class="modal modal_edit_profile">
                 <button class="modal__close-button" id="closeButton" type="button"></button>

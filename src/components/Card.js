@@ -1,14 +1,15 @@
 /** @format */
 
 class Card {
-	constructor({ data, handleCardClick, handleDeleteClick }, cardSelector) {
+	constructor({ data, handleCardClick, handleDeleteClick, handleLikeIcon }, cardSelector) {
 		this._name = data.name;
 		this._link = data.link;
 		this._likes = data.likes;
 		this._ownerId = data.owner._id;
 		this._cardSelector = cardSelector;
 		this._handleCardClick = handleCardClick;
-		this._handleDeleteClick; = handleDeleteClick;
+		this._handleDeleteClick = handleDeleteClick;
+		this._handleLikeIcon = handleLikeIcon;
 		this._cardId = data._id;
 		this._currentUser = data._id;
 	}
@@ -21,22 +22,21 @@ class Card {
 	removeCard() {
 		this._card.remove();
 	}
-	if(this._currentUser === this._ownerId) {
-	document.querySelector(".photo-grid__delete").style.visibility = "visible";
-} else {document.querySelector(".photo-grid__delete").style.visibility = "hidden";
-	}
+	// 	if(this._currentUser === this._ownerId) {
+	// 	document.querySelector(".photo-grid__delete").style.visibility = "visible";
+	// } else {
+	// 	document.querySelector(".photo-grid__delete").style.visibility = "hidden";
+	// };
 
 	_setEventListeners() {
 		const cardLike = this._card.querySelector(".photo-grid__heart");
 		const cardDelete = this._card.querySelector(".photo-grid__delete");
 		const cardImage = this._card.querySelector(".photo-grid__picture");
 
-		cardLike.addEventListener("click", () => {
-			this._handleLikeIcon()
-				.then((card) => this._cardLikeCount());
-		})
-			.catch((error) => console.log("Ya done messed up A-A-ron : ${error)"))
-		
+		cardLike.addEventListener("click", (e) => {
+			this._handleLikeIcon();
+		});
+
 		cardDelete.addEventListener("click", () => this._handleDeleteClick(this._card));
 		cardImage.addEventListener("click", () =>
 			this._handleCardClick({
@@ -46,13 +46,14 @@ class Card {
 		);
 	}
 
-	_handleLikeIcon = () => {
+	_handleLikeIcon = (callback1, callback2) => {
 		this._heart.classList.toggle("photo-grid__heart_active");
+		this._cardLikeCount(card);
 	};
 
-	_cardLikeCount = () => {
-		this._card.querySelector(".textContent") = this._likes.length;
-	}
+	_cardLikeCount = (card) => {
+		this._card.querySelector("photo-grid__heart_counter").textContent = this._likes.length;
+	};
 
 	_prepareCard() {
 		this._card.querySelector(".photo-grid__title").textContent = this._name;

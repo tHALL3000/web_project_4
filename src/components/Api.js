@@ -62,7 +62,25 @@ class Api {
 		}).then((res) => this._ifResReturnJson(res));
 	}
 
-	cardLikesTotal() {}
+	cardLikesAdd(cardId) {
+		return fetch("${this.url}/cards/likes/${cardId}", {
+			method: "PUT",
+			headers: {
+				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
+				"Content-Type": "application/json",
+			},
+		});
+	}
+
+	cardRemoveLike(cardId) {
+		return fetch("${this.url}/cards/likes/${cardId}", {
+			method: "DELETE",
+			headers: {
+				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
+				"Content-Type": "application/json",
+			},
+		});
+	}
 
 	deleteCard(cardId) {
 		return fetch(`${this.url}/cards/${cardId}`, {
