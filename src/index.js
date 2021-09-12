@@ -1,16 +1,17 @@
 /** @format */
 
 import "./index.css";
-import config from "./utils/constants";
+import config from "./utils/constants.js";
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
+// const popupChangeProfile = ".overlay_type_profile";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
-import PopupProfilePicture from "./components/PopupProfilePicture";
+import PopupProfilePicture from "./components/PopupProfilePicture.js";
 import Section from "./components/Section.js";
-import UserInfo from "./components/UserInfo";
-import Api from "./components/Api";
-import PopupDelete from "./components/PopupDelete";
+import UserInfo from "./components/UserInfo.js";
+import Api from "./components/Api.js";
+import PopupDelete from "./components/PopupDelete.js";
 
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
@@ -23,6 +24,20 @@ const avatar = document.querySelector(".profile__picture-rounded");
 const newProfile = document.querySelector(".photo-grid__heart_counter");
 const cardFormElement = document.querySelector(".form_add");
 const cardSelector = ".card-template";
+
+const popupSelector = ".overlay_type_edit";
+const popupAddSelector = ".overlay_type_add";
+
+const addCardModal = new PopupWithForm((data) => {
+	api.addCard(data).then((cards) => {
+		cardList.addItem(cards);
+		console.log(cards);
+	});
+}, popupAddSelector);
+addCardModal.setEventListeners();
+
+const popupImage = new PopupWithImage(".overlay_type_preview");
+popupImage.setEventListeners();
 
 editButton.addEventListener("click", () => {
 	const profileText = userInfo.getUserInfo();
@@ -43,10 +58,6 @@ const handleCardClick = (data) => {
 	popupImage.open(data);
 };
 
-const submitEditProfilePicture = (data) => {
-	api.updateProfilePicture(data).then((data) => userInfo.setProfilePicture(item));
-};
-
 const submitEditProfileForm = (data) => {
 	api.setProfile(data).then((data) => userInfo.setUserInfo(data));
 };
@@ -61,10 +72,15 @@ const api = new Api(baseUrl, {
 		"Content-Type": "application/json",
 	},
 });
+
+// const submitEditProfilePicture = (data) => {
+// 	api.updateProfilePicture(data).then((data) => userInfo.setProfilePicture(avatar));
+// };
+
 const popupProfilePicture = new PopupProfilePicture(
 	{
-		submitEditProfilePicture: (item) => {
-			api.updateProfilePicture(item.link)
+		submitEditProfilePicture: (data) => {
+			api.updateProfilePicture(data.link)
 				.then((data) => {
 					userInfo.setProfilePicture({ avatar: data.avatar });
 					popupProfilePicture.close();
@@ -76,6 +92,10 @@ const popupProfilePicture = new PopupProfilePicture(
 	},
 	popupChangeProfile
 );
+
+const popupChangeProfile = ".overlay_type_profile";
+const popupEditProfile = new PopupProfilePicture(submitEditProfilePicture, popupSelector, popupChangeProfile);
+popupEditProfile.setEventListeners();
 
 popupProfilePicture.setEventListeners();
 //() => {
@@ -136,22 +156,19 @@ api.getAppInfo().then(([cardsArray, profileData]) => {
 	cardList.renderSection(cardsArray);
 });
 
-const popupSelector = ".overlay_type_edit";
-const popupAddSelector = ".overlay_type_add";
-const popupChangeProfile = ".overlay_type_profile";
-const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupChangeProfile);
-popupEditProfile.setEventListeners();
+// const popupSelector = ".overlay_type_edit";
+// const popupAddSelector = ".overlay_type_add";
 
-const addCardModal = new PopupWithForm((data) => {
-	api.addCard(data).then((cards) => {
-		cardList.addItem(cards);
-		console.log(cards);
-	});
-}, popupAddSelector);
-addCardModal.setEventListeners();
+// const addCardModal = new PopupWithForm((data) => {
+// 	api.addCard(data).then((cards) => {
+// 		cardList.addItem(cards);
+// 		console.log(cards);
+// 	});
+// }, popupAddSelector);
+// addCardModal.setEventListeners();
 
-const popupImage = new PopupWithImage(".overlay_type_preview");
-popupImage.setEventListeners();
+// const popupImage = new PopupWithImage(".overlay_type_preview");
+// popupImage.setEventListeners();
 
 const editFormValidator = new FormValidator(config, editFormElement);
 const cardFormValidator = new FormValidator(config, cardFormElement);
