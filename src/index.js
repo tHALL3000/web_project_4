@@ -61,9 +61,23 @@ const api = new Api(baseUrl, {
 		"Content-Type": "application/json",
 	},
 });
-const popupProfilePicture = new PopupProfilePicture(submitEditProfilePicture, popupSelector);
-popupProfilePicture.setEventListeners();
+const popupProfilePicture = new PopupProfilePicture(
+	{
+		submitEditProfilePicture: (item) => {
+			api.updateProfilePicture(item.link)
+				.then((data) => {
+					userInfo.setProfilePicture({ avatar: data.avatar });
+					popupProfilePicture.close();
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		},
+	},
+	popupChangeProfile
+);
 
+popupProfilePicture.setEventListeners();
 //() => {
 //  	submitEditProfilePicture: (item) => {
 //  		api.updateProfilePicture(item.link);
@@ -124,7 +138,8 @@ api.getAppInfo().then(([cardsArray, profileData]) => {
 
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
-const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
+const popupChangeProfile = ".overlay_type_profile";
+const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupChangeProfile);
 popupEditProfile.setEventListeners();
 
 const addCardModal = new PopupWithForm((data) => {

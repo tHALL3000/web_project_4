@@ -3,10 +3,11 @@
 import Popup from "./Popup";
 
 class PopupProfilePicture extends Popup {
-	constructor(submitEditProfileForm, popupSelector) {
-		super(popupSelector);
+	constructor(submitEditProfileForm, popupChangeProfile) {
+		// super(popupSelector);
+		this._popupProfileElement = document.querySelector(popupChangeProfile);
 		this._submitForm = submitEditProfileForm;
-		this._popupForm = this._popupElement.querySelector(".form_profile-picture");
+		this._popupForm = this._popupProfileElement.querySelector(".form_profile-picture");
 	}
 
 	_getInputEditValues(data) {
@@ -18,7 +19,7 @@ class PopupProfilePicture extends Popup {
 
 	setEventListeners() {
 		super.setEventListeners();
-		this._popupElement.addEventListener("submit", (e) => {
+		this._popupProfileElement.addEventListener("submit", (e) => {
 			e.preventDefault();
 			this._submitForm(this._getInputEditValues());
 			this.close();
