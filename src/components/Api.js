@@ -63,7 +63,7 @@ class Api {
 	}
 
 	cardLikesAdd(cardId) {
-		return fetch("${this.url}/cards/likes/${cardId}", {
+		return fetch(`${this.url}/cards/likes/${cardId}`, {
 			method: "PUT",
 			headers: {
 				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
@@ -73,7 +73,7 @@ class Api {
 	}
 
 	cardRemoveLike(cardId) {
-		return fetch("${this.url}/cards/likes/${cardId}", {
+		return fetch(`${this.url}/cards/likes/${cardId}`, {
 			method: "DELETE",
 			headers: {
 				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",

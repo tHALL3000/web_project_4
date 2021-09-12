@@ -6,6 +6,7 @@ import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
+import PopupProfilePicture from "./components/PopupProfilePicture";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo";
 import Api from "./components/Api";
@@ -19,7 +20,7 @@ const photoGrid = document.querySelector(".photo-grid");
 const nameInput = document.forms.profile.elements.nameProfile;
 const titleInput = document.forms.profile.elements.title;
 const avatar = document.querySelector(".profile__picture-rounded");
-const newProfile = document.querySelector(".photo-grid__heart-counter");
+const newProfile = document.querySelector(".photo-grid__heart_counter");
 const cardFormElement = document.querySelector(".form_add");
 const cardSelector = ".card-template";
 
@@ -41,9 +42,11 @@ const userInfo = new UserInfo({
 const handleCardClick = (data) => {
 	popupImage.open(data);
 };
-const submitEditProfilePicture = (item) => {
-	api.updateProfilePicture(item).then((item) => userInfo.setProfilePicture(item));
+
+const submitEditProfilePicture = (data) => {
+	api.updateProfilePicture(data).then((data) => userInfo.setProfilePicture(item));
 };
+
 const submitEditProfileForm = (data) => {
 	api.setProfile(data).then((data) => userInfo.setUserInfo(data));
 };
@@ -58,18 +61,15 @@ const api = new Api(baseUrl, {
 		"Content-Type": "application/json",
 	},
 });
-const popupProfilePicture = ".overlay_type_profile";
-// const popupProfileConfirm = new PopupProfilePicture(popupProfilePicture, () => {
+const popupProfilePicture = new PopupProfilePicture(submitEditProfilePicture, popupSelector);
+popupProfilePicture.setEventListeners();
+
+//() => {
 //  	submitEditProfilePicture: (item) => {
 //  		api.updateProfilePicture(item.link);
 //  	},
 //  });
 //  popupProfileConfirm.setEventListeners();
-
-api.cardLikesAdd().then(() => {
-	cardList.querySelector(createCard.handleLikeIcon);
-	return newProfile;
-});
 
 const popupDeleteSelector = ".overlay_type_delete";
 const popupDeleteConfirm = new PopupDelete(popupDeleteSelector, () => {
@@ -84,12 +84,16 @@ const cardList = new Section(
 				{
 					data,
 					handleCardClick,
-					handleLikeIcon: (cardId) => {
-						card._setEventListeners(() =>
-							api.cardLikesAdd(cardId).then(() => {
-								card._cardLikeCount();
-							})
-						);
+					handleLikeIcon: (card) => {
+						if (card.isLiked()) {
+							api.cardLikesAdd(card.getCardId()).then(() => {
+								card.setLikesInfo(data);
+							});
+						} else {
+							api.cardRemoveLike(card.getCardId()).then(() => {
+								card.setLikesInfo(data);
+							});
+						}
 					},
 
 					handleDeleteClick: (cardId) => {

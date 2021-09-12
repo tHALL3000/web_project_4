@@ -20,7 +20,7 @@ class PopupProfilePicture extends Popup {
 		super.setEventListeners();
 		this._popupElement.addEventListener("submit", (e) => {
 			e.preventDefault();
-			this._submitForm();
+			this._submitForm(this._getInputEditValues());
 			this.close();
 		});
 	}
