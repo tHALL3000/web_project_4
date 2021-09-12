@@ -19,7 +19,7 @@ const photoGrid = document.querySelector(".photo-grid");
 const nameInput = document.forms.profile.elements.nameProfile;
 const titleInput = document.forms.profile.elements.title;
 const avatar = document.querySelector(".profile__picture-rounded");
-
+const newProfile = document.querySelector(".photo-grid__heart-counter");
 const cardFormElement = document.querySelector(".form_add");
 const cardSelector = ".card-template";
 
@@ -67,8 +67,8 @@ const popupProfilePicture = ".overlay_type_profile";
 //  popupProfileConfirm.setEventListeners();
 
 api.cardLikesAdd().then(() => {
-	cardList.querySelector((card._cardLikeCount = cardLikesAdd.value));
-	return this._handleLikeIcon;
+	cardList.querySelector(createCard.handleLikeIcon);
+	return newProfile;
 });
 
 const popupDeleteSelector = ".overlay_type_delete";

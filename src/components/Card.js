@@ -46,7 +46,7 @@ class Card {
 		);
 	}
 
-	_handleLikeIcon = (callback1, callback2) => {
+	_handleLikeIcon = () => {
 		this._heart.classList.toggle("photo-grid__heart_active");
 		this._cardLikeCount(card);
 	};
