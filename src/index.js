@@ -13,6 +13,8 @@ import UserInfo from "./components/UserInfo.js";
 import Api from "./components/Api.js";
 import PopupDelete from "./components/PopupDelete.js";
 const profileChange = document.querySelector("#userPicture");
+const modalProfilePicture = document.querySelector(".modal_profile_picture");
+const editProfilePictureElement = modalProfilePicture.querySelector(".form_profile-picture");
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
 const modalProfile = document.querySelector(".modal_edit_profile");
@@ -179,6 +181,8 @@ api.getAppInfo().then(([cardsArray, profileData]) => {
 
 const editFormValidator = new FormValidator(config, editFormElement);
 const cardFormValidator = new FormValidator(config, cardFormElement);
+const profilePictureFormValidator = new FormValidator(config, editProfilePictureElement);
 
 editFormValidator.enableValidation();
 cardFormValidator.enableValidation();
+profilePictureFormValidator.enableValidation();
