@@ -12,7 +12,7 @@ import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
 import Api from "./components/Api.js";
 import PopupDelete from "./components/PopupDelete.js";
-
+const profileChange = document.querySelector("#userPicture");
 const editButton = document.querySelector("#editButton");
 const photoModalButton = document.querySelector("#addPhoto");
 const modalProfile = document.querySelector(".modal_edit_profile");
@@ -38,6 +38,13 @@ addCardModal.setEventListeners();
 
 const popupImage = new PopupWithImage(".overlay_type_preview");
 popupImage.setEventListeners();
+
+const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
+popupEditProfile.setEventListeners();
+
+profileChange.addEventListener("click", () => {
+	popupProfilePicture.open();
+});
 
 editButton.addEventListener("click", () => {
 	const profileText = userInfo.getUserInfo();
@@ -94,8 +101,8 @@ const popupProfilePicture = new PopupProfilePicture(
 );
 
 const popupChangeProfile = ".overlay_type_profile";
-const popupEditProfile = new PopupProfilePicture(submitEditProfilePicture, popupSelector, popupChangeProfile);
-popupEditProfile.setEventListeners();
+// const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
+// popupEditProfile.setEventListeners();
 
 popupProfilePicture.setEventListeners();
 //() => {
