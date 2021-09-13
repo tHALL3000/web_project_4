@@ -3,6 +3,9 @@
     border-radius: 50%;
     position: relative;
     cursor: pointer;
+    height: 130px;
+    border: none;
+    background-color: #000;
 }
 
 .wrapper::after{

@@ -12,6 +12,7 @@ import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
 import Api from "./components/Api.js";
 import PopupDelete from "./components/PopupDelete.js";
+
 const profileChange = document.querySelector("#userPicture");
 const modalProfilePicture = document.querySelector(".modal_profile_picture");
 const editProfilePictureElement = modalProfilePicture.querySelector(".form_profile-picture");
