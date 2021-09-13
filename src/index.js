@@ -30,6 +30,7 @@ const cardSelector = ".card-template";
 
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
+const popupChangeProfile = ".overlay_type_profile";
 
 const addCardModal = new PopupWithForm((data) => {
 	api.addCard(data).then((cards) => {
@@ -45,12 +46,12 @@ popupImage.setEventListeners();
 const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
 popupEditProfile.setEventListeners();
 
-profileChange.addEventListener("click", () => {
-	popupProfilePicture.open();
-});
-
-const popupProfilePicture = new PopupProfilePicture(submitEditProfileForm, popupSelector);
+const popupProfilePicture = new PopupProfilePicture(submitEditProfilePicture, popupChangeProfile, popupSelector);
 popupProfilePicture.setEventListeners();
+
+photoModalButton.addEventListener("click", () => {
+	addCardModal.open();
+});
 
 editButton.addEventListener("click", () => {
 	const profileText = userInfo.getUserInfo();
@@ -59,8 +60,8 @@ editButton.addEventListener("click", () => {
 	popupEditProfile.open();
 });
 
-photoModalButton.addEventListener("click", () => {
-	addCardModal.open();
+profileChange.addEventListener("click", () => {
+	popupProfilePicture.open();
 });
 
 const userInfo = new UserInfo({
@@ -86,9 +87,9 @@ const api = new Api(baseUrl, {
 	},
 });
 
-// const submitEditProfilePicture = (data) => {
-// 	api.updateProfilePicture(data).then((data) => userInfo.setProfilePicture(avatar));
-// };
+const submitEditProfilePicture = (data) => {
+	api.updateProfilePicture(data).then((data) => userInfo.setProfilePicture(avatar));
+};
 
 // const popupProfilePicture = new PopupProfilePicture(
 // 	{
@@ -106,7 +107,6 @@ const api = new Api(baseUrl, {
 // 	popupChangeProfile
 // );
 
-const popupChangeProfile = ".overlay_type_profile";
 // const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
 // popupEditProfile.setEventListeners();
 
