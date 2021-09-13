@@ -49,6 +49,9 @@ profileChange.addEventListener("click", () => {
 	popupProfilePicture.open();
 });
 
+const popupProfilePicture = new PopupProfilePicture(submitEditProfileForm, popupSelector);
+popupProfilePicture.setEventListeners();
+
 editButton.addEventListener("click", () => {
 	const profileText = userInfo.getUserInfo();
 	nameInput.value = profileText.name;
@@ -87,21 +90,21 @@ const api = new Api(baseUrl, {
 // 	api.updateProfilePicture(data).then((data) => userInfo.setProfilePicture(avatar));
 // };
 
-const popupProfilePicture = new PopupProfilePicture(
-	{
-		submitEditProfilePicture: (data) => {
-			api.updateProfilePicture(data.link)
-				.then((data) => {
-					userInfo.setProfilePicture({ avatar: data.avatar });
-					popupProfilePicture.close();
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		},
-	},
-	popupChangeProfile
-);
+// const popupProfilePicture = new PopupProfilePicture(
+// 	{
+// 		submitEditProfilePicture: (data) => {
+// 			api.updateProfilePicture(data.link)
+// 				.then((data) => {
+// 					userInfo.setProfilePicture({ avatar: data.avatar });
+// 					popupProfilePicture.close();
+// 				})
+// 				.catch((error) => {
+// 					console.log(error);
+// 				});
+// 		},
+// 	},
+// 	popupChangeProfile
+// );
 
 const popupChangeProfile = ".overlay_type_profile";
 // const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
