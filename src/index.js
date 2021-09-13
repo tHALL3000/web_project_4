@@ -87,8 +87,15 @@ const api = new Api(baseUrl, {
 	},
 });
 
-const submitEditProfilePicture = (data) => {
-	api.updateProfilePicture(data).then((data) => userInfo.setProfilePicture(avatar));
+const submitEditProfilePicture = (item) => {
+	api.updateProfilePicture(item.link)
+		.then((item) => {
+			userInfo.setProfilePicture(avatar);
+			popupProfilePicture.close();
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 };
 
 // const popupProfilePicture = new PopupProfilePicture(

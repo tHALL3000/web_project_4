@@ -3,16 +3,16 @@
 import Popup from "./Popup";
 
 class PopupProfilePicture extends Popup {
-	constructor(submitEditProfileForm, popupSelector) {
+	constructor(submitEditProfilePicture, popupSelector) {
 		super(popupSelector);
-		this._submitForm = submitEditProfileForm;
+		this._submitForm = submitEditProfilePicture;
 		this._popupForm = this._popupElement.querySelector(".form");
 	}
 
-	_getInputEditValues(data) {
+	_getInputEditValues(item) {
 		this._inputSource = this._popupForm.querySelectorAll(".modal__form-control-input");
 		this._inputValues = {};
-		this._inputSource.forEach((input) => (this._inputValues[input.name] = input.value));
+		this._inputSource.forEach((input) => (this._inputValues[input.link] = input.value));
 		return this._inputValues;
 	}
 
