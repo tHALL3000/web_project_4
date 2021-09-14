@@ -43,7 +43,7 @@ class Api {
 			},
 			body: JSON.stringify({
 				name: item.name,
-				about: item.about,
+				about: item.title, //this needs to stay title//
 			}),
 		}).then((res) => this._ifResReturnJson(res));
 	}
@@ -91,9 +91,9 @@ class Api {
 			},
 		});
 	}
-
-	updateProfilePicture() {
-		// const avatar = document.querySelector(".profile__picture-rounded");
+	//PATCH https://around.nomoreparties.co/v1/groupId/users/me/avatar
+	updateProfilePicture(avatar) {
+		//const avatar = document.querySelector(".profile__picture-rounded");
 		return fetch(`${this.url}/users/me/avatar`, {
 			method: "PATCH",
 			headers: {

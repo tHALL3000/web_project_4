@@ -43,8 +43,22 @@ addCardModal.setEventListeners();
 const popupImage = new PopupWithImage(".overlay_type_preview");
 popupImage.setEventListeners();
 
+const submitEditProfileForm = (data) => {
+	api.setProfile(data).then((data) => userInfo.setUserInfo(data));
+};
+
 const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
 popupEditProfile.setEventListeners();
+
+const submitEditProfilePicture = (data) => {
+	api.updateProfilePicture(data.link).then((data) => {
+		userInfo.setProfilePicture(avatar);
+		popupProfilePicture.close();
+	});
+	// .catch((error) => {
+	// 	console.log(error);
+	// });
+};
 
 const popupProfilePicture = new PopupProfilePicture(submitEditProfilePicture, popupChangeProfile, popupSelector);
 popupProfilePicture.setEventListeners();
@@ -72,9 +86,9 @@ const handleCardClick = (data) => {
 	popupImage.open(data);
 };
 
-const submitEditProfileForm = (data) => {
-	api.setProfile(data).then((data) => userInfo.setUserInfo(data));
-};
+// const submitEditProfileForm = (data) => {
+// 	api.setProfile(data).then((data) => userInfo.setUserInfo(data));
+// };
 
 function createCard(data, cardSelector) {
 	return new Card(data, cardSelector);
@@ -87,16 +101,16 @@ const api = new Api(baseUrl, {
 	},
 });
 
-const submitEditProfilePicture = (data) => {
-	api.updateProfilePicture(data.link).then((data) => {
-		userInfo.setProfilePicture(avatar);
-		popupProfilePicture.close();
-	});
-	// .catch((error) => {
-	// 	console.log(error);
-	// });
-};
-popupProfilePicture.setEventListeners();
+// const submitEditProfilePicture = (data) => {
+// 	api.updateProfilePicture(data.link).then((data) => {
+// 		userInfo.setProfilePicture(avatar);
+// 		popupProfilePicture.close();
+// 	});
+// 	// .catch((error) => {
+// 	// 	console.log(error);
+// 	// });
+// };
+// popupProfilePicture.setEventListeners();
 
 // const popupProfilePicture = new PopupProfilePicture(
 // 	{
