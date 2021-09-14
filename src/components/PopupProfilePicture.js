@@ -5,7 +5,7 @@ import Popup from "./Popup";
 class PopupProfilePicture extends Popup {
 	constructor(submitEditProfilePicture, popupSelector) {
 		super(popupSelector);
-		this._submitForm = submitEditProfilePicture;
+		this._submitBtn = submitEditProfilePicture;
 		this._popupForm = this._popupElement.querySelector(".form");
 	}
 
@@ -21,7 +21,7 @@ class PopupProfilePicture extends Popup {
 		this._popupElement.addEventListener("submit", (e) => {
 			e.preventDefault();
 			this.savebutton;
-			this._submitForm(this._getInputEditValues());
+			this._submitBtn(this._getInputEditValues());
 			this.close();
 		});
 	}

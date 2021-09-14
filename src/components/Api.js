@@ -43,7 +43,7 @@ class Api {
 			},
 			body: JSON.stringify({
 				name: item.name,
-				about: item.title,
+				about: item.about,
 			}),
 		}).then((res) => this._ifResReturnJson(res));
 	}
@@ -93,15 +93,14 @@ class Api {
 	}
 
 	updateProfilePicture() {
-		const avatar = document.querySelector(".profile__picture-rounded");
+		// const avatar = document.querySelector(".profile__picture-rounded");
 		return fetch(`${this.url}/users/me/avatar`, {
 			method: "PATCH",
 			headers: {
 				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
-			body: JSON.stringify(avatar),
-			avatar: avatar,
+			body: JSON.stringify({ avatar: avatar }),
 		}).then((res) => this._ifResReturnJson(res));
 	}
 }

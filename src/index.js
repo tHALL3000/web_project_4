@@ -87,16 +87,16 @@ const api = new Api(baseUrl, {
 	},
 });
 
-const submitEditProfilePicture = (item) => {
-	api.updateProfilePicture(item.link)
-		.then((item) => {
-			userInfo.setProfilePicture(avatar);
-			popupProfilePicture.close();
-		})
-		.catch((error) => {
-			console.log(error);
-		});
+const submitEditProfilePicture = (data) => {
+	api.updateProfilePicture(data.link).then((data) => {
+		userInfo.setProfilePicture(avatar);
+		popupProfilePicture.close();
+	});
+	// .catch((error) => {
+	// 	console.log(error);
+	// });
 };
+popupProfilePicture.setEventListeners();
 
 // const popupProfilePicture = new PopupProfilePicture(
 // 	{
@@ -117,7 +117,6 @@ const submitEditProfilePicture = (item) => {
 // const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
 // popupEditProfile.setEventListeners();
 
-popupProfilePicture.setEventListeners();
 //() => {
 //  	submitEditProfilePicture: (item) => {
 //  		api.updateProfilePicture(item.link);
