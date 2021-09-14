@@ -10,7 +10,7 @@ class PopupProfilePicture extends Popup {
 	}
 
 	_getInputEditValues(item) {
-		this._inputSource = this._popupForm.querySelectorAll(".modal__form-control-input");
+		this._inputSource = this._popupForm.querySelectorAll("#avatar");
 		this._inputValues = {};
 		this._inputSource.forEach((input) => (this._inputValues[input.link] = input.value));
 		return this._inputValues;

@@ -59,9 +59,9 @@ const submitEditProfilePicture = (data) => {
 	// 	console.log(error);
 	// });
 };
-
-const popupProfilePicture = new PopupProfilePicture(submitEditProfilePicture, popupChangeProfile, popupSelector);
-popupProfilePicture.setEventListeners();
+//changing from popupprofilepicture to form.
+const popupProfilePicture = new PopupWithForm(submitEditProfileForm, popupSelector);
+popupEditProfile.setEventListeners();
 
 photoModalButton.addEventListener("click", () => {
 	addCardModal.open();
