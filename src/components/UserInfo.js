@@ -22,7 +22,7 @@ class UserInfo {
 	}
 
 	setProfilePicture({ avatar }) {
-		this._profilePicture = avatar;
+		this._profilePicture.src = avatar;
 	}
 }
 export default UserInfo;

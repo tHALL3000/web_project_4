@@ -51,7 +51,8 @@ const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector)
 popupEditProfile.setEventListeners();
 
 const submitEditProfilePicture = (data) => {
-	api.updateProfilePicture(data.link).then((data) => {
+	api.updateProfilePicture(data.avatar).then((data) => {
+		console.log(data);
 		userInfo.setProfilePicture(avatar);
 		popupProfilePicture.close();
 	});
@@ -60,8 +61,8 @@ const submitEditProfilePicture = (data) => {
 	// });
 };
 //changing from popupprofilepicture to form.
-const popupProfilePicture = new PopupWithForm(submitEditProfileForm, popupSelector);
-popupEditProfile.setEventListeners();
+const popupProfilePicture = new PopupWithForm(submitEditProfilePicture, popupChangeProfile);
+popupProfilePicture.setEventListeners();
 
 photoModalButton.addEventListener("click", () => {
 	addCardModal.open();
