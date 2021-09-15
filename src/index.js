@@ -51,7 +51,7 @@ const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector)
 popupEditProfile.setEventListeners();
 
 const submitEditProfilePicture = (data) => {
-	api.updateProfilePicture(data).then((data) => {
+	api.updateProfilePicture(data.avatar).then((data) => {
 		console.log(data);
 		userInfo.setProfilePicture(data);
 		popupProfilePicture.close();
