@@ -2,10 +2,10 @@
 
 class UserInfo {
 	constructor({ nameSelector, titleSelector, profilePicture, id }) {
-		this._nameSelector = document.querySelector(`.${nameSelector}`);
-		this._titleSelector = document.querySelector(`.${titleSelector}`);
-		this._profilePicture = document.querySelector(`.${profilePicture}`);
-		this._id = document.querySelector(`.${id}`);
+		this._nameSelector = document.querySelector(nameSelector);
+		this._titleSelector = document.querySelector(titleSelector);
+		this._profilePicture = document.querySelector(".profile__picture-rounded");
+		this._id = document.querySelector(id);
 	}
 	getUserInfo() {
 		return {

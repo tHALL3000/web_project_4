@@ -80,8 +80,8 @@ profileChange.addEventListener("click", () => {
 });
 
 const userInfo = new UserInfo({
-	nameSelector: "profile__name",
-	titleSelector: "profile__job",
+	nameSelector: ".profile__name",
+	titleSelector: ".profile__job",
 });
 const handleCardClick = (data) => {
 	popupImage.open(data);
