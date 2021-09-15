@@ -53,7 +53,7 @@ popupEditProfile.setEventListeners();
 const submitEditProfilePicture = (data) => {
 	api.updateProfilePicture(data.avatar).then((data) => {
 		console.log(data);
-		userInfo.setProfilePicture(data);
+		userInfo.setUserInfo(data);
 		popupProfilePicture.close();
 	});
 	// .catch((error) => {
@@ -82,6 +82,7 @@ profileChange.addEventListener("click", () => {
 const userInfo = new UserInfo({
 	nameSelector: ".profile__name",
 	titleSelector: ".profile__job",
+	profilePicture: ".profile__picture-rounded",
 });
 const handleCardClick = (data) => {
 	popupImage.open(data);
@@ -187,7 +188,7 @@ const cardList = new Section(
 api.getAppInfo().then(([cardsArray, profileData]) => {
 	userInfo.setUserInfo(profileData);
 
-	cardList.renderSection(cardsArray);
+	cardList.renderSection(cardsArray.reverse());
 });
 
 // const popupSelector = ".overlay_type_edit";

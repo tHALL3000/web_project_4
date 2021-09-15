@@ -16,12 +16,9 @@ class UserInfo {
 		};
 	}
 
-	setUserInfo({ name, about }) {
+	setUserInfo({ name, about, avatar }) {
 		this._nameSelector.textContent = name;
 		this._titleSelector.textContent = about;
-	}
-
-	setProfilePicture({ avatar }) {
 		this._profilePicture.src = avatar;
 	}
 }

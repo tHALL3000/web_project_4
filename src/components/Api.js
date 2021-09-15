@@ -2,10 +2,11 @@ import { nameSelector, titleSelector } from "../index.js";
 // import { userInfo } from "../components/UserInfo";
 
 class Api {
-	constructor(baseUrl, headers, cardId) {
+	constructor(baseUrl, headers, cardId, profilePicture) {
 		this.url = baseUrl;
 		this.headers = headers;
 		this.cardId = cardId;
+		this.profilePicture = profilePicture;
 	}
 
 	_ifResReturnJson(res) {
