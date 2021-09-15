@@ -93,7 +93,6 @@ class Api {
 	}
 	//PATCH https://around.nomoreparties.co/v1/groupId/users/me/avatar
 	updateProfilePicture(avatar) {
-		//const avatar = document.querySelector(".profile__picture-rounded");
 		return fetch(`${this.url}/users/me/avatar`, {
 			method: "PATCH",
 			headers: {
