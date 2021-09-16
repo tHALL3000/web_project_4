@@ -4,10 +4,9 @@ import "./index.css";
 import config from "./utils/constants.js";
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
-// const popupChangeProfile = ".overlay_type_profile";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
-import PopupProfilePicture from "./components/PopupProfilePicture.js";
+// import PopupProfilePicture from "./components/PopupProfilePicture.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
 import Api from "./components/Api.js";
@@ -23,7 +22,7 @@ const editFormElement = modalProfile.querySelector(".form-profile");
 const photoGrid = document.querySelector(".photo-grid");
 const nameInput = document.forms.profile.elements.nameProfile;
 const titleInput = document.forms.profile.elements.title;
-const avatar = document.querySelector(".profile__picture-rounded");
+// const avatar = document.querySelector(".profile__picture-rounded");
 const newProfile = document.querySelector(".photo-grid__heart_counter");
 const cardFormElement = document.querySelector(".form_add");
 const cardSelector = ".card-template";
@@ -33,9 +32,9 @@ const popupAddSelector = ".overlay_type_add";
 const popupChangeProfile = ".overlay_type_profile";
 
 const addCardModal = new PopupWithForm((data) => {
-	api.addCard(data).then((cards) => {
-		cardList.addItem(cards);
-		console.log(cards);
+	api.addCard(data).then((data) => {
+		createCard(data, cardSelector);
+		console.log(data);
 	});
 }, popupAddSelector);
 addCardModal.setEventListeners();
@@ -56,11 +55,8 @@ const submitEditProfilePicture = (data) => {
 		userInfo.setUserInfo(data);
 		popupProfilePicture.close();
 	});
-	// .catch((error) => {
-	// 	console.log(error);
-	// });
 };
-//changing from popupprofilepicture to form.
+
 const popupProfilePicture = new PopupWithForm(submitEditProfilePicture, popupChangeProfile);
 popupProfilePicture.setEventListeners();
 
@@ -88,10 +84,6 @@ const handleCardClick = (data) => {
 	popupImage.open(data);
 };
 
-// const submitEditProfileForm = (data) => {
-// 	api.setProfile(data).then((data) => userInfo.setUserInfo(data));
-// };
-
 function createCard(data, cardSelector) {
 	return new Card(data, cardSelector);
 }
@@ -102,43 +94,6 @@ const api = new Api(baseUrl, {
 		"Content-Type": "application/json",
 	},
 });
-
-// const submitEditProfilePicture = (data) => {
-// 	api.updateProfilePicture(data.link).then((data) => {
-// 		userInfo.setProfilePicture(avatar);
-// 		popupProfilePicture.close();
-// 	});
-// 	// .catch((error) => {
-// 	// 	console.log(error);
-// 	// });
-// };
-// popupProfilePicture.setEventListeners();
-
-// const popupProfilePicture = new PopupProfilePicture(
-// 	{
-// 		submitEditProfilePicture: (data) => {
-// 			api.updateProfilePicture(data.link)
-// 				.then((data) => {
-// 					userInfo.setProfilePicture({ avatar: data.avatar });
-// 					popupProfilePicture.close();
-// 				})
-// 				.catch((error) => {
-// 					console.log(error);
-// 				});
-// 		},
-// 	},
-// 	popupChangeProfile
-// );
-
-// const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
-// popupEditProfile.setEventListeners();
-
-//() => {
-//  	submitEditProfilePicture: (item) => {
-//  		api.updateProfilePicture(item.link);
-//  	},
-//  });
-//  popupProfileConfirm.setEventListeners();
 
 const popupDeleteSelector = ".overlay_type_delete";
 const popupDeleteConfirm = new PopupDelete(popupDeleteSelector, () => {
