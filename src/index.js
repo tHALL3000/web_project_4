@@ -32,9 +32,8 @@ const popupAddSelector = ".overlay_type_add";
 const popupChangeProfile = ".overlay_type_profile";
 
 const addCardModal = new PopupWithForm((data) => {
-	api.addCard(data).then((data) => {
-		createCard(data, cardSelector);
-		console.log(data);
+	api.addCard(data).then((card) => {
+		createCard({ data, cardSelector });
 	});
 }, popupAddSelector);
 addCardModal.setEventListeners();
@@ -87,6 +86,7 @@ const handleCardClick = (data) => {
 function createCard(data, cardSelector) {
 	return new Card(data, cardSelector);
 }
+
 const baseUrl = "https://around.nomoreparties.co/v1/group-11";
 const api = new Api(baseUrl, {
 	headers: {
@@ -145,20 +145,6 @@ api.getAppInfo().then(([cardsArray, profileData]) => {
 
 	cardList.renderSection(cardsArray.reverse());
 });
-
-// const popupSelector = ".overlay_type_edit";
-// const popupAddSelector = ".overlay_type_add";
-
-// const addCardModal = new PopupWithForm((data) => {
-// 	api.addCard(data).then((cards) => {
-// 		cardList.addItem(cards);
-// 		console.log(cards);
-// 	});
-// }, popupAddSelector);
-// addCardModal.setEventListeners();
-
-// const popupImage = new PopupWithImage(".overlay_type_preview");
-// popupImage.setEventListeners();
 
 const editFormValidator = new FormValidator(config, editFormElement);
 const cardFormValidator = new FormValidator(config, cardFormElement);

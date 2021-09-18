@@ -12,10 +12,7 @@ module.exports = {
 		main: "./src/index.js",
 	},
 	output: {
-		path: path.resolve(
-			__dirname,
-			"dist"
-		),
+		path: path.resolve(__dirname, "dist"),
 		filename: "bundle.js",
 		publicPath: "",
 	},
@@ -25,10 +22,7 @@ module.exports = {
 	devServer: {
 		static: [
 			{
-				directory: path.resolve(
-					__dirname,
-					"/dist"
-				),
+				directory: path.resolve(__dirname, "/dist"),
 				watch: true,
 			},
 		],
@@ -69,11 +63,9 @@ module.exports = {
 		],
 	},
 	plugins: [
-		new HtmlWebpackPlugin(
-			{
-				template: "./src/index.html", // path to our index.html file
-			}
-		),
+		new HtmlWebpackPlugin({
+			template: "./src/index.html", // path to our index.html file
+		}),
 		new CleanWebpackPlugin(),
 		new MiniCssExtractPlugin(), // connect the plugin for merging CSS files
 	],

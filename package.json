@@ -19,7 +19,8 @@
 	},
 	"homepage": "https://github.com/tHALL3000/web_project_4#readme",
 	"dependencies": {
-		"core-js": "^3.16.2"
+		"core-js": "^3.16.2",
+		"regenerator-runtime": "^0.13.9"
 	},
 	"devDependencies": {
 		"@babel/core": "^7.15.0",
