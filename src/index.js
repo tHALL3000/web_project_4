@@ -33,7 +33,7 @@ const popupChangeProfile = ".overlay_type_profile";
 
 const addCardModal = new PopupWithForm((data) => {
 	api.addCard(data).then((card) => {
-		createCard({ data, cardSelector });
+		createCard(card, cardSelector);
 	});
 }, popupAddSelector);
 addCardModal.setEventListeners();
@@ -84,7 +84,37 @@ const handleCardClick = (data) => {
 };
 
 function createCard(data, cardSelector) {
-	return new Card(data, cardSelector);
+	const card = new Card(
+		{
+			data,
+			handleCardClick,
+			handleLikeIcon: (card) => {
+				if (card.isLiked()) {
+					api.cardLikesAdd(card.getCardId()).then(() => {
+						card.setLikesInfo(data);
+					});
+				} else {
+					api.cardRemoveLike(card.getCardId()).then(() => {
+						card.setLikesInfo(data);
+					});
+				}
+			},
+
+			handleDeleteClick: (cardId) => {
+				popupDeleteConfirm.open();
+				popupDeleteConfirm.setSubmitAction(() => {
+					api.deleteCard(cardId).then(() => {
+						//loading icon here
+						card.removeCard();
+						popupDeleteConfirm.close();
+					});
+				});
+			},
+		},
+		cardSelector
+	);
+
+	photoGrid.prepend(card.generateCard());
 }
 
 const baseUrl = "https://around.nomoreparties.co/v1/group-11";
@@ -104,37 +134,7 @@ popupDeleteConfirm.setEventListeners();
 const cardList = new Section(
 	{
 		renderer: (data) => {
-			const card = createCard(
-				{
-					data,
-					handleCardClick,
-					handleLikeIcon: (card) => {
-						if (card.isLiked()) {
-							api.cardLikesAdd(card.getCardId()).then(() => {
-								card.setLikesInfo(data);
-							});
-						} else {
-							api.cardRemoveLike(card.getCardId()).then(() => {
-								card.setLikesInfo(data);
-							});
-						}
-					},
-
-					handleDeleteClick: (cardId) => {
-						popupDeleteConfirm.open();
-						popupDeleteConfirm.setSubmitAction(() => {
-							api.deleteCard(cardId).then(() => {
-								//loading icon here
-								card.removeCard();
-								popupDeleteConfirm.close();
-							});
-						});
-					},
-				},
-
-				cardSelector
-			);
-			photoGrid.prepend(card.generateCard());
+			createCard(data, cardSelector);
 		},
 	},
 	".photo-grid"
