@@ -88,7 +88,7 @@ function createCard(data, cardSelector) {
 		{
 			data,
 			handleCardClick,
-			handleLikeIcon: (card) => {
+			handleLikeIcon: (data) => {
 				if (card.isLiked()) {
 					api.cardLikesAdd(card.getCardId()).then(() => {
 						card.setLikesInfo(data);
