@@ -88,16 +88,16 @@ function createCard(data, cardSelector) {
 		{
 			data,
 			handleCardClick,
-			handleLikeIcon: (data) => {
-				if (card.isLiked()) {
-					api.cardLikesAdd(card.getCardId()).then(() => {
-						card._cardLikeCount(data);
-						this._updateLikesView(data);
+			handleLikeIcon: () => {
+				if (!card.isLiked()) {
+					api.cardLikesAdd(card.getCardId()).then((newData) => {
+						card.setLikesInfo(newData);
+						card._updateLikesView();
 					});
 				} else {
-					api.cardRemoveLike(card.getCardId()).then(() => {
-						card.setLikesInfo(data);
-						// this._updateLikesView(card);
+					api.cardRemoveLike(card.getCardId()).then((newData) => {
+						card.setLikesInfo(newData);
+						card._updateLikesView();
 					});
 				}
 			},

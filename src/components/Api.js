@@ -70,7 +70,7 @@ class Api {
 				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
-		});
+		}).then((res) => this._ifResReturnJson(res));
 	}
 
 	cardRemoveLike(cardId) {
@@ -80,7 +80,7 @@ class Api {
 				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 				"Content-Type": "application/json",
 			},
-		});
+		}).then((res) => this._ifResReturnJson(res));
 	}
 
 	deleteCard(cardId) {
