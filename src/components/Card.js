@@ -34,10 +34,15 @@ class Card {
 		const cardImage = this._card.querySelector(".photo-grid__picture");
 
 		cardLike.addEventListener("click", (e) => {
-			this._handleLikeIcon(e.target.classList.contains("photo-grid__heart")).then((card) => {
-				e.target.classList.add("photo-grid__heart_active");
-				this._updateLikesView(card);
-			});
+			this._handleLikeIcon(this);
+			e.target.classList.add("photo-grid__heart_active");
+			this._updateLikesView();
+
+			// this._handleLikeIcon(e.target.classList.contains("photo-grid__heart"));
+			// // 	.then((card) => {
+			// e.target.classList.add("photo-grid__heart_active");
+			// this._updateLikesView();
+			// });
 		});
 
 		cardDelete.addEventListener("click", () => this._handleDeleteClick(this._cardId));
@@ -69,12 +74,12 @@ class Card {
 	}
 
 	_cardLikeCount = () => {
-		this._card.querySelector("photo-grid__heart_counter").textContent = this._likes.length;
+		this._card.querySelector(".photo-grid__heart_counter").textContent = this._likes.length;
 	};
 
 	setLikesInfo(data) {
-		this._likes = data.likes;
-		this._updateLikesView();
+		// this._likes = data.likes;
+		this._updateLikesView(data);
 	}
 
 	_prepareCard() {

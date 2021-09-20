@@ -91,11 +91,13 @@ function createCard(data, cardSelector) {
 			handleLikeIcon: (data) => {
 				if (card.isLiked()) {
 					api.cardLikesAdd(card.getCardId()).then(() => {
-						card.setLikesInfo(data);
+						card._cardLikeCount(data);
+						this._updateLikesView(data);
 					});
 				} else {
 					api.cardRemoveLike(card.getCardId()).then(() => {
 						card.setLikesInfo(data);
+						// this._updateLikesView(card);
 					});
 				}
 			},
