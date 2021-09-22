@@ -92,12 +92,12 @@ function createCard(data, cardSelector) {
 				if (!card.isLiked()) {
 					api.cardLikesAdd(card.getCardId()).then((newData) => {
 						card.setLikesInfo(newData);
-						card._updateLikesView();
+						card._updateLikesView(newData);
 					});
 				} else {
 					api.cardRemoveLike(card.getCardId()).then((newData) => {
 						card.setLikesInfo(newData);
-						card._updateLikesView();
+						card._updateLikesView(newData);
 					});
 				}
 			},
@@ -115,7 +115,6 @@ function createCard(data, cardSelector) {
 		},
 		cardSelector
 	);
-
 	photoGrid.prepend(card.generateCard());
 }
 

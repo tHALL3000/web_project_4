@@ -43,7 +43,7 @@ class Card {
 		return this._cardId;
 	}
 
-	_updateLikesView() {
+	_updateLikesView(data) {
 		this._card.querySelector(".photo-grid__heart_counter").textContent = this._likes.length;
 		if (this.isLiked()) {
 			this._card.querySelector(".photo-grid__heart").classList.add("photo-grid__heart_active");
@@ -57,7 +57,7 @@ class Card {
 	}
 
 	_cardLikeCount = () => {
-		this._card.querySelector(".photo-grid__heart_counter").textContent = this._likes.length;
+		//this._card.querySelector(".photo-grid__heart_counter").textContent = this._likes.length;
 	};
 
 	setLikesInfo(data) {
