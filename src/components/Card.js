@@ -11,7 +11,7 @@ class Card {
 		this._handleDeleteClick = handleDeleteClick;
 		this._handleLikeIcon = handleLikeIcon;
 		this._cardId = data._id;
-		this._currentUser = data._id;
+		// this._currentUser = data._id;
 	}
 
 	_getTemplate() {
@@ -44,12 +44,12 @@ class Card {
 	}
 
 	_updateLikesView(data) {
-		this._card.querySelector(".photo-grid__heart_counter").textContent = this._likes.length;
 		if (this.isLiked()) {
 			this._card.querySelector(".photo-grid__heart").classList.add(".photo-grid__heart_active");
-		} else {
-			this._card.querySelector(".photo-grid__heart").classList.remove(".photo-grid__heart_active");
-		}
+		} //else {
+		//this._card.querySelector(".photo-grid__heart").classList.remove(".photo-grid__heart_active");
+		//}
+		this._card.querySelector(".photo-grid__heart_counter").textContent = this._likes.length;
 	}
 
 	isLiked() {
