@@ -82,6 +82,11 @@ class Api {
 			},
 		}).then((res) => this._ifResReturnJson(res));
 	}
+	updateCardStatus(cardId, liked) {
+		if (liked) {
+			return this.cardRemoveLike(cardId);
+		} else return this.cardLikesAdd(cardId);
+	}
 
 	deleteCard(cardId) {
 		return fetch(`${this.url}/cards/${cardId}`, {

@@ -1,0 +1,6 @@
+.photo-grid__likes-container{
+align-items: center;
+    display: flex;
+    flex-direction: column;
+    min-height: 36px;
+}

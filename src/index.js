@@ -92,26 +92,28 @@ function createCard(data, cardSelector) {
 				if (!card.isLiked()) {
 					api.cardLikesAdd(card.getCardId()).then((newData) => {
 						card.setLikesInfo(newData);
-						card._updateLikesView(newData);
 					});
 				} else {
 					api.cardRemoveLike(card.getCardId()).then((newData) => {
 						card.setLikesInfo(newData);
-						card._updateLikesView(newData);
 					});
 				}
 			},
-
-			handleDeleteClick: (cardId) => {
+			handleDeleteClick: (evt) => {
+				if (user._id === card.owner._id) {
+				(cardId) => {
 				popupDeleteConfirm.open();
 				popupDeleteConfirm.setSubmitAction(() => {
 					api.deleteCard(cardId).then(() => {
 						//loading icon here
 						card.removeCard();
 						popupDeleteConfirm.close();
+						});
 					});
-				});
-			},
+					}
+				} else {
+						document.getElementByClass("photo-grid__delete").style.display = "hidden"
+				}
 		},
 		cardSelector
 	);

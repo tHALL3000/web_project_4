@@ -7,7 +7,7 @@ class PopupWithForm extends Popup {
 		super(popupSelector);
 		this._submitForm = submitEditProfileForm;
 		this._popupForm = this._popupElement.querySelector(".form");
-		// this._savebutton = this._popupElement.querySelector("#saveButton");
+		this._savebutton = this._popupElement.querySelector(".button");
 	}
 
 	_getInputEditValues(data) {
@@ -21,7 +21,7 @@ class PopupWithForm extends Popup {
 		super.setEventListeners();
 		this._popupElement.addEventListener("submit", (e) => {
 			e.preventDefault();
-			// this._savebutton.textContent = "Saving...";
+			this._savebutton.innerText = "Saving...";
 			this._submitForm(this._getInputEditValues());
 			this.close();
 		});

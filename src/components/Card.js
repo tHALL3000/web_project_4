@@ -43,17 +43,19 @@ class Card {
 		return this._cardId;
 	}
 
-	_updateLikesView(data) {
+	_updateLikesView() {
 		if (this.isLiked()) {
-			this._card.querySelector(".photo-grid__heart").classList.add(".photo-grid__heart_active");
-		} //else {
-		//this._card.querySelector(".photo-grid__heart").classList.remove(".photo-grid__heart_active");
-		//}
+			console.log("is liked", this._card);
+			this._card.querySelector(".photo-grid__heart").classList.add("photo-grid__heart_active");
+		} else {
+			console.log("else, not liked");
+			this._card.querySelector(".photo-grid__heart").classList.remove("photo-grid__heart_active");
+		}
 		this._card.querySelector(".photo-grid__heart_counter").textContent = this._likes.length;
 	}
 
 	isLiked() {
-		return this._likes.find((user) => user._id === this._id);
+		return Boolean(this._likes.find((user) => user._id === this._id));
 	}
 
 	_cardLikeCount = () => {
@@ -62,7 +64,7 @@ class Card {
 
 	setLikesInfo(data) {
 		this._likes = data.likes;
-		// this._updateLikesView(data);
+		this._updateLikesView();
 	}
 
 	_prepareCard() {

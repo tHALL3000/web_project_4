@@ -39,6 +39,7 @@
 @import url(../src/blocks/photo-grid/__heart/photo-grid__heart.css);
 @import url(../src/blocks/photo-grid/__heart/_active/photo-grid__heart_active.css);
 @import url(../src/blocks/photo-grid/__heart/_counter/photo-grid__heart_counter.css);
+@import url(../src/blocks/photo-grid/__likes-container/photo-grid__likes-container.css);
 @import url(../src/blocks/photo-grid/__picture/photo-grid__picture.css);
 @import url(../src/blocks/photo-grid/__text-block/photo-grid__text-block.css);
 @import url(../src/blocks/photo-grid/__title/photo-grid__title.css);
