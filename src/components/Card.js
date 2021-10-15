@@ -1,7 +1,9 @@
 /** @format */
 
+import profileText from "../index";
+
 class Card {
-	constructor({ data, handleCardClick, handleDeleteClick, handleLikeIcon }, cardSelector) {
+	constructor({ data, handleCardClick, handleDeleteClick, handleLikeIcon, userId }, cardSelector) {
 		this._name = data.name;
 		this._link = data.link;
 		this._likes = data.likes;
@@ -11,7 +13,9 @@ class Card {
 		this._handleDeleteClick = handleDeleteClick;
 		this._handleLikeIcon = handleLikeIcon;
 		this._cardId = data._id;
-		// this._currentUser = data._id;
+		// this._currentUser = profileText.id;
+		this._userId = userId;
+		this.deleteButton = document.querySelector(".photo-grid__delete");
 	}
 
 	_getTemplate() {
@@ -72,6 +76,11 @@ class Card {
 		this._card.querySelector(".photo-grid__picture").src = this._link;
 		this._card.alt = "Image" + this._name + "";
 		this._heart = this._card.querySelector(".photo-grid__heart");
+		// if (this._currentUser !== this._id) {
+		// 	this.deleteButton.style.visibility = "hidden";
+		// } else {
+		// 	this.deleteButton.style.visibility = "visible";
+		// }
 	}
 
 	generateCard() {

@@ -84,9 +84,11 @@ const handleCardClick = (data) => {
 };
 
 function createCard(data, cardSelector) {
+	const currentUser = userInfo.getUserInfo();
 	const card = new Card(
+		data,
 		{
-			data,
+			userId: currentUser.id,
 			handleCardClick,
 			handleLikeIcon: () => {
 				if (!card.isLiked()) {
@@ -99,21 +101,17 @@ function createCard(data, cardSelector) {
 					});
 				}
 			},
-			handleDeleteClick: (evt) => {
-				if (user._id === card.owner._id) {
-				(cardId) => {
+
+			handleDeleteClick: (cardId) => {
 				popupDeleteConfirm.open();
 				popupDeleteConfirm.setSubmitAction(() => {
 					api.deleteCard(cardId).then(() => {
 						//loading icon here
 						card.removeCard();
 						popupDeleteConfirm.close();
-						});
 					});
-					}
-				} else {
-						document.getElementByClass("photo-grid__delete").style.display = "hidden"
-				}
+				});
+			},
 		},
 		cardSelector
 	);
@@ -148,6 +146,9 @@ api.getAppInfo().then(([cardsArray, profileData]) => {
 
 	cardList.renderSection(cardsArray.reverse());
 });
+// .catch((err) => {
+// 	console.log(err);
+// });
 
 const editFormValidator = new FormValidator(config, editFormElement);
 const cardFormValidator = new FormValidator(config, cardFormElement);
