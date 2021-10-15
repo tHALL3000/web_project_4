@@ -3,7 +3,7 @@
 import profileText from "../index";
 
 class Card {
-	constructor({ data, handleCardClick, handleDeleteClick, handleLikeIcon, userId }, cardSelector) {
+	constructor(data, { handleCardClick, handleDeleteClick, handleLikeIcon, userId }, cardSelector) {
 		this._name = data.name;
 		this._link = data.link;
 		this._likes = data.likes;
