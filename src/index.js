@@ -94,6 +94,7 @@ function createCard(data, cardSelector) {
 				if (!card.isLiked()) {
 					api.cardLikesAdd(card.getCardId()).then((newData) => {
 						card.setLikesInfo(newData);
+						api.updateCardStatus(data.id, liked);
 					});
 				} else {
 					api.cardRemoveLike(card.getCardId()).then((newData) => {
