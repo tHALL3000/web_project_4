@@ -83,8 +83,13 @@ const handleCardClick = (data) => {
 	popupImage.open(data);
 };
 
+api.getProfile().then((res) => {
+	return res.json();
+});
+
 function createCard(data, cardSelector) {
 	const currentUser = userInfo.getUserInfo();
+
 	const card = new Card(
 		data,
 		{

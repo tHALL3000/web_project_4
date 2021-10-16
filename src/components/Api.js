@@ -82,7 +82,7 @@ class Api {
 			},
 		}).then((res) => this._ifResReturnJson(res));
 	}
-	updateCardStatus(cardId, liked) {
+	updateCardStatus(cardId) {
 		if (liked) {
 			return this.cardRemoveLike(cardId);
 		} else return this.cardLikesAdd(cardId);
