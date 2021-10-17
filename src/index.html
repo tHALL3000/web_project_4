@@ -15,7 +15,7 @@
 		<main class="main-content">
 			<section class="profile">
 				<button class="wrapper" id="userPicture">
-					<img class="profile__picture-rounded" src="" alt="Profile picture of J. Cousteau" />
+					<img class="profile__picture-rounded" src=" " alt="Profile picture" />
 				</button>
 				<div class="profile__info">
 					<div class="profile__inner">
@@ -45,12 +45,12 @@
 		<footer class="footer">
 			<p class="footer__text">&copy; 2021 Around The U.S. by tHALL3000</p>
 		</footer>
-		<div class="overlay overlay_type_profile" id="photoModal">
+		<div class="overlay overlay_type_profile" id="photoModalProfile">
 			<section class="modal modal_profile_picture">
 				<button class="modal__close-button modal__close-button-profile" id="closeButtonProfilePhoto" type="button"></button>
 				<div class="modal__contents">
 					<h2 class="modal__text">Change profile picture</h2>
-					<form class="form form_profile-picture" id="newPicture">
+					<form class="form form_profile-picture" id="newPictureUser">
 						<div class="modal__form-control">
 							<input class="modal__form-control-input modal__form-control-input_profile-picture-url" id="avatar" type="url" name="avatar" required />
 							<span id="avatar-error" class="error-message"></span>
@@ -63,7 +63,7 @@
 
 		<div class="overlay overlay_type_edit">
 			<section class="modal modal_edit_profile">
-				<button class="modal__close-button" id="closeButton" type="button"></button>
+				<button class="modal__close-button" id="closeButtonEdit" type="button"></button>
 				<div class="modal__contents">
 					<h2 class="modal__text">Edit Profile</h2>
 					<form class="form form-profile" id="profile">
@@ -103,7 +103,7 @@
 
 							<input class="modal__form-control-input modal__form-control-input_url" id="link" type="url" name="link" placeholder="Image link" required />
 							<span id="link-error" class="error-message"></span>
-							<button id="saveButton" class="button button_disabled" disabled>" "</button>
+							<button id="saveButtonPicture" class="button button_disabled" disabled>" "</button>
 						</div>
 					</form>
 				</div>
