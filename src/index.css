@@ -33,6 +33,7 @@
 @import url(../src/blocks/modal/__image/modal__image.css);
 @import url(../src/blocks/modal/__photo-container/modal__photo-container.css);
 @import url(../src/blocks/photo-grid/__delete/photo-grid__delete.css);
+@import url(../src/blocks/photo-grid/__delete/_hidden/photo-grid__delete_hidden.css);
 @import url(../src/blocks/photo-grid/photo-grid.css);
 @import url(../src/blocks/photo-grid/__item/photo-grid__item.css);
 @import url(../src/blocks/photo-grid/__card/photo-grid__card.css);

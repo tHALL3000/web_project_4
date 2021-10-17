@@ -83,12 +83,14 @@ const handleCardClick = (data) => {
 	popupImage.open(data);
 };
 
-api.getProfile().then((res) => {
-	return res.json();
-});
+// api.getProfile().then((res) => {
+// 	return res.json();
+// });
 
 function createCard(data, cardSelector) {
 	const currentUser = userInfo.getUserInfo();
+
+	console.log("currentUser", currentUser);
 
 	const card = new Card(
 		data,
@@ -148,6 +150,8 @@ const cardList = new Section(
 );
 
 api.getAppInfo().then(([cardsArray, profileData]) => {
+	console.log("cardsArray", cardsArray);
+	console.log("profileData", profileData);
 	userInfo.setUserInfo(profileData);
 
 	cardList.renderSection(cardsArray.reverse());

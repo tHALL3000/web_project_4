@@ -3,7 +3,14 @@
 import profileText from "../index";
 
 class Card {
+	// 1 data (object)
+	// 2 object
+	// 3 cardSelector (string)
 	constructor(data, { handleCardClick, handleDeleteClick, handleLikeIcon, userId }, cardSelector) {
+		console.log("data", data);
+		console.log("userId", userId);
+		console.log("cardSelector", cardSelector);
+
 		this._name = data.name;
 		this._link = data.link;
 		this._likes = data.likes;
@@ -76,11 +83,12 @@ class Card {
 		this._card.querySelector(".photo-grid__picture").src = this._link;
 		this._card.alt = "Image" + this._name + "";
 		this._heart = this._card.querySelector(".photo-grid__heart");
-		// if (this._currentUser !== this._id) {
-		// 	this.deleteButton.style.visibility = "hidden";
-		// } else {
-		// 	this.deleteButton.style.visibility = "visible";
-		// }
+		const cardDelete = this._card.querySelector(".photo-grid__delete");
+		if (this._currentUser !== this._id) {
+			console.log("trashcan", cardDelete);
+			cardDelete.classList.remove("photo-grid__delete");
+			cardDelete.classList.add("photo-grid__delete_hidden");
+		}
 	}
 
 	generateCard() {
