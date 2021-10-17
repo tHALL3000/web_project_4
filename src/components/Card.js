@@ -86,7 +86,7 @@ class Card {
 		const cardDelete = this._card.querySelector(".photo-grid__delete");
 		if (this._currentUser !== this._id) {
 			console.log("trashcan", cardDelete);
-			cardDelete.classList.remove("photo-grid__delete");
+			// cardDelete.classList.remove("photo-grid__delete");
 			cardDelete.classList.add("photo-grid__delete_hidden");
 		}
 	}

@@ -6,7 +6,6 @@ import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
 import PopupWithForm from "./components/PopupWithForm.js";
 import PopupWithImage from "./components/PopupWithImage.js";
-// import PopupProfilePicture from "./components/PopupProfilePicture.js";
 import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
 import Api from "./components/Api.js";
@@ -22,11 +21,8 @@ const editFormElement = modalProfile.querySelector(".form-profile");
 const photoGrid = document.querySelector(".photo-grid");
 const nameInput = document.forms.profile.elements.nameProfile;
 const titleInput = document.forms.profile.elements.title;
-// const avatar = document.querySelector(".profile__picture-rounded");
-const newProfile = document.querySelector(".photo-grid__heart_counter");
 const cardFormElement = document.querySelector(".form_add");
 const cardSelector = ".card-template";
-
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
 const popupChangeProfile = ".overlay_type_profile";
@@ -82,10 +78,6 @@ const userInfo = new UserInfo({
 const handleCardClick = (data) => {
 	popupImage.open(data);
 };
-
-// api.getProfile().then((res) => {
-// 	return res.json();
-// });
 
 function createCard(data, cardSelector) {
 	const currentUser = userInfo.getUserInfo();
@@ -156,9 +148,6 @@ api.getAppInfo().then(([cardsArray, profileData]) => {
 
 	cardList.renderSection(cardsArray.reverse());
 });
-// .catch((err) => {
-// 	console.log(err);
-// });
 
 const editFormValidator = new FormValidator(config, editFormElement);
 const cardFormValidator = new FormValidator(config, cardFormElement);

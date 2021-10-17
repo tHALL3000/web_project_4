@@ -1,5 +1,4 @@
 import { nameSelector, titleSelector } from "../index.js";
-// import { userInfo } from "../components/UserInfo";
 
 class Api {
 	constructor(baseUrl, headers, cardId, profilePicture) {
