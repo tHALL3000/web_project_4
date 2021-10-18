@@ -28,9 +28,11 @@ const popupAddSelector = ".overlay_type_add";
 const popupChangeProfile = ".overlay_type_profile";
 
 const addCardModal = new PopupWithForm((data) => {
-	api.addCard(data).then((card) => {
-		createCard(card, cardSelector);
-	});
+	api.addCard(data)
+		.then((card) => {
+			createCard(card, cardSelector);
+		})
+		.catch((err) => console.log(`Error.....: ${err}`));
 }, popupAddSelector);
 addCardModal.setEventListeners();
 
@@ -38,18 +40,21 @@ const popupImage = new PopupWithImage(".overlay_type_preview");
 popupImage.setEventListeners();
 
 const submitEditProfileForm = (data) => {
-	api.setProfile(data).then((data) => userInfo.setUserInfo(data));
+	api.setProfile(data)
+		.then((data) => userInfo.setUserInfo(data))
+		.catch((err) => console.log(`Error.....: ${err}`));
 };
 
 const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
 popupEditProfile.setEventListeners();
 
 const submitEditProfilePicture = (data) => {
-	api.updateProfilePicture(data.avatar).then((data) => {
-		console.log(data);
-		userInfo.setUserInfo(data);
-		popupProfilePicture.close();
-	});
+	api.updateProfilePicture(data.avatar)
+		.then((data) => {
+			userInfo.setUserInfo(data);
+			popupProfilePicture.close();
+		})
+		.catch((err) => console.log(`Error.....: ${err}`));
 };
 
 const popupProfilePicture = new PopupWithForm(submitEditProfilePicture, popupChangeProfile);
@@ -82,34 +87,39 @@ const handleCardClick = (data) => {
 function createCard(data, cardSelector) {
 	const currentUser = userInfo.getUserInfo();
 
-	console.log("currentUser", currentUser);
-
 	const card = new Card(
 		data,
 		{
 			userId: currentUser.id,
 			handleCardClick,
 			handleLikeIcon: () => {
+				console.log(liked);
 				if (!card.isLiked()) {
-					api.cardLikesAdd(card.getCardId()).then((newData) => {
-						card.setLikesInfo(newData);
-						api.updateCardStatus(data.id, liked);
-					});
+					api.cardLikesAdd(card.getCardId())
+
+						.then((newData) => {
+							card.setLikesInfo(newData);
+							api.updateCardStatus(data._id, liked);
+						})
+						.catch((err) => console.log(`Liked Error.....: ${err}`));
 				} else {
-					api.cardRemoveLike(card.getCardId()).then((newData) => {
-						card.setLikesInfo(newData);
-					});
+					api.cardRemoveLike(card.getCardId())
+						.then((newData) => {
+							card.setLikesInfo(newData);
+						})
+						.catch((err) => console.log(`Error.....: ${err}`));
 				}
 			},
 
 			handleDeleteClick: (cardId) => {
 				popupDeleteConfirm.open();
 				popupDeleteConfirm.setSubmitAction(() => {
-					api.deleteCard(cardId).then(() => {
-						//loading icon here
-						card.removeCard();
-						popupDeleteConfirm.close();
-					});
+					api.deleteCard(cardId)
+						.then(() => {
+							card.removeCard();
+							popupDeleteConfirm.close();
+						})
+						.catch((err) => console.log(`Error.....: ${err}`));
 				});
 			},
 		},
@@ -141,13 +151,13 @@ const cardList = new Section(
 	".photo-grid"
 );
 
-api.getAppInfo().then(([cardsArray, profileData]) => {
-	console.log("cardsArray", cardsArray);
-	console.log("profileData", profileData);
-	userInfo.setUserInfo(profileData);
+api.getAppInfo()
+	.then(([cardsArray, profileData]) => {
+		userInfo.setUserInfo(profileData);
 
-	cardList.renderSection(cardsArray.reverse());
-});
+		cardList.renderSection(cardsArray.reverse());
+	})
+	.catch((err) => console.log(`Error.....: ${err}`));
 
 const editFormValidator = new FormValidator(config, editFormElement);
 const cardFormValidator = new FormValidator(config, cardFormElement);
