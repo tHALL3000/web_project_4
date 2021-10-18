@@ -1,11 +1,9 @@
 import { nameSelector, titleSelector } from "../index.js";
 
 class Api {
-	constructor(baseUrl, headers, cardId, profilePicture) {
+	constructor(baseUrl, headers) {
 		this.url = baseUrl;
 		this.headers = headers;
-		this.cardId = cardId;
-		this.profilePicture = profilePicture;
 	}
 
 	_ifResReturnJson(res) {
@@ -16,8 +14,9 @@ class Api {
 	}
 
 	getInitialCards() {
+		console.log("this url", this.url);
 		return fetch(`${this.url}/cards`, {
-			headers: { authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f" },
+			headers: this.url.headers,
 		}).then((res) => this._ifResReturnJson(res));
 	}
 	getAppInfo() {
@@ -27,20 +26,14 @@ class Api {
 	getProfile() {
 		return fetch(`${this.url}/users/me`, {
 			method: "GET",
-			headers: {
-				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
-				"Content-Type": "application/json",
-			},
+			headers: this.url.headers,
 		}).then((res) => this._ifResReturnJson(res));
 	}
 
 	setProfile(item) {
 		return fetch(`${this.url}/users/me`, {
 			method: "PATCH",
-			headers: {
-				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
-				"Content-Type": "application/json",
-			},
+			headers: this.url.headers,
 			body: JSON.stringify({
 				name: item.name,
 				about: item.title, //this needs to stay title//
@@ -51,10 +44,7 @@ class Api {
 	addCard(data) {
 		return fetch(`${this.url}/cards`, {
 			method: "POST",
-			headers: {
-				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
-				"Content-Type": "application/json",
-			},
+			headers: this.url.headers,
 			body: JSON.stringify({
 				link: data.link,
 				name: data.name,
@@ -65,20 +55,14 @@ class Api {
 	cardLikesAdd(cardId) {
 		return fetch(`${this.url}/cards/likes/${cardId}`, {
 			method: "PUT",
-			headers: {
-				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
-				"Content-Type": "application/json",
-			},
+			headers: this.url.headers,
 		}).then((res) => this._ifResReturnJson(res));
 	}
 
 	cardRemoveLike(cardId) {
 		return fetch(`${this.url}/cards/likes/${cardId}`, {
 			method: "DELETE",
-			headers: {
-				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
-				"Content-Type": "application/json",
-			},
+			headers: this.url.headers,
 		}).then((res) => this._ifResReturnJson(res));
 	}
 	updateCardStatus(cardId) {
@@ -90,20 +74,14 @@ class Api {
 	deleteCard(cardId) {
 		return fetch(`${this.url}/cards/${cardId}`, {
 			method: "DELETE",
-			headers: {
-				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
-				"Content-Type": "application/json",
-			},
+			headers: this.url.headers,
 		});
 	}
 	//PATCH https://around.nomoreparties.co/v1/groupId/users/me/avatar
 	updateProfilePicture(avatar) {
 		return fetch(`${this.url}/users/me/avatar`, {
 			method: "PATCH",
-			headers: {
-				authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
-				"Content-Type": "application/json",
-			},
+			headers: this.url.headers,
 			body: JSON.stringify({ avatar: avatar }),
 		}).then((res) => this._ifResReturnJson(res));
 	}

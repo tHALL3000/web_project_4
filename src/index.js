@@ -118,17 +118,17 @@ function createCard(data, cardSelector) {
 	photoGrid.prepend(card.generateCard());
 }
 
-const baseUrl = "https://around.nomoreparties.co/v1/group-11";
-const api = new Api(baseUrl, {
+const api = new Api({
+	baseUrl: "https://around.nomoreparties.co/v1/group-11",
 	headers: {
-		authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f ",
+		authorization: "f1a3823e-fb3e-4cac-8943-fd9e95cc434f",
 		"Content-Type": "application/json",
 	},
 });
 
 const popupDeleteSelector = ".overlay_type_delete";
 const popupDeleteConfirm = new PopupDelete(popupDeleteSelector, () => {
-	api.deleteCard();
+	api.deleteCard(cardId);
 });
 popupDeleteConfirm.setEventListeners();
 
