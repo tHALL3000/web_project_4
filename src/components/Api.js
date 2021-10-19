@@ -64,7 +64,7 @@ class Api {
 			headers: this.headers,
 		}).then((res) => this._checkResReturnJson(res));
 	}
-	updateCardStatus(cardId) {
+	updateCardStatus(cardId, liked) {
 		if (liked) {
 			return this.cardRemoveLike(cardId);
 		} else return this.cardLikesAdd(cardId);

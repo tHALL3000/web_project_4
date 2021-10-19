@@ -93,22 +93,12 @@ function createCard(data, cardSelector) {
 			userId: currentUser.id,
 			handleCardClick,
 			handleLikeIcon: () => {
-				console.log(liked);
-				if (!card.isLiked()) {
-					api.cardLikesAdd(card.getCardId())
-
-						.then((newData) => {
-							card.setLikesInfo(newData);
-							api.updateCardStatus(data._id, liked);
-						})
-						.catch((err) => console.log(`Liked Error.....: ${err}`));
-				} else {
-					api.cardRemoveLike(card.getCardId())
-						.then((newData) => {
-							card.setLikesInfo(newData);
-						})
-						.catch((err) => console.log(`Error.....: ${err}`));
-				}
+				const cardId = data._id;
+				api.updateCardStatus(cardId, !card.isLiked)
+					.then((newData) => {
+						card.setLikesInfo(newData);
+					})
+					.catch((err) => console.log(`Error.....: ${err}`));
 			},
 
 			handleDeleteClick: (cardId) => {
