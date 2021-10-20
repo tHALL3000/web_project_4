@@ -30,32 +30,14 @@ const popupChangeProfile = ".overlay_type_profile";
 // if popup contains submit editButton execute the on click change innertext, catch the erros and finally change the inner text back to Save
 // 	api.addCard(data)
 
-// 		.then((card) => {
-// 			createCard(card, cardSelector);
-// 		})
-// 		.catch((err) => console.log(`Error.....: ${err}`));
-// }, popupAddSelector);
-
 const addCardModal = new PopupWithForm((data) => {
-	api.addCard(data);
-	if (e.target.classList.contains("button")) {
-		addEventListener(
-			"submit",
-			(e) => {
-				setEventListeners()
-					.then((card) => {
-						createCard(card, cardSelector);
-					})
-
-					.catch((err) => console.log(`Error.....: ${err}`))
-					.finally(() => {
-						(this._savebutton.innerText = "Save"), this._popupForm.reset();
-					});
-			},
-			popupAddSelector
-		);
-	}
-});
+	api.addCard(data)
+		.then((card) => {
+			createCard(card, cardSelector);
+		})
+		.catch((err) => console.log(`Error.....: ${err}`));
+	// .finally(() => {});
+}, popupAddSelector);
 
 addCardModal.setEventListeners();
 

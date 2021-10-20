@@ -27,6 +27,11 @@ class PopupWithForm extends Popup {
 		});
 	}
 
+	open() {
+		super.open();
+		this._savebutton.innerText = "Save";
+	}
+
 	close() {
 		this._popupForm.reset();
 		super.close();

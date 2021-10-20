@@ -49,14 +49,12 @@ class Card {
 	_updateLikesView(data) {
 		if (this.isLiked(data)) {
 			this._card.querySelector(".photo-grid__heart").classList.add("photo-grid__heart_active");
-		} else {
-			this._card.querySelector(".photo-grid__heart").classList.remove("photo-grid__heart_active");
 		}
 		this._card.querySelector(".photo-grid__heart_counter").textContent = this._likes.length;
 	}
 
 	isLiked() {
-		return Boolean(this._userId === this._id);
+		return Boolean(this._likes.find((like) => like._id === this._id));
 	}
 
 	setLikesInfo(data) {

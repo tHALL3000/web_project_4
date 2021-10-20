@@ -18,7 +18,6 @@ class Popup {
 
 	open() {
 		this._popupElement.classList.add("overlay_show");
-		this._savebutton.innerText = "Save";
 		document.addEventListener("keydown", this._handleEscKey);
 		this._popupElement.addEventListener("click", this._handleOutsideClick);
 	}
