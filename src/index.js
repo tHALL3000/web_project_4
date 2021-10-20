@@ -28,18 +28,21 @@ const cardSelector = ".card-template";
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
 const popupChangeProfile = ".overlay_type_profile";
+const saveButton = document.querySelector(".button");
+
+const utilities = new utils(saveButton);
 
 const addCardModal = new PopupWithForm((data) => {
-	utils.renderLoading(true, button);
+	utilities.renderLoading(true);
 	api.addCard(data)
 		.then((card) => {
 			createCard(card, cardSelector);
-			Popup.close();
+			// Popup.close();
 		})
 		.catch((err) => console.log(`Error.....: ${err}`))
 		.finally(() => {
-			utils.renderLoading(false, button);
-			Popup.close();
+			utilities.renderLoading(false, saveButton);
+			// Popup.close();
 		});
 }, popupAddSelector);
 
