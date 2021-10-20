@@ -37,12 +37,11 @@ const addCardModal = new PopupWithForm((data) => {
 	api.addCard(data)
 		.then((card) => {
 			createCard(card, cardSelector);
-			// Popup.close();
+			addCardModal.close();
 		})
 		.catch((err) => console.log(`Error.....: ${err}`))
 		.finally(() => {
 			utilities.renderLoading(false, saveButton);
-			// Popup.close();
 		});
 }, popupAddSelector);
 

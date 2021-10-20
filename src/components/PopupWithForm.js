@@ -28,7 +28,6 @@ class PopupWithForm extends Popup {
 			e.preventDefault();
 			this._savebutton.innerText = "Saving...";
 			this._submitForm(this._getInputEditValues());
-			this.close();
 		});
 	}
 
