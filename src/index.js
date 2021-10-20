@@ -2,6 +2,7 @@
 
 import "./index.css";
 import config from "./utils/constants.js";
+import utils from "./utils/utils.js";
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
 import PopupWithForm from "./components/PopupWithForm.js";
@@ -10,7 +11,7 @@ import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
 import Api from "./components/Api.js";
 import PopupDelete from "./components/PopupDelete.js";
-import Constants from "./utils/constants.js";
+import Popup from "./components/Popup";
 
 const profileChange = document.querySelector("#userPicture");
 const modalProfilePicture = document.querySelector(".modal_profile_picture");
@@ -29,7 +30,7 @@ const popupAddSelector = ".overlay_type_add";
 const popupChangeProfile = ".overlay_type_profile";
 
 const addCardModal = new PopupWithForm((data) => {
-	Constants.renderLoading(true, button);
+	utils.renderLoading(true, button);
 	api.addCard(data)
 		.then((card) => {
 			createCard(card, cardSelector);
@@ -37,7 +38,8 @@ const addCardModal = new PopupWithForm((data) => {
 		})
 		.catch((err) => console.log(`Error.....: ${err}`))
 		.finally(() => {
-			Constants.renderLoading(false, button);
+			utils.renderLoading(false, button);
+			Popup.close();
 		});
 }, popupAddSelector);
 
