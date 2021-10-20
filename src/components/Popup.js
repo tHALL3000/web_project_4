@@ -18,6 +18,7 @@ class Popup {
 
 	open() {
 		this._popupElement.classList.add("overlay_show");
+
 		document.addEventListener("keydown", this._handleEscKey);
 		this._popupElement.addEventListener("click", this._handleOutsideClick);
 	}

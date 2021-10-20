@@ -10,6 +10,7 @@ import Section from "./components/Section.js";
 import UserInfo from "./components/UserInfo.js";
 import Api from "./components/Api.js";
 import PopupDelete from "./components/PopupDelete.js";
+import Constants from "./utils/constants.js";
 
 const profileChange = document.querySelector("#userPicture");
 const modalProfilePicture = document.querySelector(".modal_profile_picture");
@@ -27,16 +28,17 @@ const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
 const popupChangeProfile = ".overlay_type_profile";
 
-// if popup contains submit editButton execute the on click change innertext, catch the erros and finally change the inner text back to Save
-// 	api.addCard(data)
-
 const addCardModal = new PopupWithForm((data) => {
+	Constants.renderLoading(true, button);
 	api.addCard(data)
 		.then((card) => {
 			createCard(card, cardSelector);
+			Popup.close();
 		})
-		.catch((err) => console.log(`Error.....: ${err}`));
-	// .finally(() => {});
+		.catch((err) => console.log(`Error.....: ${err}`))
+		.finally(() => {
+			Constants.renderLoading(false, button);
+		});
 }, popupAddSelector);
 
 addCardModal.setEventListeners();

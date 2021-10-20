@@ -17,6 +17,11 @@ class PopupWithForm extends Popup {
 		return this._inputValues;
 	}
 
+	open() {
+		super.open();
+		this._savebutton.innerText = "Save";
+	}
+
 	setEventListeners() {
 		super.setEventListeners();
 		this._popupElement.addEventListener("submit", (e) => {
@@ -25,11 +30,6 @@ class PopupWithForm extends Popup {
 			this._submitForm(this._getInputEditValues());
 			this.close();
 		});
-	}
-
-	open() {
-		super.open();
-		this._savebutton.innerText = "Save";
 	}
 
 	close() {
