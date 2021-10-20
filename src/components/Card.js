@@ -68,7 +68,7 @@ class Card {
 		this._card.alt = "Image" + this._name + "";
 		this._heart = this._card.querySelector(".photo-grid__heart");
 		const cardDelete = this._card.querySelector(".photo-grid__delete");
-		if (this._currentUser !== this._id) {
+		if (this._currentUser == this._id) {
 			cardDelete.classList.add("photo-grid__delete_hidden");
 		}
 	}
