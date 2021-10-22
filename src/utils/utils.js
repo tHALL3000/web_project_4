@@ -1,3 +1,4 @@
 export function renderLoading(isLoading, button) {
-	button.textContent = isLoading ? "Saving..." : "Save";
+	const baseElement = document.querySelector(".overlay_show");
+	baseElement.querySelector(".button").textContent = isLoading ? "Saving..." : "Save";
 }

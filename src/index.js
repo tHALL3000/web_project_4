@@ -28,7 +28,6 @@ const cardSelector = ".card-template";
 const popupSelector = ".overlay_type_edit";
 const popupAddSelector = ".overlay_type_add";
 const popupChangeProfile = ".overlay_type_profile";
-const saveButton = document.querySelector(".button");
 
 const addCardModal = new PopupWithForm((data) => {
 	renderLoading(true, saveButton);
