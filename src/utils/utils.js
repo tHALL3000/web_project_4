@@ -1,9 +1,3 @@
-class utils {
-	constructor(button) {
-		this._button = button;
-	}
-	renderLoading(isLoading) {
-		this._button.textContent = isLoading ? "Saving..." : "Save";
-	}
+export function renderLoading(isLoading, button) {
+	button.textContent = isLoading ? "Saving..." : "Save";
 }
-export default utils;

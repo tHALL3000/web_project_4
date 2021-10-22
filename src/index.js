@@ -2,7 +2,7 @@
 
 import "./index.css";
 import config from "./utils/constants.js";
-import utils from "./utils/utils.js";
+import { renderLoading } from "./utils/utils.js";
 import FormValidator from "./components/FormValidator.js";
 import Card from "./components/Card.js";
 import PopupWithForm from "./components/PopupWithForm.js";
@@ -30,10 +30,8 @@ const popupAddSelector = ".overlay_type_add";
 const popupChangeProfile = ".overlay_type_profile";
 const saveButton = document.querySelector(".button");
 
-const utilities = new utils(saveButton);
-
 const addCardModal = new PopupWithForm((data) => {
-	utilities.renderLoading(true);
+	renderLoading(true, saveButton);
 	api.addCard(data)
 		.then((card) => {
 			createCard(card, cardSelector);
@@ -41,7 +39,7 @@ const addCardModal = new PopupWithForm((data) => {
 		})
 		.catch((err) => console.log(`Error.....: ${err}`))
 		.finally(() => {
-			utilities.renderLoading(false, saveButton);
+			renderLoading(false, saveButton);
 		});
 }, popupAddSelector);
 
@@ -51,21 +49,32 @@ const popupImage = new PopupWithImage(".overlay_type_preview");
 popupImage.setEventListeners();
 
 const submitEditProfileForm = (data) => {
+	renderLoading(true, saveButton);
 	api.setProfile(data)
-		.then((data) => userInfo.setUserInfo(data))
-		.catch((err) => console.log(`Error.....: ${err}`));
+		.then((data) => {
+			userInfo.setUserInfo(data);
+			popupEditProfile.close();
+		})
+		.catch((err) => console.log(`Error.....: ${err}`))
+		.finally(() => {
+			renderLoading(false, saveButton);
+		});
 };
 
 const popupEditProfile = new PopupWithForm(submitEditProfileForm, popupSelector);
 popupEditProfile.setEventListeners();
 
 const submitEditProfilePicture = (data) => {
+	renderLoading(true, saveButton);
 	api.updateProfilePicture(data.avatar)
 		.then((data) => {
 			userInfo.setUserInfo(data);
 			popupProfilePicture.close();
 		})
-		.catch((err) => console.log(`Error.....: ${err}`));
+		.catch((err) => console.log(`Error.....: ${err}`))
+		.finally(() => {
+			renderLoading(false, saveButton);
+		});
 };
 
 const popupProfilePicture = new PopupWithForm(submitEditProfilePicture, popupChangeProfile);
